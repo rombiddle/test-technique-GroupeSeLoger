@@ -8,7 +8,7 @@
 import XCTest
 import SeLoger
 
-class RemotePropertyListingsLoaderTests: XCTestCase {
+class LoadPropertyListingsFromRemoteUseCaseTests: XCTestCase {
 
     func test_init_doesNotRequestDataFromURL() {
         let url = URL(string: "https://a-url.com")!

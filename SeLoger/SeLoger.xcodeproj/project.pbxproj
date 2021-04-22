@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		25C2C90A26305CAD0008CAB1 /* SeLoger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25C2C90026305CAD0008CAB1 /* SeLoger.framework */; };
-		25C2C90F26305CAE0008CAB1 /* RemotePropertyListingsLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2C90E26305CAE0008CAB1 /* RemotePropertyListingsLoaderTests.swift */; };
+		25C2C90F26305CAE0008CAB1 /* LoadPropertyListingsFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2C90E26305CAE0008CAB1 /* LoadPropertyListingsFromRemoteUseCaseTests.swift */; };
 		25C2C91126305CAE0008CAB1 /* SeLoger.h in Headers */ = {isa = PBXBuildFile; fileRef = 25C2C90326305CAD0008CAB1 /* SeLoger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		25C2CBB026316B9C0008CAB1 /* PropertyListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2CBAF26316B9C0008CAB1 /* PropertyListing.swift */; };
 		25C2CBB626316D0C0008CAB1 /* PropertyListingsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2CBB526316D0C0008CAB1 /* PropertyListingsLoader.swift */; };
@@ -21,6 +21,7 @@
 		25C2CD6A2631DCA70008CAB1 /* SeLogerEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2CD692631DCA70008CAB1 /* SeLogerEndToEndTests.swift */; };
 		25C2CD6C2631DCA70008CAB1 /* SeLoger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25C2C90026305CAD0008CAB1 /* SeLoger.framework */; };
 		25C2CE392631E70A0008CAB1 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2CD4D2631CAE70008CAB1 /* XCTestCase+MemoryLeakTracking.swift */; };
+		25C2CE44263219AE0008CAB1 /* LoadPropertyListingsFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2CE43263219AE0008CAB1 /* LoadPropertyListingsFromCacheUseCaseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +46,7 @@
 		25C2C90326305CAD0008CAB1 /* SeLoger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SeLoger.h; sourceTree = "<group>"; };
 		25C2C90426305CAD0008CAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25C2C90926305CAD0008CAB1 /* SeLogerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeLogerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		25C2C90E26305CAE0008CAB1 /* RemotePropertyListingsLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotePropertyListingsLoaderTests.swift; sourceTree = "<group>"; };
+		25C2C90E26305CAE0008CAB1 /* LoadPropertyListingsFromRemoteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadPropertyListingsFromRemoteUseCaseTests.swift; sourceTree = "<group>"; };
 		25C2C91026305CAE0008CAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25C2CBAF26316B9C0008CAB1 /* PropertyListing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyListing.swift; sourceTree = "<group>"; };
 		25C2CBB526316D0C0008CAB1 /* PropertyListingsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListingsLoader.swift; sourceTree = "<group>"; };
@@ -58,6 +59,7 @@
 		25C2CD672631DCA60008CAB1 /* SeLogerEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeLogerEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		25C2CD692631DCA70008CAB1 /* SeLogerEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeLogerEndToEndTests.swift; sourceTree = "<group>"; };
 		25C2CD6B2631DCA70008CAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		25C2CE43263219AE0008CAB1 /* LoadPropertyListingsFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadPropertyListingsFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 		25C2C90226305CAD0008CAB1 /* SeLoger */ = {
 			isa = PBXGroup;
 			children = (
+				25C2CE40263218F70008CAB1 /* Property Listings Cache */,
 				25C2CBBE2631704E0008CAB1 /* Property Listings API */,
 				25C2CBB926316DA90008CAB1 /* Property Listings Feature */,
 				25C2C90326305CAD0008CAB1 /* SeLoger.h */,
@@ -121,9 +124,9 @@
 		25C2C90D26305CAE0008CAB1 /* SeLogerTests */ = {
 			isa = PBXGroup;
 			children = (
+				25C2CE42263219420008CAB1 /* Property Listings Cache */,
 				25C2CD4C2631CAC80008CAB1 /* Helpers */,
-				25C2C90E26305CAE0008CAB1 /* RemotePropertyListingsLoaderTests.swift */,
-				25C2CD462631C6A40008CAB1 /* URLSessionHTTPClientTests.swift */,
+				25C2CE41263219240008CAB1 /* Property Listings API */,
 				25C2C91026305CAE0008CAB1 /* Info.plist */,
 			);
 			path = SeLogerTests;
@@ -164,6 +167,30 @@
 				25C2CD6B2631DCA70008CAB1 /* Info.plist */,
 			);
 			path = SeLogerEndToEndTests;
+			sourceTree = "<group>";
+		};
+		25C2CE40263218F70008CAB1 /* Property Listings Cache */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Property Listings Cache";
+			sourceTree = "<group>";
+		};
+		25C2CE41263219240008CAB1 /* Property Listings API */ = {
+			isa = PBXGroup;
+			children = (
+				25C2C90E26305CAE0008CAB1 /* LoadPropertyListingsFromRemoteUseCaseTests.swift */,
+				25C2CD462631C6A40008CAB1 /* URLSessionHTTPClientTests.swift */,
+			);
+			path = "Property Listings API";
+			sourceTree = "<group>";
+		};
+		25C2CE42263219420008CAB1 /* Property Listings Cache */ = {
+			isa = PBXGroup;
+			children = (
+				25C2CE43263219AE0008CAB1 /* LoadPropertyListingsFromCacheUseCaseTests.swift */,
+			);
+			path = "Property Listings Cache";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,7 +344,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25C2C90F26305CAE0008CAB1 /* RemotePropertyListingsLoaderTests.swift in Sources */,
+				25C2CE44263219AE0008CAB1 /* LoadPropertyListingsFromCacheUseCaseTests.swift in Sources */,
+				25C2C90F26305CAE0008CAB1 /* LoadPropertyListingsFromRemoteUseCaseTests.swift in Sources */,
 				25C2CD472631C6A40008CAB1 /* URLSessionHTTPClientTests.swift in Sources */,
 				25C2CD4E2631CAE70008CAB1 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
