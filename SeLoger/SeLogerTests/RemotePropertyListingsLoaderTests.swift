@@ -74,6 +74,35 @@ class RemotePropertyListingsLoaderTests: XCTestCase {
         }
     }
     
+    func test_load_deliversItemsOn200HTTPRespnseWithJSONItems() {
+        let (sut, client) = makeSUT()
+        
+        let item1 = makePropertyListings(bedrooms: 4,
+                                         city: "a city",
+                                         id: 1,
+                                         area: 125.5,
+                                         url: URL(string: "https://a-given-url.com")!,
+                                         price: 123.8,
+                                         professional: "a professional",
+                                         propertyType: "a propertyType",
+                                         rooms: 5)
+        
+        let item2 = makePropertyListings(bedrooms: nil,
+                                         city: "another city",
+                                         id: 2,
+                                         area: 1325.57,
+                                         url: nil,
+                                         price: 1234.87,
+                                         professional: "another professional",
+                                         propertyType: "another propertyType",
+                                         rooms: 8)
+
+        expect(sut, toCompleteWith: .success([item1.model, item2.model])) {
+            let json = makePropertyListingsJSON([item1.json, item2.json])
+            client.complete(withStatusCode: 200, data: json)
+        }
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(url: URL = URL(string: "https://a-url.com")!) -> (sut: RemotePropertyListingsLoader, client: HTTPClientSpy) {
@@ -105,9 +134,30 @@ class RemotePropertyListingsLoaderTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
+    private func makePropertyListings(bedrooms: Int?, city: String, id: Int, area: Float, url: URL?, price: Float, professional: String, propertyType: String, rooms: Int) -> (model: PropertyListing, json: [String: Any]) {
+        let item = PropertyListing(bedrooms: bedrooms, city: city, id: id, area: area, url: url, price: price, professional: professional, propertyType: propertyType, rooms: rooms)
+        let json = jsonValue(for: item)
+        
+        return (item, json)
+    }
+    
     private func makePropertyListingsJSON(_ properties: [[String: Any]]) -> Data {
         let json = ["items": properties, "totalCount": 0] as [String : Any]
         return try! JSONSerialization.data(withJSONObject: json)
+    }
+    
+    private func jsonValue(for item: PropertyListing) -> [String: Any] {
+        [
+            "bedrooms": item.bedrooms as Any,
+            "city": item.city,
+            "id": item.id,
+            "area": item.area,
+            "url": item.url?.absoluteString as Any,
+            "price": item.price,
+            "professional": item.professional,
+            "propertyType": item.propertyType,
+            "rooms": item.rooms
+        ] as [String: Any]
     }
     
     private class HTTPClientSpy: HTTPClient {

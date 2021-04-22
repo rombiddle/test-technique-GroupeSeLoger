@@ -1,5 +1,5 @@
 //
-//  PropertyListing.swift
+//  RemotePropertyListing.swift
 //  SeLoger
 //
 //  Created by Romain Brunie on 22/04/2021.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct PropertyListing: Equatable {
+public struct RemotePropertyListing: Decodable {
     public let bedrooms: Int?
     public let city: String
     public let id: Int

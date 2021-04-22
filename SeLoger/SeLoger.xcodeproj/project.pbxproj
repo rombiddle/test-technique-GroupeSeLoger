@@ -13,6 +13,7 @@
 		25C2CBB026316B9C0008CAB1 /* PropertyListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2CBAF26316B9C0008CAB1 /* PropertyListing.swift */; };
 		25C2CBB626316D0C0008CAB1 /* PropertyListingsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2CBB526316D0C0008CAB1 /* PropertyListingsLoader.swift */; };
 		25C2CBC0263170670008CAB1 /* RemotePropertyListingsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2CBBF263170670008CAB1 /* RemotePropertyListingsLoader.swift */; };
+		25C2CBC426319C080008CAB1 /* RemotePropertyListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2CBC326319C080008CAB1 /* RemotePropertyListing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,7 @@
 		25C2CBAF26316B9C0008CAB1 /* PropertyListing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyListing.swift; sourceTree = "<group>"; };
 		25C2CBB526316D0C0008CAB1 /* PropertyListingsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListingsLoader.swift; sourceTree = "<group>"; };
 		25C2CBBF263170670008CAB1 /* RemotePropertyListingsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotePropertyListingsLoader.swift; sourceTree = "<group>"; };
+		25C2CBC326319C080008CAB1 /* RemotePropertyListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotePropertyListing.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				25C2CBBF263170670008CAB1 /* RemotePropertyListingsLoader.swift */,
+				25C2CBC326319C080008CAB1 /* RemotePropertyListing.swift */,
 			);
 			path = "Property Listings API";
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				25C2CBB626316D0C0008CAB1 /* PropertyListingsLoader.swift in Sources */,
+				25C2CBC426319C080008CAB1 /* RemotePropertyListing.swift in Sources */,
 				25C2CBC0263170670008CAB1 /* RemotePropertyListingsLoader.swift in Sources */,
 				25C2CBB026316B9C0008CAB1 /* PropertyListing.swift in Sources */,
 			);
