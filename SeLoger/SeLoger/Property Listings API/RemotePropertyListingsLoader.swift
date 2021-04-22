@@ -33,38 +33,11 @@ public class RemotePropertyListingsLoader {
         client.get(from: url) { result in
             switch result {
             case let .success((data, response)):
-                if response.statusCode == 200, let _ = try? JSONSerialization.jsonObject(with: data) {
-                    if let root = try? JSONDecoder().decode(Root.self, from: data) {
-                        completion(.success(root.items.toModels()))
-                    }
-                } else {
-                    completion(.failure(Error.invalidData))
-                }
+                completion(PropertyListingsMapper.map(data, from: response))
                 
             case .failure:
                 completion(.failure(Error.connectivity))
             }
-        }
-    }
-}
-
-private struct Root: Decodable {
-    let items: [RemotePropertyListing]
-    let totalCount: Int
-}
-
-private extension Array where Element == RemotePropertyListing {
-    func toModels() -> [PropertyListing] {
-        map {
-            PropertyListing(bedrooms: $0.bedrooms,
-                            city: $0.city,
-                            id: $0.id,
-                            area: $0.area,
-                            url: $0.url,
-                            price: $0.price,
-                            professional: $0.professional,
-                            propertyType: $0.propertyType,
-                            rooms: $0.rooms)
         }
     }
 }
