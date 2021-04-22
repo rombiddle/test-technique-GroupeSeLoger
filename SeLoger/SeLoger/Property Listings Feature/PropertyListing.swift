@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PropertyListing {
+public struct PropertyListing: Equatable {
     let bedrooms: Int
     let city: String
     let id: Int

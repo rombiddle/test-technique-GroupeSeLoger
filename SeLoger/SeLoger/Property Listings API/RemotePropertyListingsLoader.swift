@@ -14,27 +14,29 @@ public protocol HTTPClient {
 }
 
 public class RemotePropertyListingsLoader {
-    let client: HTTPClient
-    let url: URL
+    private let client: HTTPClient
+    private let url: URL
     
     public enum Error: Swift.Error {
         case connectivity
         case invalidData
     }
     
-    init(url: URL, client: HTTPClient) {
+    public typealias Result = PropertyListingsLoader.Result
+    
+    public init(url: URL, client: HTTPClient) {
         self.url = url
         self.client = client
     }
     
-    public func load(completion: @escaping (Error) -> Void) {
+    public func load(completion: @escaping (Result) -> Void) {
         client.get(from: url) { result in
             switch result {
             case .success:
-                completion(.invalidData)
+                completion(.failure(Error.invalidData))
                 
             case .failure:
-                completion(.connectivity)
+                completion(.failure(Error.connectivity))
             }
         }
     }

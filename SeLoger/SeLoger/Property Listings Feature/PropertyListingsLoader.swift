@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol PropertyListingsLoader {
+public protocol PropertyListingsLoader {
     typealias Result = Swift.Result<[PropertyListing], Error>
     
     func load(completion: @escaping (Result) -> Void)

@@ -74,12 +74,23 @@ class RemotePropertyListingsLoaderTests: XCTestCase {
     }
     
     private func expect(_ sut: RemotePropertyListingsLoader, toCompleteWithError error: RemotePropertyListingsLoader.Error, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
-        var capturedErrors = [RemotePropertyListingsLoader.Error]()
-        sut.load { capturedErrors.append($0) }
+        let exp = expectation(description: "Wait for load completion")
+                
+        sut.load { receivedResult in
+            switch receivedResult {
+            case let .failure(receivedError):
+                XCTAssertEqual(receivedError as? RemotePropertyListingsLoader.Error, error, file: file, line: line)
+                
+            default:
+                XCTFail("Expected failure \(error) got \(receivedResult) instead", file: file, line: line)
+            }
+            
+            exp.fulfill()
+        }
         
         action()
         
-        XCTAssertEqual(capturedErrors, [error], file: file, line: line)
+        wait(for: [exp], timeout: 1.0)
     }
     
     private class HTTPClientSpy: HTTPClient {
