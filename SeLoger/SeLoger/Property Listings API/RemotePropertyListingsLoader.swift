@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class RemotePropertyListingsLoader {
+public class RemotePropertyListingsLoader: PropertyListingsLoader {
     private let client: HTTPClient
     private let url: URL
     
