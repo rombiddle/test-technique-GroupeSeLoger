@@ -39,7 +39,7 @@ class RemotePropertyListingsLoaderTests: XCTestCase {
     func test_load_deliversErrorOnClientError() {
         let (sut, client) = makeSUT()
 
-        expect(sut, toCompleteWithError: .connectivity) {
+        expect(sut, toCompleteWith: .failure(RemotePropertyListingsLoader.Error.connectivity)) {
             let clientError = NSError(domain: "Test", code: 0)
             client.complete(with: clientError)
         }
@@ -50,7 +50,7 @@ class RemotePropertyListingsLoaderTests: XCTestCase {
         
         let samples = [199, 201, 300, 400, 500]
         samples.enumerated().forEach { index, code in
-            expect(sut, toCompleteWithError: .invalidData) {
+            expect(sut, toCompleteWith: .failure(RemotePropertyListingsLoader.Error.invalidData)) {
                 client.complete(withStatusCode: code, at: index)
             }
         }
@@ -59,9 +59,18 @@ class RemotePropertyListingsLoaderTests: XCTestCase {
     func test_load_deliversErrorOn200HTTPResponseWithInvalidJSON() {
         let (sut, client) = makeSUT()
         
-        expect(sut, toCompleteWithError: .invalidData) {
+        expect(sut, toCompleteWith: .failure(RemotePropertyListingsLoader.Error.invalidData)) {
             let invalidJSON = Data("invalid json".utf8)
             client.complete(withStatusCode: 200, data: invalidJSON)
+        }
+    }
+    
+    func test_load_deliversNoItemsOn200HTTPResponseWithEmptyJSONList() {
+        let (sut, client) = makeSUT()
+
+        expect(sut, toCompleteWith: .success([])) {
+            let emptyListJSON = makePropertyListingsJSON([])
+            client.complete(withStatusCode: 200, data: emptyListJSON)
         }
     }
     
@@ -73,16 +82,19 @@ class RemotePropertyListingsLoaderTests: XCTestCase {
         return (sut, client)
     }
     
-    private func expect(_ sut: RemotePropertyListingsLoader, toCompleteWithError error: RemotePropertyListingsLoader.Error, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+    private func expect(_ sut: RemotePropertyListingsLoader, toCompleteWith expectedResult: RemotePropertyListingsLoader.Result, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
         let exp = expectation(description: "Wait for load completion")
-                
+        
         sut.load { receivedResult in
-            switch receivedResult {
-            case let .failure(receivedError):
-                XCTAssertEqual(receivedError as? RemotePropertyListingsLoader.Error, error, file: file, line: line)
+            switch (receivedResult, expectedResult) {
+            case let (.success(receivedItems), .success(expectedItems)):
+                XCTAssertEqual(receivedItems, expectedItems, file: file, line: line)
+                
+            case let (.failure(receivedError as RemotePropertyListingsLoader.Error), .failure(expectedError as RemotePropertyListingsLoader.Error)):
+                XCTAssertEqual(receivedError, expectedError, file: file, line: line)
                 
             default:
-                XCTFail("Expected failure \(error) got \(receivedResult) instead", file: file, line: line)
+                XCTFail("Expected result \(expectedResult) got \(receivedResult) instead", file: file, line: line)
             }
             
             exp.fulfill()
@@ -91,6 +103,11 @@ class RemotePropertyListingsLoaderTests: XCTestCase {
         action()
         
         wait(for: [exp], timeout: 1.0)
+    }
+    
+    private func makePropertyListingsJSON(_ properties: [[String: Any]]) -> Data {
+        let json = ["items": properties, "totalCount": 0] as [String : Any]
+        return try! JSONSerialization.data(withJSONObject: json)
     }
     
     private class HTTPClientSpy: HTTPClient {
