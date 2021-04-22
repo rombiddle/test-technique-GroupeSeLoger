@@ -18,10 +18,19 @@
 		25C2CD472631C6A40008CAB1 /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2CD462631C6A40008CAB1 /* URLSessionHTTPClientTests.swift */; };
 		25C2CD4E2631CAE70008CAB1 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2CD4D2631CAE70008CAB1 /* XCTestCase+MemoryLeakTracking.swift */; };
 		25C2CD5E2631D8DB0008CAB1 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2CD5D2631D8DB0008CAB1 /* URLSessionHTTPClient.swift */; };
+		25C2CD6A2631DCA70008CAB1 /* SeLogerEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2CD692631DCA70008CAB1 /* SeLogerEndToEndTests.swift */; };
+		25C2CD6C2631DCA70008CAB1 /* SeLoger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25C2C90026305CAD0008CAB1 /* SeLoger.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		25C2C90B26305CAD0008CAB1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25C2C8F726305CAD0008CAB1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 25C2C8FF26305CAD0008CAB1;
+			remoteInfo = SeLoger;
+		};
+		25C2CD6D2631DCA70008CAB1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 25C2C8F726305CAD0008CAB1 /* Project object */;
 			proxyType = 1;
@@ -45,6 +54,9 @@
 		25C2CD462631C6A40008CAB1 /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
 		25C2CD4D2631CAE70008CAB1 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		25C2CD5D2631D8DB0008CAB1 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
+		25C2CD672631DCA60008CAB1 /* SeLogerEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeLogerEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		25C2CD692631DCA70008CAB1 /* SeLogerEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeLogerEndToEndTests.swift; sourceTree = "<group>"; };
+		25C2CD6B2631DCA70008CAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +75,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		25C2CD642631DCA60008CAB1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25C2CD6C2631DCA70008CAB1 /* SeLoger.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -71,6 +91,7 @@
 			children = (
 				25C2C90226305CAD0008CAB1 /* SeLoger */,
 				25C2C90D26305CAE0008CAB1 /* SeLogerTests */,
+				25C2CD682631DCA70008CAB1 /* SeLogerEndToEndTests */,
 				25C2C90126305CAD0008CAB1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -80,6 +101,7 @@
 			children = (
 				25C2C90026305CAD0008CAB1 /* SeLoger.framework */,
 				25C2C90926305CAD0008CAB1 /* SeLogerTests.xctest */,
+				25C2CD672631DCA60008CAB1 /* SeLogerEndToEndTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -134,6 +156,15 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		25C2CD682631DCA70008CAB1 /* SeLogerEndToEndTests */ = {
+			isa = PBXGroup;
+			children = (
+				25C2CD692631DCA70008CAB1 /* SeLogerEndToEndTests.swift */,
+				25C2CD6B2631DCA70008CAB1 /* Info.plist */,
+			);
+			path = SeLogerEndToEndTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -184,6 +215,24 @@
 			productReference = 25C2C90926305CAD0008CAB1 /* SeLogerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		25C2CD662631DCA60008CAB1 /* SeLogerEndToEndTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25C2CD6F2631DCA70008CAB1 /* Build configuration list for PBXNativeTarget "SeLogerEndToEndTests" */;
+			buildPhases = (
+				25C2CD632631DCA60008CAB1 /* Sources */,
+				25C2CD642631DCA60008CAB1 /* Frameworks */,
+				25C2CD652631DCA60008CAB1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				25C2CD6E2631DCA70008CAB1 /* PBXTargetDependency */,
+			);
+			name = SeLogerEndToEndTests;
+			productName = SeLogerEndToEndTests;
+			productReference = 25C2CD672631DCA60008CAB1 /* SeLogerEndToEndTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -198,6 +247,9 @@
 						LastSwiftMigration = 1240;
 					};
 					25C2C90826305CAD0008CAB1 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					25C2CD662631DCA60008CAB1 = {
 						CreatedOnToolsVersion = 12.4;
 					};
 				};
@@ -217,6 +269,7 @@
 			targets = (
 				25C2C8FF26305CAD0008CAB1 /* SeLoger */,
 				25C2C90826305CAD0008CAB1 /* SeLogerTests */,
+				25C2CD662631DCA60008CAB1 /* SeLogerEndToEndTests */,
 			);
 		};
 /* End PBXProject section */
@@ -230,6 +283,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		25C2C90726305CAD0008CAB1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25C2CD652631DCA60008CAB1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -262,6 +322,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		25C2CD632631DCA60008CAB1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25C2CD6A2631DCA70008CAB1 /* SeLogerEndToEndTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -269,6 +337,11 @@
 			isa = PBXTargetDependency;
 			target = 25C2C8FF26305CAD0008CAB1 /* SeLoger */;
 			targetProxy = 25C2C90B26305CAD0008CAB1 /* PBXContainerItemProxy */;
+		};
+		25C2CD6E2631DCA70008CAB1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 25C2C8FF26305CAD0008CAB1 /* SeLoger */;
+			targetProxy = 25C2CD6D2631DCA70008CAB1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -479,6 +552,40 @@
 			};
 			name = Release;
 		};
+		25C2CD702631DCA70008CAB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SeLogerEndToEndTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = rb.seloger.app.SeLogerEndToEndTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		25C2CD712631DCA70008CAB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SeLogerEndToEndTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = rb.seloger.app.SeLogerEndToEndTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -505,6 +612,15 @@
 			buildConfigurations = (
 				25C2C91826305CAE0008CAB1 /* Debug */,
 				25C2C91926305CAE0008CAB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		25C2CD6F2631DCA70008CAB1 /* Build configuration list for PBXNativeTarget "SeLogerEndToEndTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25C2CD702631DCA70008CAB1 /* Debug */,
+				25C2CD712631DCA70008CAB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
