@@ -20,6 +20,7 @@
 		25C2CD5E2631D8DB0008CAB1 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2CD5D2631D8DB0008CAB1 /* URLSessionHTTPClient.swift */; };
 		25C2CD6A2631DCA70008CAB1 /* SeLogerEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2CD692631DCA70008CAB1 /* SeLogerEndToEndTests.swift */; };
 		25C2CD6C2631DCA70008CAB1 /* SeLoger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25C2C90026305CAD0008CAB1 /* SeLoger.framework */; };
+		25C2CE392631E70A0008CAB1 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2CD4D2631CAE70008CAB1 /* XCTestCase+MemoryLeakTracking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -327,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				25C2CD6A2631DCA70008CAB1 /* SeLogerEndToEndTests.swift in Sources */,
+				25C2CE392631E70A0008CAB1 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

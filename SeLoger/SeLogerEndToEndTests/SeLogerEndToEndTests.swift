@@ -11,9 +11,28 @@ import SeLoger
 class SeLogerEndToEndTests: XCTestCase {
 
     func test_endToEndTestServerGetPropertyListingsResult_matchesFixedTestAccountData() {
+        switch getPropertyListingsResult() {
+        case let .success(listings)?:
+            XCTAssertEqual(listings.count, 4)
+            XCTAssertEqual(listings, expectedRequirements())
+            
+        case let .failure(error)?:
+            XCTFail("Expected successful requirements result, got \(error) instead")
+            
+        default:
+            XCTFail("Expected successful requirements result, got no instead")
+        }
+    }
+    
+    // MARK: - Helpers
+    
+    private func getPropertyListingsResult(file: StaticString = #filePath, line: UInt = #line) -> RemotePropertyListingsLoader.Result? {
         let testServerURL = URL(string: "https://gsl-apps-technical-test.dignp.com/listings.json")!
         let client = URLSessionHTTPClient()
         let loader = RemotePropertyListingsLoader(url: testServerURL, client: client)
+        
+        trackForMemoryLeaks(client, file: file, line: line)
+        trackForMemoryLeaks(loader, file: file, line: line)
         
         let exp = expectation(description: "Wait for load completion")
         
@@ -25,20 +44,8 @@ class SeLogerEndToEndTests: XCTestCase {
         
         wait(for: [exp], timeout: 3.0)
         
-        switch receivedResult {
-        case let .success(listings)?:
-            XCTAssertEqual(listings.count, 4)
-            XCTAssertEqual(listings, expectedRequirements())
-            
-        case let .failure(error)?:
-            XCTFail("expected successful requirements result, got \(error) instead")
-            
-        default:
-            XCTFail("expected successful requirements result, got no instead")
-        }
+        return receivedResult
     }
-    
-    // MARK: - Helpers
 
     private func expectedRequirements() -> [PropertyListing] {
         let property1 = PropertyListing(bedrooms: 4, city: "Villers-sur-Mer", id: 1, area: 250.0, url: URL(string: "https://v.seloger.com/s/crop/590x330/visuels/1/7/t/3/17t3fitclms3bzwv8qshbyzh9dw32e9l0p0udr80k.jpg")!, price: 1500000.0, professional: "GSL EXPLORE", propertyType: "Maison - Villa", rooms: 8)
