@@ -11,6 +11,7 @@
 		25C2C90F26305CAE0008CAB1 /* SeLogerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2C90E26305CAE0008CAB1 /* SeLogerTests.swift */; };
 		25C2C91126305CAE0008CAB1 /* SeLoger.h in Headers */ = {isa = PBXBuildFile; fileRef = 25C2C90326305CAD0008CAB1 /* SeLoger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		25C2CBB026316B9C0008CAB1 /* PropertyListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2CBAF26316B9C0008CAB1 /* PropertyListing.swift */; };
+		25C2CBB626316D0C0008CAB1 /* PropertyListingsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2CBB526316D0C0008CAB1 /* PropertyListingsLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		25C2C90E26305CAE0008CAB1 /* SeLogerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeLogerTests.swift; sourceTree = "<group>"; };
 		25C2C91026305CAE0008CAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25C2CBAF26316B9C0008CAB1 /* PropertyListing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyListing.swift; sourceTree = "<group>"; };
+		25C2CBB526316D0C0008CAB1 /* PropertyListingsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListingsLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				25C2CBAF26316B9C0008CAB1 /* PropertyListing.swift */,
 				25C2C90326305CAD0008CAB1 /* SeLoger.h */,
 				25C2C90426305CAD0008CAB1 /* Info.plist */,
+				25C2CBB526316D0C0008CAB1 /* PropertyListingsLoader.swift */,
 			);
 			path = SeLoger;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25C2CBB626316D0C0008CAB1 /* PropertyListingsLoader.swift in Sources */,
 				25C2CBB026316B9C0008CAB1 /* PropertyListing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
