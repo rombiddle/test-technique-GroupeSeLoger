@@ -1,5 +1,8 @@
 # Test technique - Groupe SeLoger
 
+![](https://github.com/rombiddle/test-technique-GroupeSeLoger/workflows/CI-macOS/badge.svg)
+![](https://github.com/rombiddle/test-technique-GroupeSeLoger/workflows/CI-macOS-End-to-End/badge.svg)
+
 ## Property Listings Feature Specs
 
 ### Story: User requests to see the property listings
