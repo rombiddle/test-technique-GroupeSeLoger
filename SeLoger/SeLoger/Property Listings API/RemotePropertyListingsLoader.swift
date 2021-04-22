@@ -7,11 +7,13 @@
 
 import Foundation
 
-protocol HTTPClient {
-    func get(from url: URL, completion: @escaping (Error?, HTTPURLResponse?) -> Void)
+public protocol HTTPClient {
+    typealias Result = Swift.Result<(HTTPURLResponse), Error>
+
+    func get(from url: URL, completion: @escaping (Result) -> Void)
 }
 
-class RemotePropertyListingsLoader {
+public class RemotePropertyListingsLoader {
     let client: HTTPClient
     let url: URL
     
@@ -26,13 +28,14 @@ class RemotePropertyListingsLoader {
     }
     
     public func load(completion: @escaping (Error) -> Void) {
-        client.get(from: url) { error, response in
-            if response != nil {
+        client.get(from: url) { result in
+            switch result {
+            case .success:
                 completion(.invalidData)
-            } else {
+                
+            case .failure:
                 completion(.connectivity)
             }
-            
         }
     }
 }
