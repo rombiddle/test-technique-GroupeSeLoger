@@ -16,9 +16,9 @@ public struct PropertyListing: Equatable {
     public let price: Float
     public let professional: String
     public let propertyType: String
-    public let rooms: Int
+    public let rooms: Int?
     
-    public init(bedrooms: Int?, city: String, id: Int, area: Float, url: URL?, price: Float, professional: String, propertyType: String, rooms: Int) {
+    public init(bedrooms: Int?, city: String, id: Int, area: Float, url: URL?, price: Float, professional: String, propertyType: String, rooms: Int?) {
         self.bedrooms = bedrooms
         self.city = city
         self.id = id

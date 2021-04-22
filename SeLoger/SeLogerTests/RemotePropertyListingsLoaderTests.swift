@@ -96,7 +96,7 @@ class RemotePropertyListingsLoaderTests: XCTestCase {
                                          price: 1234.87,
                                          professional: "another professional",
                                          propertyType: "another propertyType",
-                                         rooms: 8)
+                                         rooms: nil)
 
         expect(sut, toCompleteWith: .success([item1.model, item2.model])) {
             let json = makePropertyListingsJSON([item1.json, item2.json])
@@ -153,7 +153,7 @@ class RemotePropertyListingsLoaderTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
-    private func makePropertyListings(bedrooms: Int?, city: String, id: Int, area: Float, url: URL?, price: Float, professional: String, propertyType: String, rooms: Int) -> (model: PropertyListing, json: [String: Any]) {
+    private func makePropertyListings(bedrooms: Int?, city: String, id: Int, area: Float, url: URL?, price: Float, professional: String, propertyType: String, rooms: Int?) -> (model: PropertyListing, json: [String: Any]) {
         let item = PropertyListing(bedrooms: bedrooms, city: city, id: id, area: area, url: url, price: price, professional: professional, propertyType: propertyType, rooms: rooms)
         let json = jsonValue(for: item)
         
@@ -175,7 +175,7 @@ class RemotePropertyListingsLoaderTests: XCTestCase {
             "price": item.price,
             "professional": item.professional,
             "propertyType": item.propertyType,
-            "rooms": item.rooms
+            "rooms": item.rooms as Any
         ] as [String: Any]
     }
     

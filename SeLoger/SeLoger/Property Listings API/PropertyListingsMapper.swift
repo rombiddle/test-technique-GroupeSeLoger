@@ -26,7 +26,7 @@ internal final class PropertyListingsMapper {
         let price: Float
         let professional: String
         let propertyType: String
-        let rooms: Int
+        let rooms: Int?
         
         var item: PropertyListing {
             return PropertyListing(bedrooms: bedrooms, city: city, id: id, area: area, url: url, price: price, professional: professional, propertyType: propertyType, rooms: rooms)
