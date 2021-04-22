@@ -22,9 +22,14 @@ class LocalPropertyListingsLoader {
 
 class PropertyListingsStore {
     var deleteCachedPropertyListingsCallCount: Int = 0
+    var insertCallCount: Int = 0
     
     func deleteCachedPropertyListings() {
         deleteCachedPropertyListingsCallCount += 1
+    }
+    
+    func completeDeletion(with error: Error, at index: Int = 0) {
+
     }
 }
 
@@ -43,6 +48,17 @@ class LoadPropertyListingsFromCacheUseCaseTests: XCTestCase {
         sut.save(items)
         
         XCTAssertEqual(store.deleteCachedPropertyListingsCallCount, 1)
+    }
+    
+    func test_save_doesNotRequestCacheInsertionOnDeletionError() {
+        let (sut, store) = makeSUT()
+        let items = [uniqueItem(), uniqueItem()]
+        let deletionError = anyNSError()
+        
+        sut.save(items)
+        store.completeDeletion(with: deletionError)
+        
+        XCTAssertEqual(store.insertCallCount, 0)
     }
     
     // MARK: Helpers
@@ -69,6 +85,10 @@ class LoadPropertyListingsFromCacheUseCaseTests: XCTestCase {
     
     private func anyInt() -> Int {
         Int.random(in: 0..<100)
+    }
+    
+    private func anyNSError() -> NSError {
+        NSError(domain: "any error", code: 0)
     }
 
 }
