@@ -168,16 +168,16 @@ Given the user doesn't have connectivity
 
 ## Model Specs
 
-### Property listings
+### Property listing
 
 | Property       | Type                |
 |----------------|---------------------|
 | `bedrooms`     | `Int`               |
 | `city`         | `String`            |
 | `id`           | `Int`               |
-| `area`	     | `Double`            |
+| `area`	     | `Float`             |
 | `url`	         | `URL`               |
-| `price`	     | `Double`            |
+| `price`	     | `Float`             |
 | `professional` | `String`            |
 | `propertyType` | `String`            |
 | `rooms`	     | `Int`               |
@@ -288,20 +288,19 @@ Given the user doesn't have connectivity
 
 ## Model Specs
 
-### Property Details
+### Property Details (Same as Property listing)
 
 | Property       | Type                |
 |----------------|---------------------|
 | `bedrooms`     | `Int`               |
 | `city`         | `String`            |
 | `id`           | `Int`               |
-| `area`	     | `Double`            |
+| `area`	     | `Float`             |
 | `url`	         | `URL`               |
-| `price`	     | `Double`            |
+| `price`	     | `Float`             |
 | `professional` | `String`            |
 | `propertyType` | `String`            |
 | `rooms`	     | `Int`               |
-
 
 ### Payload contract
 
