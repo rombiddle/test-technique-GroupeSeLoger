@@ -41,9 +41,10 @@ extension LocalPropertyListingsLoader {
 
 extension LocalPropertyListingsLoader {
     public func load(with completion: @escaping (LoadResult) -> Void) {
-        store.retrieve { result in
+        store.retrieve { [unowned self] result in
             switch result {
             case let .failure(error):
+                self.store.deleteCachedPropertyListings { _ in }
                 completion(.failure(error))
 
             case let .success(propertyListings):
