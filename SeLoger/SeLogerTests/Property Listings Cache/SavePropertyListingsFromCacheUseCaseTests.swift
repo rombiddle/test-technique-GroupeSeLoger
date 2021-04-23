@@ -156,43 +156,5 @@ class SavePropertyListingsFromCacheUseCaseTests: XCTestCase {
     private func anyNSError() -> NSError {
         NSError(domain: "any error", code: 0)
     }
-    
-    private class PropertyListingsStoreSpy: PropertyListingsStore  {
-        enum ReceivedMessage: Equatable {
-            case deleteCachedPropertyListings
-            case insert([LocalPropertyListing])
-        }
-        
-        private(set) var receivedMessages = [ReceivedMessage]()
-
-        private var deletionCompletions = [DeletionCompletion]()
-        private var insertionCompletions = [InsertionCompletion]()
-        
-        func deleteCachedPropertyListings(completion: @escaping DeletionCompletion) {
-            receivedMessages.append(.deleteCachedPropertyListings)
-            deletionCompletions.append(completion)
-        }
-        
-        func completeDeletion(with error: Error, at index: Int = 0) {
-            deletionCompletions[index](error)
-        }
-        
-        func completeDeletionSuccessfully(at index: Int = 0) {
-            deletionCompletions[index](nil)
-        }
-        
-        func completeInsertion(with error: Error, at index: Int = 0) {
-            insertionCompletions[index](error)
-        }
-        
-        func insert(_ items: [LocalPropertyListing], completion: @escaping InsertionCompletion) {
-            insertionCompletions.append(completion)
-            receivedMessages.append(.insert(items))
-        }
-        
-        func completeInsertionSuccessfully(at index: Int = 0) {
-            insertionCompletions[index](nil)
-        }
-    }
 
 }
