@@ -33,6 +33,18 @@ class ValidatePropertyListingsFromCacheUseCaseTests: XCTestCase {
         
         XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
+    
+    func test_validateCache_doesNotDeleteUnvalideCacheAfterSUTInstanceHasBeenDeallocated() {
+        let store = PropertyListingsStoreSpy()
+        var sut: LocalPropertyListingsLoader? = LocalPropertyListingsLoader(store: store)
+        
+        sut?.validateCache()
+        
+        sut = nil
+        store.completeRetrieval(with: anyNSError())
+        
+        XCTAssertEqual(store.receivedMessages, [.retrieve])
+    }
 
     // MARK: Helpers
     
