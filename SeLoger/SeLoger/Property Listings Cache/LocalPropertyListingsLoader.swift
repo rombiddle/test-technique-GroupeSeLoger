@@ -42,17 +42,23 @@ extension LocalPropertyListingsLoader {
 extension LocalPropertyListingsLoader {
     public func load(with completion: @escaping (LoadResult) -> Void) {
         store.retrieve { [weak self] result in
-            guard let self = self else { return }
+            guard self != nil else { return }
 
             switch result {
             case let .failure(error):
-                self.store.deleteCachedPropertyListings { _ in }
                 completion(.failure(error))
 
             case let .success(propertyListings):
                 completion(.success(propertyListings.toModels()))
             }
         }
+    }
+}
+
+extension LocalPropertyListingsLoader {
+    public func validateCache() {
+        store.retrieve { _ in }
+        store.deleteCachedPropertyListings { _ in }
     }
 }
 

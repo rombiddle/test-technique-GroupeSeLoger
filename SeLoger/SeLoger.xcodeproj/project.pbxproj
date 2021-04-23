@@ -28,6 +28,7 @@
 		25C2D1C12632D3090008CAB1 /* PropertyListingsStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2D1C02632D3090008CAB1 /* PropertyListingsStoreSpy.swift */; };
 		25C2D1C92632EC790008CAB1 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2D1C82632EC790008CAB1 /* SharedTestHelpers.swift */; };
 		25C2D1CE2632FF620008CAB1 /* LocalSharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2D1CD2632FF620008CAB1 /* LocalSharedTestHelpers.swift */; };
+		25C2D1D3263327970008CAB1 /* ValidatePropertyListingsFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2D1D2263327970008CAB1 /* ValidatePropertyListingsFromCacheUseCaseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		25C2D1C02632D3090008CAB1 /* PropertyListingsStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListingsStoreSpy.swift; sourceTree = "<group>"; };
 		25C2D1C82632EC790008CAB1 /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 		25C2D1CD2632FF620008CAB1 /* LocalSharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSharedTestHelpers.swift; sourceTree = "<group>"; };
+		25C2D1D2263327970008CAB1 /* ValidatePropertyListingsFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatePropertyListingsFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +208,7 @@
 				25C2D1BF2632D2FE0008CAB1 /* Helpers */,
 				25C2CE43263219AE0008CAB1 /* SavePropertyListingsFromCacheUseCaseTests.swift */,
 				25C2D1BA2632D2530008CAB1 /* LoadPropertyListingsFromCacheUseCaseTests.swift */,
+				25C2D1D2263327970008CAB1 /* ValidatePropertyListingsFromCacheUseCaseTests.swift */,
 			);
 			path = "Property Listings Cache";
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				25C2D1CE2632FF620008CAB1 /* LocalSharedTestHelpers.swift in Sources */,
 				25C2CD472631C6A40008CAB1 /* URLSessionHTTPClientTests.swift in Sources */,
 				25C2D1BB2632D2530008CAB1 /* LoadPropertyListingsFromCacheUseCaseTests.swift in Sources */,
+				25C2D1D3263327970008CAB1 /* ValidatePropertyListingsFromCacheUseCaseTests.swift in Sources */,
 				25C2CD4E2631CAE70008CAB1 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

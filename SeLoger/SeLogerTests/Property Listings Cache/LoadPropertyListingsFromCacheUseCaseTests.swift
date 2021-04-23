@@ -50,13 +50,13 @@ class LoadPropertyListingsFromCacheUseCaseTests: XCTestCase {
         }
     }
     
-    func test_load_deletesCacheOnretrievalError() {
+    func test_load_hasNoSideEffectsOnretrievalError() {
         let (sut, store) = makeSUT()
         
         sut.load { _ in }
         store.completeRetrieval(with: anyNSError())
         
-        XCTAssertEqual(store.receivedMessages, [.retrieve, .deleteCachedPropertyListings])
+        XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
     
     func test_load_doesNotDeleteCacheOnEmptyCache() {
