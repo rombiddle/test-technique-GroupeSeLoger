@@ -10,6 +10,8 @@ import Foundation
 public class LocalPropertyListingsLoader {
     let store: PropertyListingsStore
     
+    public typealias LoadResult = PropertyListingsLoader.Result
+    
     public init(store: PropertyListingsStore) {
         self.store = store
     }
@@ -38,8 +40,12 @@ extension LocalPropertyListingsLoader {
 }
 
 extension LocalPropertyListingsLoader {
-    public func load(with completion: @escaping (Error?) -> Void) {
-        store.retrieve(completion: completion)
+    public func load(with completion: @escaping (LoadResult) -> Void) {
+        store.retrieve { error in
+            if let error = error {
+                completion(.failure(error))
+            }
+        }
     }
 }
 
