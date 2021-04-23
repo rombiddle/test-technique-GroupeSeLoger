@@ -10,8 +10,6 @@ import Foundation
 public class LocalPropertyListingsLoader {
     let store: PropertyListingsStore
     
-    public typealias LoadResult = PropertyListingsLoader.Result
-    
     public init(store: PropertyListingsStore) {
         self.store = store
     }
@@ -39,8 +37,10 @@ extension LocalPropertyListingsLoader {
     }
 }
 
-extension LocalPropertyListingsLoader {
-    public func load(with completion: @escaping (LoadResult) -> Void) {
+extension LocalPropertyListingsLoader: PropertyListingsLoader {
+    public typealias LoadResult = PropertyListingsLoader.Result
+
+    public func load(completion: @escaping (LoadResult) -> Void) {
         store.retrieve { [weak self] result in
             guard self != nil else { return }
 
