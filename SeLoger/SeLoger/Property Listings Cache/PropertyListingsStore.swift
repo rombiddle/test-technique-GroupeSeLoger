@@ -10,8 +10,9 @@ import Foundation
 public protocol PropertyListingsStore {
     typealias DeletionCompletion = (Error?) -> Void
     typealias InsertionCompletion = (Error?) -> Void
+    typealias RetrievalCompletion = (Error?) -> Void
 
     func insert(_ items: [LocalPropertyListing], completion: @escaping InsertionCompletion)
     func deleteCachedPropertyListings(completion: @escaping DeletionCompletion)
-    func retrieve()
+    func retrieve(completion: @escaping RetrievalCompletion)
 }

@@ -38,8 +38,8 @@ extension LocalPropertyListingsLoader {
 }
 
 extension LocalPropertyListingsLoader {
-    public func load() {
-        store.retrieve()
+    public func load(with completion: @escaping (Error?) -> Void) {
+        store.retrieve(completion: completion)
     }
 }
 

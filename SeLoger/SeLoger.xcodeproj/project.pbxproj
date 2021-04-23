@@ -26,6 +26,7 @@
 		25C2D1B62632CCCE0008CAB1 /* LocalPropertyListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2D1B52632CCCE0008CAB1 /* LocalPropertyListing.swift */; };
 		25C2D1BB2632D2530008CAB1 /* LoadPropertyListingsFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2D1BA2632D2530008CAB1 /* LoadPropertyListingsFromCacheUseCaseTests.swift */; };
 		25C2D1C12632D3090008CAB1 /* PropertyListingsStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2D1C02632D3090008CAB1 /* PropertyListingsStoreSpy.swift */; };
+		25C2D1C92632EC790008CAB1 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2D1C82632EC790008CAB1 /* SharedTestHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		25C2D1B52632CCCE0008CAB1 /* LocalPropertyListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPropertyListing.swift; sourceTree = "<group>"; };
 		25C2D1BA2632D2530008CAB1 /* LoadPropertyListingsFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadPropertyListingsFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		25C2D1C02632D3090008CAB1 /* PropertyListingsStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListingsStoreSpy.swift; sourceTree = "<group>"; };
+		25C2D1C82632EC790008CAB1 /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				25C2CD4D2631CAE70008CAB1 /* XCTestCase+MemoryLeakTracking.swift */,
+				25C2D1C82632EC790008CAB1 /* SharedTestHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 			files = (
 				25C2CE44263219AE0008CAB1 /* SavePropertyListingsFromCacheUseCaseTests.swift in Sources */,
 				25C2C90F26305CAE0008CAB1 /* LoadPropertyListingsFromRemoteUseCaseTests.swift in Sources */,
+				25C2D1C92632EC790008CAB1 /* SharedTestHelpers.swift in Sources */,
 				25C2D1C12632D3090008CAB1 /* PropertyListingsStoreSpy.swift in Sources */,
 				25C2CD472631C6A40008CAB1 /* URLSessionHTTPClientTests.swift in Sources */,
 				25C2D1BB2632D2530008CAB1 /* LoadPropertyListingsFromCacheUseCaseTests.swift in Sources */,

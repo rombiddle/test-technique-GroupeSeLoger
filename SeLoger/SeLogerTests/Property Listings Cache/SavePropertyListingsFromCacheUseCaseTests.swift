@@ -152,9 +152,5 @@ class SavePropertyListingsFromCacheUseCaseTests: XCTestCase {
     private func anyInt() -> Int {
         Int.random(in: 0..<100)
     }
-    
-    private func anyNSError() -> NSError {
-        NSError(domain: "any error", code: 0)
-    }
 
 }
