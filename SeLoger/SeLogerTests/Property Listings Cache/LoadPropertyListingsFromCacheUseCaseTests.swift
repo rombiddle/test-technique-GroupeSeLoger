@@ -16,29 +16,49 @@ class LocalPropertyListingsLoader {
     }
     
     func save(_ items: [PropertyListing]) {
-        store.deleteCachedPropertyListings()
+        store.deleteCachedPropertyListings { [unowned self] error in
+            if error == nil {
+                self.store.insert(items)
+            }
+        }
     }
 }
 
 class PropertyListingsStore {
-    var deleteCachedPropertyListingsCallCount: Int = 0
-    var insertCallCount: Int = 0
+    typealias DeletionCompletion = (Error?) -> Void
+    enum ReceivedMessage: Equatable {
+        case deleteCachedPropertyListings
+        case insert([PropertyListing])
+    }
     
-    func deleteCachedPropertyListings() {
-        deleteCachedPropertyListingsCallCount += 1
+    private(set) var receivedMessages = [ReceivedMessage]()
+
+    private var deletionCompletions = [DeletionCompletion]()
+    
+    func deleteCachedPropertyListings(completion: @escaping DeletionCompletion) {
+        receivedMessages.append(.deleteCachedPropertyListings)
+        deletionCompletions.append(completion)
     }
     
     func completeDeletion(with error: Error, at index: Int = 0) {
-
+        deletionCompletions[index](error)
+    }
+    
+    func completeDeletionSuccessfully(at index: Int = 0) {
+        deletionCompletions[index](nil)
+    }
+    
+    func insert(_ items: [PropertyListing]) {
+        receivedMessages.append(.insert(items))
     }
 }
 
 class LoadPropertyListingsFromCacheUseCaseTests: XCTestCase {
 
-    func test_init_doesNotDeleteCacheUponCreation() {
+    func test_init_doesNotMessageStoreUponCreation() {
         let (_, store) = makeSUT()
         
-        XCTAssertEqual(store.deleteCachedPropertyListingsCallCount, 0)
+        XCTAssertEqual(store.receivedMessages, [])
     }
     
     func test_save_requestsCacheDeletion() {
@@ -47,7 +67,7 @@ class LoadPropertyListingsFromCacheUseCaseTests: XCTestCase {
         
         sut.save(items)
         
-        XCTAssertEqual(store.deleteCachedPropertyListingsCallCount, 1)
+        XCTAssertEqual(store.receivedMessages, [.deleteCachedPropertyListings])
     }
     
     func test_save_doesNotRequestCacheInsertionOnDeletionError() {
@@ -58,7 +78,17 @@ class LoadPropertyListingsFromCacheUseCaseTests: XCTestCase {
         sut.save(items)
         store.completeDeletion(with: deletionError)
         
-        XCTAssertEqual(store.insertCallCount, 0)
+        XCTAssertEqual(store.receivedMessages, [.deleteCachedPropertyListings])
+    }
+    
+    func test_save_requestNewCacheInsertionOnSuccessfulDeletion() {
+        let (sut, store) = makeSUT()
+        let items = [uniqueItem(), uniqueItem()]
+        
+        sut.save(items)
+        store.completeDeletionSuccessfully()
+        
+        XCTAssertEqual(store.receivedMessages, [.deleteCachedPropertyListings, .insert(items)])
     }
     
     // MARK: Helpers
