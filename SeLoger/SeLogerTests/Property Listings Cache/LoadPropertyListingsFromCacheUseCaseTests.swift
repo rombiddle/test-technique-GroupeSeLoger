@@ -8,42 +8,6 @@
 import XCTest
 import SeLoger
 
-class LocalPropertyListingsLoader {
-    let store: PropertyListingsStore
-    
-    init(store: PropertyListingsStore) {
-        self.store = store
-    }
-    
-    func save(_ items: [PropertyListing], completion: @escaping (Error?) -> Void) {
-        store.deleteCachedPropertyListings { [weak self] error in
-            guard let self = self else { return }
-
-            if let cacheDeletionError = error {
-                completion(cacheDeletionError)
-            } else {
-                self.cache(items, with: completion)
-            }
-        }
-    }
-    
-    private func cache(_ items: [PropertyListing], with completion: @escaping (Error?) -> Void) {
-        store.insert(items) { [weak self] error in
-            guard self != nil else { return }
-            
-            completion(error)
-        }
-    }
-}
-
-protocol PropertyListingsStore {
-    typealias DeletionCompletion = (Error?) -> Void
-    typealias InsertionCompletion = (Error?) -> Void
-
-    func insert(_ items: [PropertyListing], completion: @escaping InsertionCompletion)
-    func deleteCachedPropertyListings(completion: @escaping DeletionCompletion)
-}
-
 class LoadPropertyListingsFromCacheUseCaseTests: XCTestCase {
 
     func test_init_doesNotMessageStoreUponCreation() {
