@@ -19,11 +19,19 @@ class LocalPropertyListingsLoader {
         store.deleteCachedPropertyListings { [weak self] error in
             guard let self = self else { return }
 
-            if error == nil {
-                self.store.insert(items, completion: completion)
+            if let cacheDeletionError = error {
+                completion(cacheDeletionError)
             } else {
-                completion(error)
+                self.cache(items, with: completion)
             }
+        }
+    }
+    
+    private func cache(_ items: [PropertyListing], with completion: @escaping (Error?) -> Void) {
+        store.insert(items) { [weak self] error in
+            guard self != nil else { return }
+            
+            completion(error)
         }
     }
 }
@@ -112,6 +120,20 @@ class LoadPropertyListingsFromCacheUseCaseTests: XCTestCase {
         sut = nil
         store.completeDeletion(with: anyNSError())
         
+        XCTAssertTrue(receivedResult.isEmpty)
+    }
+    
+    func test_save_doesNotDeliverInsertionErrorAfterSUTInstanceHasBeenDeallocated() {
+        let store = PropertyListingsStoreSpy()
+        var sut: LocalPropertyListingsLoader? = LocalPropertyListingsLoader(store: store)
+        
+        var receivedResult = [Error?]()
+        sut?.save([uniqueItem()], completion: { receivedResult.append($0) })
+        
+        store.completeDeletionSuccessfully()
+        sut = nil
+        store.completeInsertion(with: anyNSError())
+
         XCTAssertTrue(receivedResult.isEmpty)
     }
     
