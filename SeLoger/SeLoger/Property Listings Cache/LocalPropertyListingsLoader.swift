@@ -41,11 +41,13 @@ extension LocalPropertyListingsLoader {
 
 extension LocalPropertyListingsLoader {
     public func load(with completion: @escaping (LoadResult) -> Void) {
-        store.retrieve { error in
-            if let error = error {
+        store.retrieve { result in
+            switch result {
+            case let .failure(error):
                 completion(.failure(error))
-            } else {
-                completion(.success([]))
+
+            case let .success(propertyListings):
+                completion(.success(propertyListings.toModels()))
             }
         }
     }
@@ -64,5 +66,20 @@ private extension Array where Element == PropertyListing {
                                  propertyType: $0.propertyType,
                                  rooms: $0.rooms)
         }
+    }
+}
+
+private extension Array where Element == LocalPropertyListing {
+    func toModels() -> [PropertyListing] {
+        map {
+            PropertyListing(bedrooms: $0.bedrooms,
+                            city: $0.city,
+                            id: $0.id,
+                            area: $0.area,
+                            url: $0.url,
+                            price: $0.price,
+                            professional: $0.professional,
+                            propertyType: $0.propertyType,
+                            rooms: $0.rooms)        }
     }
 }

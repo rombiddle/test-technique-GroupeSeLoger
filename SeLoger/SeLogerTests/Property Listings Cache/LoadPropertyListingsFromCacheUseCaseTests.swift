@@ -41,6 +41,15 @@ class LoadPropertyListingsFromCacheUseCaseTests: XCTestCase {
         }
     }
     
+    func test_load_DeliversPropertyListings() {
+        let (sut, store) = makeSUT()
+        let propertyListings = uniqueItems()
+
+        expect(sut, toCompleteWith: .success(propertyListings.models)) {
+            store.completeRetrieval(with: propertyListings.locals)
+        }
+    }
+    
     // MARK: Helpers
     
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: LocalPropertyListingsLoader, store: PropertyListingsStoreSpy) {

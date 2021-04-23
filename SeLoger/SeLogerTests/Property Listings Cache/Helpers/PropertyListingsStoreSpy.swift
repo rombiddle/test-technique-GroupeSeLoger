@@ -53,10 +53,14 @@ class PropertyListingsStoreSpy: PropertyListingsStore  {
     }
     
     func completeRetrieval(with error: Error, at index: Int = 0) {
-        retrievalCompletions[index](error)
+        retrievalCompletions[index](.failure(error))
     }
     
     func completeRetrievalWithEmptyCache(at index: Int = 0) {
-        retrievalCompletions[index](nil)
+        retrievalCompletions[index](.success([]))
+    }
+    
+    func completeRetrieval(with propertyListings: [LocalPropertyListing], at index: Int = 0) {
+        retrievalCompletions[index](.success(propertyListings))
     }
 }
