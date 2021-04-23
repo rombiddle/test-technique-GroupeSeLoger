@@ -13,7 +13,9 @@ public class LocalPropertyListingsLoader {
     public init(store: PropertyListingsStore) {
         self.store = store
     }
-    
+}
+
+extension LocalPropertyListingsLoader {
     public func save(_ items: [PropertyListing], completion: @escaping (Error?) -> Void) {
         store.deleteCachedPropertyListings { [weak self] error in
             guard let self = self else { return }
@@ -32,6 +34,12 @@ public class LocalPropertyListingsLoader {
             
             completion(error)
         }
+    }
+}
+
+extension LocalPropertyListingsLoader {
+    public func load() {
+        store.retrieve()
     }
 }
 

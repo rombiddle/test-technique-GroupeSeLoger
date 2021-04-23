@@ -13,4 +13,5 @@ public protocol PropertyListingsStore {
 
     func insert(_ items: [LocalPropertyListing], completion: @escaping InsertionCompletion)
     func deleteCachedPropertyListings(completion: @escaping DeletionCompletion)
+    func retrieve()
 }
