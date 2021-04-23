@@ -7,17 +7,12 @@
 
 import XCTest
 import SeLoger
-
-class RealmPropertyListingsStore {
-    func retrieve(completion: @escaping PropertyListingsStore.RetrievalCompletion) {
-        completion(.success([]))
-    }
-}
+import RealmSwift
 
 class RealmPropertyListingsStoreTests: XCTestCase {
 
     func test_retrieve_deliversEmptyOnEmptyCache() {
-        let sut = RealmPropertyListingsStore()
+        let sut = makeSUT()
         let exp = expectation(description: "Wait for cache retrieval")
         
         sut.retrieve { result in
@@ -36,7 +31,7 @@ class RealmPropertyListingsStoreTests: XCTestCase {
     }
     
     func test_retrieve_hasNoSideEffectsOnEmptyCache() {
-        let sut = RealmPropertyListingsStore()
+        let sut = makeSUT()
         let exp = expectation(description: "Wait for cache retrieval")
         
         sut.retrieve { firstResult in
@@ -56,5 +51,40 @@ class RealmPropertyListingsStoreTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
 
+    func test_retrieveAfterInsertingToEmptyCache_deliversInsertedValues() {
+        let sut = makeSUT()
+        let listings = uniqueItems().locals
+        let exp = expectation(description: "Wait for cache retrieval")
+        
+        sut.insert(listings) { insertionError in
+            XCTAssertNil(insertionError, "Expected property listings to be inserted successfully")
+            
+            sut.retrieve { retrieveResult in
+                switch retrieveResult {
+                case let .success(retrievedListings):
+                    XCTAssertEqual(retrievedListings, listings)
+                    
+                default:
+                    XCTFail("Expected found result with property listings \(listings), got \(retrieveResult) instead")
+                }
+                
+                exp.fulfill()
+            }
+        }
+        
+        wait(for: [exp], timeout: 1.0)
+    }
+
+    // - MARK: Helpers
+
+    private func makeSUT(configuration: Realm.Configuration? = nil, file: StaticString = #filePath, line: UInt = #line) -> RealmPropertyListingsStore {
+        let sut = RealmPropertyListingsStore(configuration: configuration ?? testRealmInMemoryConfiguration())
+        trackForMemoryLeaks(sut, file: file, line: line)
+        return sut
+    }
+    
+    private func testRealmInMemoryConfiguration() -> Realm.Configuration {
+        Realm.Configuration(inMemoryIdentifier: "\(type(of: self))Realm")
+    }
 
 }
