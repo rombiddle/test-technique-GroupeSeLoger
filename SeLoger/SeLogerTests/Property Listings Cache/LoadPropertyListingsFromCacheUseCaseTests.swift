@@ -16,7 +16,9 @@ class LocalPropertyListingsLoader {
     }
     
     func save(_ items: [PropertyListing], completion: @escaping (Error?) -> Void) {
-        store.deleteCachedPropertyListings { [unowned self] error in
+        store.deleteCachedPropertyListings { [weak self] error in
+            guard let self = self else { return }
+
             if error == nil {
                 self.store.insert(items, completion: completion)
             } else {
@@ -98,6 +100,19 @@ class LoadPropertyListingsFromCacheUseCaseTests: XCTestCase {
             store.completeDeletionSuccessfully()
             store.completeInsertionSuccessfully()
         }
+    }
+    
+    func test_save_doesNotDeliverDeletionErrorAfterSUTInstanceHasBeenDeallocated() {
+        let store = PropertyListingsStoreSpy()
+        var sut: LocalPropertyListingsLoader? = LocalPropertyListingsLoader(store: store)
+        
+        var receivedResult = [Error?]()
+        sut?.save([uniqueItem()], completion: { receivedResult.append($0) })
+        
+        sut = nil
+        store.completeDeletion(with: anyNSError())
+        
+        XCTAssertTrue(receivedResult.isEmpty)
     }
     
     // MARK: Helpers
