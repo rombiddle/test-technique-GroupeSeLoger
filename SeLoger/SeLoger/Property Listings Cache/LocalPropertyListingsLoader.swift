@@ -27,10 +27,26 @@ public class LocalPropertyListingsLoader {
     }
     
     private func cache(_ items: [PropertyListing], with completion: @escaping (Error?) -> Void) {
-        store.insert(items) { [weak self] error in
+        store.insert(items.toLocals()) { [weak self] error in
             guard self != nil else { return }
             
             completion(error)
+        }
+    }
+}
+
+private extension Array where Element == PropertyListing {
+    func toLocals() -> [LocalPropertyListing] {
+        map {
+            LocalPropertyListing(bedrooms: $0.bedrooms,
+                                 city: $0.city,
+                                 id: $0.id,
+                                 area: $0.area,
+                                 url: $0.url,
+                                 price: $0.price,
+                                 professional: $0.professional,
+                                 propertyType: $0.propertyType,
+                                 rooms: $0.rooms)
         }
     }
 }

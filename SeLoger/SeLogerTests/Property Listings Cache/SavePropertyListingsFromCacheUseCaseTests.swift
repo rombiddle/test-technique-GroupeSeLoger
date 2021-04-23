@@ -8,7 +8,7 @@
 import XCTest
 import SeLoger
 
-class LoadPropertyListingsFromCacheUseCaseTests: XCTestCase {
+class SavePropertyListingsFromCacheUseCaseTests: XCTestCase {
 
     func test_init_doesNotMessageStoreUponCreation() {
         let (_, store) = makeSUT()
@@ -39,11 +39,22 @@ class LoadPropertyListingsFromCacheUseCaseTests: XCTestCase {
     func test_save_requestNewCacheInsertionOnSuccessfulDeletion() {
         let (sut, store) = makeSUT()
         let items = [uniqueItem(), uniqueItem()]
+        let localItems = items.map { item in
+            LocalPropertyListing(bedrooms: item.bedrooms,
+                                 city: item.city,
+                                 id: item.id,
+                                 area: item.area,
+                                 url: item.url,
+                                 price: item.price,
+                                 professional: item.professional,
+                                 propertyType: item.propertyType,
+                                 rooms: item.rooms)
+        }
         
         sut.save(items) { _ in }
         store.completeDeletionSuccessfully()
         
-        XCTAssertEqual(store.receivedMessages, [.deleteCachedPropertyListings, .insert(items)])
+        XCTAssertEqual(store.receivedMessages, [.deleteCachedPropertyListings, .insert(localItems)])
     }
     
     func test_save_failsOnDeletionError() {
@@ -149,7 +160,7 @@ class LoadPropertyListingsFromCacheUseCaseTests: XCTestCase {
     private class PropertyListingsStoreSpy: PropertyListingsStore  {
         enum ReceivedMessage: Equatable {
             case deleteCachedPropertyListings
-            case insert([PropertyListing])
+            case insert([LocalPropertyListing])
         }
         
         private(set) var receivedMessages = [ReceivedMessage]()
@@ -174,7 +185,7 @@ class LoadPropertyListingsFromCacheUseCaseTests: XCTestCase {
             insertionCompletions[index](error)
         }
         
-        func insert(_ items: [PropertyListing], completion: @escaping InsertionCompletion) {
+        func insert(_ items: [LocalPropertyListing], completion: @escaping InsertionCompletion) {
             insertionCompletions.append(completion)
             receivedMessages.append(.insert(items))
         }
