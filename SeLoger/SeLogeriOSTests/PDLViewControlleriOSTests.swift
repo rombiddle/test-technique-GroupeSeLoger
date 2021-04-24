@@ -102,17 +102,34 @@ class PDLViewControlleriOSTests: XCTestCase {
         assertThat(sut, isRendering: [property0])
     }
     
+    func test_propertyImageView_loadsImageURLWhenVisible() {
+        let property0 = uniqueItem(url: URL(string: "http://url-0.com")!)
+        let property1 = uniqueItem(url: URL(string: "http://url-1.com")!)
+        let (sut, loader) = makeSUT()
+
+        sut.loadViewIfNeeded()
+        loader.completePropertyListingsLoading(with: [property0, property1])
+
+        XCTAssertEqual(loader.loadedImageURLs, [], "Expected no image URL requests until views become visible")
+
+        sut.simulatePropertyListingImageViewVisible(at: 0)
+        XCTAssertEqual(loader.loadedImageURLs, [property0.url], "Expected first image URL request once first view becomes visible")
+
+        sut.simulatePropertyListingImageViewVisible(at: 1)
+        XCTAssertEqual(loader.loadedImageURLs, [property0.url, property1.url], "Expected second image URL request once second view also becomes visible")
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: PDLViewController, loader: LoaderSpy) {
         let loader = LoaderSpy()
-        let sut = PDLViewController.make(loader: loader)
+        let sut = PropertyListingsUIComposer.propertyListingsComposedWith(propertyListingsLoader: loader, imageLoader: loader)
         trackForMemoryLeaks(loader, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, loader)
     }
          
-    class LoaderSpy: PropertyListingsLoader {
+    class LoaderSpy: PropertyListingsLoader, PropertyListingsImageLoader {
         private var completions = [(PropertyListingsLoader.Result) -> Void]()
         
         var loadCallCount: Int {
@@ -130,6 +147,13 @@ class PDLViewControlleriOSTests: XCTestCase {
         func completePropertyListingsLoadingWithError(at index: Int = 0) {
             let error = NSError(domain: "an error", code: 0)
             completions[index](.failure(error))
+        }
+        
+        // MARK: - PropertyListingImageDataLoader
+        private(set) var loadedImageURLs = [URL]()
+
+        func loadImageData(from url: URL, completion: @escaping (PropertyListingsImageLoader.Result) -> Void) {
+            loadedImageURLs.append(url)
         }
     }
     
@@ -196,14 +220,6 @@ private extension UIRefreshControl {
  }
 
 private extension PDLViewController {
-    static func make(loader: PropertyListingsLoader) -> PDLViewController {
-        let bundle = Bundle(for: PDLViewController.self)
-        let storyboard = UIStoryboard(name: "PDL", bundle: bundle)
-        let PDLController = storyboard.instantiateInitialViewController() as! PDLViewController
-        PDLController.loader = loader
-        return PDLController
-    }
-    
     func simulateUserInitiatedPropertyListingsReload() {
         refreshControl?.simulatePullToRefresh()
     }
@@ -220,6 +236,10 @@ private extension PDLViewController {
         let ds = tableView.dataSource
         let index = IndexPath(row: row, section: 0)
         return ds?.tableView(tableView, cellForRowAt: index)
+    }
+    
+    func simulatePropertyListingImageViewVisible(at index: Int) {
+        _ = propertyListingView(at: index)
     }
 }
 

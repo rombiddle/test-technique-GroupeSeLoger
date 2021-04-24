@@ -13,12 +13,12 @@ extension XCTestCase  {
         Int.random(in: 0..<100)
     }
     
-    func uniqueItem() -> PropertyListing {
+    func uniqueItem(url: URL? = nil) -> PropertyListing {
         PropertyListing(bedrooms: 0,
                         city: "any city",
                         id: anyInt(),
                         area: 2.0,
-                        url: nil,
+                        url: url,
                         price: 12,
                         professional: "any professional",
                         propertyType: "any propertyType",

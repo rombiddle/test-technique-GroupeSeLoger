@@ -14,6 +14,9 @@
 		250244692634522E0042D874 /* PropertyListingCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250244682634522E0042D874 /* PropertyListingCellController.swift */; };
 		25024475263453770042D874 /* LocalSharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25024474263453770042D874 /* LocalSharedTestHelpers.swift */; };
 		2502448826345D4D0042D874 /* PDL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2502448726345D4D0042D874 /* PDL.storyboard */; };
+		2502448F263470BB0042D874 /* PropertyListingsImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2502448E263470BB0042D874 /* PropertyListingsImageLoader.swift */; };
+		250244A3263488070042D874 /* PropertyListingsUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250244A2263488070042D874 /* PropertyListingsUIComposer.swift */; };
+		250244B4263489800042D874 /* PDLRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250244B3263489800042D874 /* PDLRefreshViewController.swift */; };
 		25C2C90A26305CAD0008CAB1 /* SeLoger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25C2C90026305CAD0008CAB1 /* SeLoger.framework */; };
 		25C2C90F26305CAE0008CAB1 /* LoadPropertyListingsFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2C90E26305CAE0008CAB1 /* LoadPropertyListingsFromRemoteUseCaseTests.swift */; };
 		25C2CBB026316B9C0008CAB1 /* PropertyListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2CBAF26316B9C0008CAB1 /* PropertyListing.swift */; };
@@ -85,6 +88,9 @@
 		250244682634522E0042D874 /* PropertyListingCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListingCellController.swift; sourceTree = "<group>"; };
 		25024474263453770042D874 /* LocalSharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSharedTestHelpers.swift; sourceTree = "<group>"; };
 		2502448726345D4D0042D874 /* PDL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PDL.storyboard; sourceTree = "<group>"; };
+		2502448E263470BB0042D874 /* PropertyListingsImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListingsImageLoader.swift; sourceTree = "<group>"; };
+		250244A2263488070042D874 /* PropertyListingsUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListingsUIComposer.swift; sourceTree = "<group>"; };
+		250244B3263489800042D874 /* PDLRefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDLRefreshViewController.swift; sourceTree = "<group>"; };
 		25C2C90026305CAD0008CAB1 /* SeLoger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SeLoger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		25C2C90426305CAD0008CAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25C2C90926305CAD0008CAB1 /* SeLogerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeLogerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +189,33 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		25024495263487C50042D874 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				25024430263429630042D874 /* PDLViewController.swift */,
+				250244682634522E0042D874 /* PropertyListingCellController.swift */,
+				250244B3263489800042D874 /* PDLRefreshViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		2502449B263487E30042D874 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				250244612634507B0042D874 /* PropertyListingCell.swift */,
+				2502448726345D4D0042D874 /* PDL.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		250244A1263487EF0042D874 /* Composers */ = {
+			isa = PBXGroup;
+			children = (
+				250244A2263488070042D874 /* PropertyListingsUIComposer.swift */,
+			);
+			path = Composers;
+			sourceTree = "<group>";
+		};
 		25C2C8F626305CAD0008CAB1 = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +223,7 @@
 				25C2C90D26305CAE0008CAB1 /* SeLogerTests */,
 				25C2CD682631DCA70008CAB1 /* SeLogerEndToEndTests */,
 				25C2D21D263421C70008CAB1 /* SeLogeriOS */,
+				25C2D21F263421C70008CAB1 /* Info.plist */,
 				25C2D228263421C70008CAB1 /* SeLogeriOSTests */,
 				25C2C90126305CAD0008CAB1 /* Products */,
 				250244262634292A0042D874 /* Frameworks */,
@@ -235,6 +269,7 @@
 			children = (
 				25C2CBAF26316B9C0008CAB1 /* PropertyListing.swift */,
 				25C2CBB526316D0C0008CAB1 /* PropertyListingsLoader.swift */,
+				2502448E263470BB0042D874 /* PropertyListingsImageLoader.swift */,
 			);
 			path = "Property Listings Feature";
 			sourceTree = "<group>";
@@ -339,11 +374,9 @@
 		25C2D21D263421C70008CAB1 /* SeLogeriOS */ = {
 			isa = PBXGroup;
 			children = (
-				25C2D21F263421C70008CAB1 /* Info.plist */,
-				25024430263429630042D874 /* PDLViewController.swift */,
-				250244682634522E0042D874 /* PropertyListingCellController.swift */,
-				250244612634507B0042D874 /* PropertyListingCell.swift */,
-				2502448726345D4D0042D874 /* PDL.storyboard */,
+				250244A1263487EF0042D874 /* Composers */,
+				25024495263487C50042D874 /* Controllers */,
+				2502449B263487E30042D874 /* Views */,
 			);
 			path = SeLogeriOS;
 			sourceTree = "<group>";
@@ -576,6 +609,7 @@
 				25C2CD432631C3070008CAB1 /* HTTPClient.swift in Sources */,
 				25C2D1F4263365F50008CAB1 /* RealmPropertyListingsStore.swift in Sources */,
 				25C2CD3D2631C14C0008CAB1 /* PropertyListingsMapper.swift in Sources */,
+				2502448F263470BB0042D874 /* PropertyListingsImageLoader.swift in Sources */,
 				25C2CBC0263170670008CAB1 /* RemotePropertyListingsLoader.swift in Sources */,
 				25C2D1B62632CCCE0008CAB1 /* LocalPropertyListing.swift in Sources */,
 				25C2D0F12632BC2B0008CAB1 /* PropertyListingsStore.swift in Sources */,
@@ -618,7 +652,9 @@
 			files = (
 				25024431263429630042D874 /* PDLViewController.swift in Sources */,
 				250244622634507B0042D874 /* PropertyListingCell.swift in Sources */,
+				250244A3263488070042D874 /* PropertyListingsUIComposer.swift in Sources */,
 				250244692634522E0042D874 /* PropertyListingCellController.swift in Sources */,
+				250244B4263489800042D874 /* PDLRefreshViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
