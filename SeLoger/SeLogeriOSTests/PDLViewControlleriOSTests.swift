@@ -64,7 +64,10 @@ class PDLViewControlleriOSTests: XCTestCase {
 
         sut.simulateUserInitiatedPropertyListingsReload()
         loader.completePropertyListingsLoading()
-
+        XCTAssertEqual(sut.isShowingLoadingIndicator, false)
+        
+        sut.simulateUserInitiatedPropertyListingsReload()
+        loader.completePropertyListingsLoadingWithError(at: 1)
         XCTAssertEqual(sut.isShowingLoadingIndicator, false)
     }
     

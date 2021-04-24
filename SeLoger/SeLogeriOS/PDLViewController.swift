@@ -20,12 +20,11 @@ public final class PDLViewController: UITableViewController {
                     PropertyListingCellController(model: propertyListing)
                 }
                 self?.tableView.reloadData()
-                self?.refreshControl?.endRefreshing()
                 
             case .failure:
                 break
             }
-            
+            self?.refreshControl?.endRefreshing()
         }
     }
     
