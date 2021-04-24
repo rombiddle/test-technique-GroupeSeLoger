@@ -119,6 +119,30 @@ class PDLViewControlleriOSTests: XCTestCase {
         XCTAssertEqual(loader.loadedImageURLs, [property0.url, property1.url], "Expected second image URL request once second view also becomes visible")
     }
     
+    func test_propertyImageView_rendersImageLoadedFromURL() {
+        let (sut, loader) = makeSUT()
+
+        sut.loadViewIfNeeded()
+        let property0 = uniqueItem(url: URL(string: "http://url-0.com")!)
+        let property1 = uniqueItem(url: URL(string: "http://url-1.com")!)
+        loader.completePropertyListingsLoading(with: [property0, property1])
+
+        let view0 = sut.simulatePropertyListingImageViewVisible(at: 0)
+        let view1 = sut.simulatePropertyListingImageViewVisible(at: 1)
+        XCTAssertEqual(view0?.renderedImage, .none, "Expected no image for first view while loading first image")
+        XCTAssertEqual(view1?.renderedImage, .none, "Expected no image for second view while loading second image")
+
+        let imageData0 = UIImage.make(withColor: .red).pngData()!
+        loader.completeImageLoading(with: imageData0, at: 0)
+        XCTAssertEqual(view0?.renderedImage, imageData0, "Expected image for first view once first image loading completes successfully")
+        XCTAssertEqual(view1?.renderedImage, .none, "Expected no image state change for second view once first image loading completes successfully")
+
+        let imageData1 = UIImage.make(withColor: .blue).pngData()!
+        loader.completeImageLoading(with: imageData1, at: 1)
+        XCTAssertEqual(view0?.renderedImage, imageData0, "Expected no image state change for first view once second image loading completes successfully")
+        XCTAssertEqual(view1?.renderedImage, imageData1, "Expected image for second view once second image loading completes successfully")
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: PDLViewController, loader: LoaderSpy) {
@@ -149,11 +173,19 @@ class PDLViewControlleriOSTests: XCTestCase {
             completions[index](.failure(error))
         }
         
-        // MARK: - PropertyListingImageDataLoader
-        private(set) var loadedImageURLs = [URL]()
+        // MARK: - PropertyListingsImageLoader
+        private var imageRequests = [(url: URL, completion: (PropertyListingsImageLoader.Result) -> Void)]()
+        
+        var loadedImageURLs: [URL] {
+            return imageRequests.map { $0.url }
+        }
 
         func loadImageData(from url: URL, completion: @escaping (PropertyListingsImageLoader.Result) -> Void) {
-            loadedImageURLs.append(url)
+            imageRequests.append((url, completion))
+        }
+        
+        func completeImageLoading(with imageData: Data = Data(), at index: Int = 0) {
+            imageRequests[index].completion(.success(imageData))
         }
     }
     
@@ -207,6 +239,10 @@ private extension PropertyListingCell {
     var cityText: String? {
         return cityLabel.text
     }
+    
+    var renderedImage: Data? {
+        return propertyImage.image?.pngData()
+    }
 }
 
 private extension UIRefreshControl {
@@ -238,8 +274,21 @@ private extension PDLViewController {
         return ds?.tableView(tableView, cellForRowAt: index)
     }
     
-    func simulatePropertyListingImageViewVisible(at index: Int) {
-        _ = propertyListingView(at: index)
+    @discardableResult
+    func simulatePropertyListingImageViewVisible(at index: Int) -> PropertyListingCell? {
+        return propertyListingView(at: index) as? PropertyListingCell
     }
 }
 
+private extension UIImage {
+    static func make(withColor color: UIColor) -> UIImage {
+        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()!
+        context.setFillColor(color.cgColor)
+        context.fill(rect)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return img!
+    }
+}

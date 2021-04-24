@@ -24,8 +24,12 @@ final class PropertyListingCellController {
         cell?.propertyTypeLabel.text = model.propertyType
         cell?.priceLabel.text = String(model.price)
         cell?.cityLabel.text = model.city
+        cell?.propertyImage?.image = nil
         if let url = model.url {
-            imageLoader.loadImageData(from: url, completion: { _ in })
+            imageLoader.loadImageData(from: url, completion: { [weak cell] result in
+                let data = try? result.get()
+                cell?.propertyImage.image = data.map(UIImage.init) ?? nil
+            })
         }
         return cell!
     }
