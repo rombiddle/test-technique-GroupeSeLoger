@@ -39,21 +39,25 @@ class RealmPropertyListingsStoreTests: XCTestCase {
     }
     
     func test_deleteOnEmptyCache_retrieveEmptyCache() {
-         let sut = makeSUT()
-         let exp = expectation(description: "Wait for cache deletion")
+        let sut = makeSUT()
+         
+        deleteCache(from: sut)
 
-         sut.deleteCachedPropertyListings { deletionError in
-             XCTAssertNil(deletionError, "Expected empty cache deletion to succeed")
-             exp.fulfill()
-         }
-         wait(for: [exp], timeout: 1.0)
+        expect(sut, toRetrieve: .success([]))
+    }
+    
+    func test_delete_emptiesPreviouslyInsertedCache() {
+        let sut = makeSUT()
+        insert(uniqueItems().locals, to: sut)
 
-         expect(sut, toRetrieve: .success([]))
-     }
+        deleteCache(from: sut)
+
+        expect(sut, toRetrieve: .success([]))
+    }
 
     // - MARK: Helpers
 
-    private func makeSUT(configuration: Realm.Configuration? = nil, file: StaticString = #filePath, line: UInt = #line) -> RealmPropertyListingsStore {
+    private func makeSUT(configuration: Realm.Configuration? = nil, file: StaticString = #filePath, line: UInt = #line) -> PropertyListingsStore {
         let sut = RealmPropertyListingsStore(configuration: configuration ?? testRealmInMemoryConfiguration())
         trackForMemoryLeaks(sut, file: file, line: line)
         return sut
@@ -64,7 +68,7 @@ class RealmPropertyListingsStoreTests: XCTestCase {
     }
     
     @discardableResult
-    private func insert(_ listings: [LocalPropertyListing], to sut: RealmPropertyListingsStore) -> Error? {
+    private func insert(_ listings: [LocalPropertyListing], to sut: PropertyListingsStore) -> Error? {
         let exp = expectation(description: "Wait for cache insertion")
         
         var insertionError: Error?
@@ -77,7 +81,16 @@ class RealmPropertyListingsStoreTests: XCTestCase {
         return insertionError
     }
     
-    private func expect(_ sut: RealmPropertyListingsStore, toRetrieve expectedResult: PropertyListingsStore.RetrievalResult, file: StaticString = #filePath, line: UInt = #line) {
+    private func deleteCache(from sut: PropertyListingsStore) {
+        let exp = expectation(description: "Wait for cache deletion")
+        sut.deleteCachedPropertyListings { deletionError in
+            XCTAssertNil(deletionError, "Expected cache deletion to succeed")
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1.0)
+    }
+    
+    private func expect(_ sut: PropertyListingsStore, toRetrieve expectedResult: PropertyListingsStore.RetrievalResult, file: StaticString = #filePath, line: UInt = #line) {
         let exp = expectation(description: "Wait for cache retrieval")
         
         sut.retrieve { retrievedResult in

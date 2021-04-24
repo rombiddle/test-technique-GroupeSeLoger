@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-public class RealmPropertyListingsStore {
+public class RealmPropertyListingsStore: PropertyListingsStore {
     private let configuration: Realm.Configuration
         
     public init(configuration: Realm.Configuration) {
@@ -54,7 +54,18 @@ public class RealmPropertyListingsStore {
     }
     
     public func deleteCachedPropertyListings(completion: @escaping PropertyListingsStore.DeletionCompletion) {
-        completion(nil)
+        do {
+            let realm = try Realm(configuration: self.configuration)
+            let cache = realm.objects(RealmPropertyListingsCache.self).first
+            if let cache = cache {
+                try realm.write {
+                    realm.delete(cache)
+                }
+            }
+            completion(nil)
+        } catch {
+            completion(error)
+        }
     }
 
 }
