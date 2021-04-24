@@ -52,4 +52,9 @@ public class RealmPropertyListingsStore {
             completion(error)
         }
     }
+    
+    public func deleteCachedPropertyListings(completion: @escaping PropertyListingsStore.DeletionCompletion) {
+        completion(nil)
+    }
+
 }

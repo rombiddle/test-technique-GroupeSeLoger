@@ -37,6 +37,19 @@ class RealmPropertyListingsStoreTests: XCTestCase {
         
         XCTAssertNil(latestInsertionError, "Expected to override cache successfully")
     }
+    
+    func test_deleteOnEmptyCache_retrieveEmptyCache() {
+         let sut = makeSUT()
+         let exp = expectation(description: "Wait for cache deletion")
+
+         sut.deleteCachedPropertyListings { deletionError in
+             XCTAssertNil(deletionError, "Expected empty cache deletion to succeed")
+             exp.fulfill()
+         }
+         wait(for: [exp], timeout: 1.0)
+
+         expect(sut, toRetrieve: .success([]))
+     }
 
     // - MARK: Helpers
 
