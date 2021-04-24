@@ -42,6 +42,15 @@ class PDLViewControlleriOSTests: XCTestCase {
         XCTAssertEqual(sut.refreshControl?.isRefreshing, true)
     }
     
+    func test_viewDidLoad_hidesLoadingIndicatorOnLoaderCompletion() {
+        let (sut, loader) = makeSUT()
+
+        sut.loadViewIfNeeded()
+        loader.completePropertyListingsLoading()
+
+        XCTAssertEqual(sut.refreshControl?.isRefreshing, false)
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: PDLViewController, loader: LoaderSpy) {
@@ -53,10 +62,18 @@ class PDLViewControlleriOSTests: XCTestCase {
     }
          
     class LoaderSpy: PropertyListingsLoader {
-        private(set) var loadCallCount: Int = 0
+        private var completions = [(PropertyListingsLoader.Result) -> Void]()
         
+        var loadCallCount: Int {
+            return completions.count
+        }
+
         func load(completion: @escaping (PropertyListingsLoader.Result) -> Void) {
-            loadCallCount += 1
+            completions.append(completion)
+        }
+        
+        func completePropertyListingsLoading() {
+            completions[0](.success([]))
         }
     }
 
