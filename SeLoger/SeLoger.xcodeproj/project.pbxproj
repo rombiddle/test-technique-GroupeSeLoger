@@ -35,6 +35,7 @@
 		25C2D1EF263365820008CAB1 /* RealmPropertyListings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2D1EE263365820008CAB1 /* RealmPropertyListings.swift */; };
 		25C2D1F4263365F50008CAB1 /* RealmPropertyListingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2D1F3263365F50008CAB1 /* RealmPropertyListingsStore.swift */; };
 		25C2D1F9263376730008CAB1 /* RealmPropertyListingsCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2D1F8263376730008CAB1 /* RealmPropertyListingsCache.swift */; };
+		25C2D20D263414820008CAB1 /* RealmPropertyListingsStoreIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2D20C263414810008CAB1 /* RealmPropertyListingsStoreIntegrationTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		25C2D1EE263365820008CAB1 /* RealmPropertyListings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPropertyListings.swift; sourceTree = "<group>"; };
 		25C2D1F3263365F50008CAB1 /* RealmPropertyListingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPropertyListingsStore.swift; sourceTree = "<group>"; };
 		25C2D1F8263376730008CAB1 /* RealmPropertyListingsCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPropertyListingsCache.swift; sourceTree = "<group>"; };
+		25C2D20C263414810008CAB1 /* RealmPropertyListingsStoreIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPropertyListingsStoreIntegrationTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +225,7 @@
 				25C2D1BA2632D2530008CAB1 /* LoadPropertyListingsFromCacheUseCaseTests.swift */,
 				25C2D1D2263327970008CAB1 /* ValidatePropertyListingsFromCacheUseCaseTests.swift */,
 				25C2D1D726332A840008CAB1 /* RealmPropertyListingsStoreTests.swift */,
+				25C2D20C263414810008CAB1 /* RealmPropertyListingsStoreIntegrationTests.swift */,
 			);
 			path = "Property Listings Cache";
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				25C2D1C12632D3090008CAB1 /* PropertyListingsStoreSpy.swift in Sources */,
 				25C2D1CE2632FF620008CAB1 /* LocalSharedTestHelpers.swift in Sources */,
 				25C2CD472631C6A40008CAB1 /* URLSessionHTTPClientTests.swift in Sources */,
+				25C2D20D263414820008CAB1 /* RealmPropertyListingsStoreIntegrationTests.swift in Sources */,
 				25C2D1BB2632D2530008CAB1 /* LoadPropertyListingsFromCacheUseCaseTests.swift in Sources */,
 				25C2D1D3263327970008CAB1 /* ValidatePropertyListingsFromCacheUseCaseTests.swift in Sources */,
 				25C2CD4E2631CAE70008CAB1 /* XCTestCase+MemoryLeakTracking.swift in Sources */,

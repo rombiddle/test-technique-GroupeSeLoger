@@ -117,23 +117,5 @@ class RealmPropertyListingsStoreTests: XCTestCase {
         }
         wait(for: [exp], timeout: 1.0)
     }
-    
-    private func expect(_ sut: PropertyListingsStore, toRetrieve expectedResult: PropertyListingsStore.RetrievalResult, file: StaticString = #filePath, line: UInt = #line) {
-        let exp = expectation(description: "Wait for cache retrieval")
-        
-        sut.retrieve { retrievedResult in
-            switch (expectedResult, retrievedResult) {
-            case let (.success(expected), .success(retrieved)):
-                XCTAssertEqual(expected, retrieved)
-                
-            default:
-                XCTFail("Expected to retrieve \(expectedResult), got \(retrievedResult) instead", file: file, line: line)
-            }
-            
-            exp.fulfill()
-        }
-        
-        wait(for: [exp], timeout: 1.0)
-    }
 
 }
