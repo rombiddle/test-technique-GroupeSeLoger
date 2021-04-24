@@ -37,7 +37,7 @@
 		25C2D1F9263376730008CAB1 /* RealmPropertyListingsCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2D1F8263376730008CAB1 /* RealmPropertyListingsCache.swift */; };
 		25C2D20D263414820008CAB1 /* RealmPropertyListingsStoreIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2D20C263414810008CAB1 /* RealmPropertyListingsStoreIntegrationTests.swift */; };
 		25C2D225263421C70008CAB1 /* SeLogeriOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25C2D21C263421C70008CAB1 /* SeLogeriOS.framework */; };
-		25C2D22A263421C70008CAB1 /* SeLogeriOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2D229263421C70008CAB1 /* SeLogeriOSTests.swift */; };
+		25C2D22A263421C70008CAB1 /* PDLViewControlleriOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2D229263421C70008CAB1 /* PDLViewControlleriOSTests.swift */; };
 		25C2D22C263421C70008CAB1 /* SeLogeriOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 25C2D21E263421C70008CAB1 /* SeLogeriOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -100,7 +100,7 @@
 		25C2D21E263421C70008CAB1 /* SeLogeriOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SeLogeriOS.h; sourceTree = "<group>"; };
 		25C2D21F263421C70008CAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25C2D224263421C70008CAB1 /* SeLogeriOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeLogeriOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		25C2D229263421C70008CAB1 /* SeLogeriOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeLogeriOSTests.swift; sourceTree = "<group>"; };
+		25C2D229263421C70008CAB1 /* PDLViewControlleriOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDLViewControlleriOSTests.swift; sourceTree = "<group>"; };
 		25C2D22B263421C70008CAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -312,7 +312,7 @@
 		25C2D228263421C70008CAB1 /* SeLogeriOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				25C2D229263421C70008CAB1 /* SeLogeriOSTests.swift */,
+				25C2D229263421C70008CAB1 /* PDLViewControlleriOSTests.swift */,
 				25C2D22B263421C70008CAB1 /* Info.plist */,
 			);
 			path = SeLogeriOSTests;
@@ -581,7 +581,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25C2D22A263421C70008CAB1 /* SeLogeriOSTests.swift in Sources */,
+				25C2D22A263421C70008CAB1 /* PDLViewControlleriOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
