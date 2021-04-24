@@ -8,7 +8,7 @@
 import UIKit
 import SeLoger
 
-public final class PDLViewController: UIViewController {
+public final class PDLViewController: UITableViewController {
     private var loader: PropertyListingsLoader?
 
     public convenience init(loader: PropertyListingsLoader) {
@@ -16,9 +16,15 @@ public final class PDLViewController: UIViewController {
         self.loader = loader
     }
     
+    @objc private func load() {
+        loader?.load { _ in }
+    }
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
 
-        loader?.load { _ in }
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(load), for: .valueChanged)
+        load()
     }
 }

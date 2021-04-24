@@ -25,6 +25,15 @@ class PDLViewControlleriOSTests: XCTestCase {
         XCTAssertEqual(loader.loadCallCount, 1)
     }
     
+    func test_pullToRefresh_loadsPropertyListings() {
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+
+        sut.refreshControl?.simulatePullToRefresh()
+
+        XCTAssertEqual(loader.loadCallCount, 2)
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: PDLViewController, loader: LoaderSpy) {
@@ -44,3 +53,13 @@ class PDLViewControlleriOSTests: XCTestCase {
     }
 
 }
+
+private extension UIRefreshControl {
+     func simulatePullToRefresh() {
+         allTargets.forEach { target in
+             actions(forTarget: target, forControlEvent: .valueChanged)?.forEach {
+                 (target as NSObject).perform(Selector($0))
+             }
+         }
+     }
+ }
