@@ -198,12 +198,10 @@
 		25C2CE40263218F70008CAB1 /* Property Listings Cache */ = {
 			isa = PBXGroup;
 			children = (
+				25C2D205263406E00008CAB1 /* Model */,
 				25C2D0EB2632BC0F0008CAB1 /* LocalPropertyListingsLoader.swift */,
 				25C2D0F02632BC2B0008CAB1 /* PropertyListingsStore.swift */,
-				25C2D1B52632CCCE0008CAB1 /* LocalPropertyListing.swift */,
-				25C2D1EE263365820008CAB1 /* RealmPropertyListings.swift */,
-				25C2D1F8263376730008CAB1 /* RealmPropertyListingsCache.swift */,
-				25C2D1F3263365F50008CAB1 /* RealmPropertyListingsStore.swift */,
+				25C2D1FD263406370008CAB1 /* Realm Imp */,
 			);
 			path = "Property Listings Cache";
 			sourceTree = "<group>";
@@ -236,6 +234,32 @@
 				25C2D1CD2632FF620008CAB1 /* LocalSharedTestHelpers.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		25C2D1FD263406370008CAB1 /* Realm Imp */ = {
+			isa = PBXGroup;
+			children = (
+				25C2D201263406870008CAB1 /* Model */,
+				25C2D1F3263365F50008CAB1 /* RealmPropertyListingsStore.swift */,
+			);
+			path = "Realm Imp";
+			sourceTree = "<group>";
+		};
+		25C2D201263406870008CAB1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				25C2D1EE263365820008CAB1 /* RealmPropertyListings.swift */,
+				25C2D1F8263376730008CAB1 /* RealmPropertyListingsCache.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		25C2D205263406E00008CAB1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				25C2D1B52632CCCE0008CAB1 /* LocalPropertyListing.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -16,12 +16,6 @@ class RealmPropertyListingsStoreTests: XCTestCase {
         
         expect(sut, toRetrieve: .success([]))
     }
-    
-    func test_retrieve_hasNoSideEffectsOnEmptyCache() {
-        let sut = makeSUT()
-        
-        expect(sut, toRetrieveTwice: .success([]))
-    }
 
     func test_retrieveAfterInsertingToEmptyCache_deliversInsertedValues() {
         let sut = makeSUT()
@@ -31,16 +25,18 @@ class RealmPropertyListingsStoreTests: XCTestCase {
         
         expect(sut, toRetrieve: .success(listings))
     }
-    
-    func test_retrieve_hasNoSideEffectsOnNonEmptyCache() {
-        let sut = makeSUT()
-        let listings = uniqueItems().locals
-        
-        insert(listings, to: sut)
-        
-        expect(sut, toRetrieveTwice: .success(listings))
-    }
 
+    func test_insert_overridesPreviouslyInsertedCacheValues() {
+        let sut = makeSUT()
+        
+        let firstInsertionError = insert(uniqueItems().locals, to: sut)
+        XCTAssertNil(firstInsertionError, "Expected to insert cache successfully")
+        
+        let lastestPropertyListings = uniqueItems().locals
+        let latestInsertionError = insert(lastestPropertyListings, to: sut)
+        
+        XCTAssertNil(latestInsertionError, "Expected to override cache successfully")
+    }
 
     // - MARK: Helpers
 
@@ -54,15 +50,18 @@ class RealmPropertyListingsStoreTests: XCTestCase {
         Realm.Configuration(inMemoryIdentifier: "\(type(of: self))Realm")
     }
     
-    private func insert(_ listings: [LocalPropertyListing], to sut: RealmPropertyListingsStore) {
+    @discardableResult
+    private func insert(_ listings: [LocalPropertyListing], to sut: RealmPropertyListingsStore) -> Error? {
         let exp = expectation(description: "Wait for cache insertion")
         
-        sut.insert(listings) { insertionError in
-            XCTAssertNil(insertionError, "Expected property listng to be inserted successfully")
+        var insertionError: Error?
+        sut.insert(listings) { receivedInsertionError in
+            insertionError = receivedInsertionError
             exp.fulfill()
         }
-        
         wait(for: [exp], timeout: 1.0)
+        
+        return insertionError
     }
     
     private func expect(_ sut: RealmPropertyListingsStore, toRetrieve expectedResult: PropertyListingsStore.RetrievalResult, file: StaticString = #filePath, line: UInt = #line) {
@@ -81,11 +80,6 @@ class RealmPropertyListingsStoreTests: XCTestCase {
         }
         
         wait(for: [exp], timeout: 1.0)
-    }
-    
-    private func expect(_ sut: RealmPropertyListingsStore, toRetrieveTwice expectedResult: PropertyListingsStore.RetrievalResult, file: StaticString = #filePath, line: UInt = #line) {
-        expect(sut, toRetrieve: expectedResult, file: file, line: line)
-        expect(sut, toRetrieve: expectedResult, file: file, line: line)
     }
 
 }
