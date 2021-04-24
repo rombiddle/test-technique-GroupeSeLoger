@@ -3,13 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		25C2C90A26305CAD0008CAB1 /* SeLoger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25C2C90026305CAD0008CAB1 /* SeLoger.framework */; };
-		25C2C90F26305CAE0008CAB1 /* RemotePropertyListingsLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2C90E26305CAE0008CAB1 /* RemotePropertyListingsLoaderTests.swift */; };
-		25C2C91126305CAE0008CAB1 /* SeLoger.h in Headers */ = {isa = PBXBuildFile; fileRef = 25C2C90326305CAD0008CAB1 /* SeLoger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25C2C90F26305CAE0008CAB1 /* LoadPropertyListingsFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2C90E26305CAE0008CAB1 /* LoadPropertyListingsFromRemoteUseCaseTests.swift */; };
 		25C2CBB026316B9C0008CAB1 /* PropertyListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2CBAF26316B9C0008CAB1 /* PropertyListing.swift */; };
 		25C2CBB626316D0C0008CAB1 /* PropertyListingsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2CBB526316D0C0008CAB1 /* PropertyListingsLoader.swift */; };
 		25C2CBC0263170670008CAB1 /* RemotePropertyListingsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2CBBF263170670008CAB1 /* RemotePropertyListingsLoader.swift */; };
@@ -21,6 +20,22 @@
 		25C2CD6A2631DCA70008CAB1 /* SeLogerEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2CD692631DCA70008CAB1 /* SeLogerEndToEndTests.swift */; };
 		25C2CD6C2631DCA70008CAB1 /* SeLoger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25C2C90026305CAD0008CAB1 /* SeLoger.framework */; };
 		25C2CE392631E70A0008CAB1 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2CD4D2631CAE70008CAB1 /* XCTestCase+MemoryLeakTracking.swift */; };
+		25C2CE44263219AE0008CAB1 /* SavePropertyListingsFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2CE43263219AE0008CAB1 /* SavePropertyListingsFromCacheUseCaseTests.swift */; };
+		25C2D0EC2632BC0F0008CAB1 /* LocalPropertyListingsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2D0EB2632BC0F0008CAB1 /* LocalPropertyListingsLoader.swift */; };
+		25C2D0F12632BC2B0008CAB1 /* PropertyListingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2D0F02632BC2B0008CAB1 /* PropertyListingsStore.swift */; };
+		25C2D1B62632CCCE0008CAB1 /* LocalPropertyListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2D1B52632CCCE0008CAB1 /* LocalPropertyListing.swift */; };
+		25C2D1BB2632D2530008CAB1 /* LoadPropertyListingsFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2D1BA2632D2530008CAB1 /* LoadPropertyListingsFromCacheUseCaseTests.swift */; };
+		25C2D1C12632D3090008CAB1 /* PropertyListingsStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2D1C02632D3090008CAB1 /* PropertyListingsStoreSpy.swift */; };
+		25C2D1C92632EC790008CAB1 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2D1C82632EC790008CAB1 /* SharedTestHelpers.swift */; };
+		25C2D1CE2632FF620008CAB1 /* LocalSharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2D1CD2632FF620008CAB1 /* LocalSharedTestHelpers.swift */; };
+		25C2D1D3263327970008CAB1 /* ValidatePropertyListingsFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2D1D2263327970008CAB1 /* ValidatePropertyListingsFromCacheUseCaseTests.swift */; };
+		25C2D1D826332A840008CAB1 /* RealmPropertyListingsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2D1D726332A840008CAB1 /* RealmPropertyListingsStoreTests.swift */; };
+		25C2D1E82633653A0008CAB1 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 25C2D1E72633653A0008CAB1 /* Realm */; };
+		25C2D1EA2633653A0008CAB1 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 25C2D1E92633653A0008CAB1 /* RealmSwift */; };
+		25C2D1EF263365820008CAB1 /* RealmPropertyListings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2D1EE263365820008CAB1 /* RealmPropertyListings.swift */; };
+		25C2D1F4263365F50008CAB1 /* RealmPropertyListingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2D1F3263365F50008CAB1 /* RealmPropertyListingsStore.swift */; };
+		25C2D1F9263376730008CAB1 /* RealmPropertyListingsCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2D1F8263376730008CAB1 /* RealmPropertyListingsCache.swift */; };
+		25C2D20D263414820008CAB1 /* RealmPropertyListingsStoreIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2D20C263414810008CAB1 /* RealmPropertyListingsStoreIntegrationTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,10 +57,9 @@
 
 /* Begin PBXFileReference section */
 		25C2C90026305CAD0008CAB1 /* SeLoger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SeLoger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		25C2C90326305CAD0008CAB1 /* SeLoger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SeLoger.h; sourceTree = "<group>"; };
 		25C2C90426305CAD0008CAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25C2C90926305CAD0008CAB1 /* SeLogerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeLogerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		25C2C90E26305CAE0008CAB1 /* RemotePropertyListingsLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotePropertyListingsLoaderTests.swift; sourceTree = "<group>"; };
+		25C2C90E26305CAE0008CAB1 /* LoadPropertyListingsFromRemoteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadPropertyListingsFromRemoteUseCaseTests.swift; sourceTree = "<group>"; };
 		25C2C91026305CAE0008CAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25C2CBAF26316B9C0008CAB1 /* PropertyListing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyListing.swift; sourceTree = "<group>"; };
 		25C2CBB526316D0C0008CAB1 /* PropertyListingsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListingsLoader.swift; sourceTree = "<group>"; };
@@ -58,6 +72,20 @@
 		25C2CD672631DCA60008CAB1 /* SeLogerEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeLogerEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		25C2CD692631DCA70008CAB1 /* SeLogerEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeLogerEndToEndTests.swift; sourceTree = "<group>"; };
 		25C2CD6B2631DCA70008CAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		25C2CE43263219AE0008CAB1 /* SavePropertyListingsFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePropertyListingsFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
+		25C2D0EB2632BC0F0008CAB1 /* LocalPropertyListingsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPropertyListingsLoader.swift; sourceTree = "<group>"; };
+		25C2D0F02632BC2B0008CAB1 /* PropertyListingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListingsStore.swift; sourceTree = "<group>"; };
+		25C2D1B52632CCCE0008CAB1 /* LocalPropertyListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPropertyListing.swift; sourceTree = "<group>"; };
+		25C2D1BA2632D2530008CAB1 /* LoadPropertyListingsFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadPropertyListingsFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
+		25C2D1C02632D3090008CAB1 /* PropertyListingsStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListingsStoreSpy.swift; sourceTree = "<group>"; };
+		25C2D1C82632EC790008CAB1 /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
+		25C2D1CD2632FF620008CAB1 /* LocalSharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSharedTestHelpers.swift; sourceTree = "<group>"; };
+		25C2D1D2263327970008CAB1 /* ValidatePropertyListingsFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatePropertyListingsFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
+		25C2D1D726332A840008CAB1 /* RealmPropertyListingsStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPropertyListingsStoreTests.swift; sourceTree = "<group>"; };
+		25C2D1EE263365820008CAB1 /* RealmPropertyListings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPropertyListings.swift; sourceTree = "<group>"; };
+		25C2D1F3263365F50008CAB1 /* RealmPropertyListingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPropertyListingsStore.swift; sourceTree = "<group>"; };
+		25C2D1F8263376730008CAB1 /* RealmPropertyListingsCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPropertyListingsCache.swift; sourceTree = "<group>"; };
+		25C2D20C263414810008CAB1 /* RealmPropertyListingsStoreIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPropertyListingsStoreIntegrationTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +93,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25C2D1EA2633653A0008CAB1 /* RealmSwift in Frameworks */,
+				25C2D1E82633653A0008CAB1 /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,9 +140,9 @@
 		25C2C90226305CAD0008CAB1 /* SeLoger */ = {
 			isa = PBXGroup;
 			children = (
+				25C2CE40263218F70008CAB1 /* Property Listings Cache */,
 				25C2CBBE2631704E0008CAB1 /* Property Listings API */,
 				25C2CBB926316DA90008CAB1 /* Property Listings Feature */,
-				25C2C90326305CAD0008CAB1 /* SeLoger.h */,
 				25C2C90426305CAD0008CAB1 /* Info.plist */,
 			);
 			path = SeLoger;
@@ -121,9 +151,9 @@
 		25C2C90D26305CAE0008CAB1 /* SeLogerTests */ = {
 			isa = PBXGroup;
 			children = (
+				25C2CE42263219420008CAB1 /* Property Listings Cache */,
 				25C2CD4C2631CAC80008CAB1 /* Helpers */,
-				25C2C90E26305CAE0008CAB1 /* RemotePropertyListingsLoaderTests.swift */,
-				25C2CD462631C6A40008CAB1 /* URLSessionHTTPClientTests.swift */,
+				25C2CE41263219240008CAB1 /* Property Listings API */,
 				25C2C91026305CAE0008CAB1 /* Info.plist */,
 			);
 			path = SeLogerTests;
@@ -153,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				25C2CD4D2631CAE70008CAB1 /* XCTestCase+MemoryLeakTracking.swift */,
+				25C2D1C82632EC790008CAB1 /* SharedTestHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -166,6 +197,74 @@
 			path = SeLogerEndToEndTests;
 			sourceTree = "<group>";
 		};
+		25C2CE40263218F70008CAB1 /* Property Listings Cache */ = {
+			isa = PBXGroup;
+			children = (
+				25C2D205263406E00008CAB1 /* Model */,
+				25C2D0EB2632BC0F0008CAB1 /* LocalPropertyListingsLoader.swift */,
+				25C2D0F02632BC2B0008CAB1 /* PropertyListingsStore.swift */,
+				25C2D1FD263406370008CAB1 /* Realm Imp */,
+			);
+			path = "Property Listings Cache";
+			sourceTree = "<group>";
+		};
+		25C2CE41263219240008CAB1 /* Property Listings API */ = {
+			isa = PBXGroup;
+			children = (
+				25C2C90E26305CAE0008CAB1 /* LoadPropertyListingsFromRemoteUseCaseTests.swift */,
+				25C2CD462631C6A40008CAB1 /* URLSessionHTTPClientTests.swift */,
+			);
+			path = "Property Listings API";
+			sourceTree = "<group>";
+		};
+		25C2CE42263219420008CAB1 /* Property Listings Cache */ = {
+			isa = PBXGroup;
+			children = (
+				25C2D1BF2632D2FE0008CAB1 /* Helpers */,
+				25C2CE43263219AE0008CAB1 /* SavePropertyListingsFromCacheUseCaseTests.swift */,
+				25C2D1BA2632D2530008CAB1 /* LoadPropertyListingsFromCacheUseCaseTests.swift */,
+				25C2D1D2263327970008CAB1 /* ValidatePropertyListingsFromCacheUseCaseTests.swift */,
+				25C2D1D726332A840008CAB1 /* RealmPropertyListingsStoreTests.swift */,
+				25C2D20C263414810008CAB1 /* RealmPropertyListingsStoreIntegrationTests.swift */,
+			);
+			path = "Property Listings Cache";
+			sourceTree = "<group>";
+		};
+		25C2D1BF2632D2FE0008CAB1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				25C2D1C02632D3090008CAB1 /* PropertyListingsStoreSpy.swift */,
+				25C2D1CD2632FF620008CAB1 /* LocalSharedTestHelpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		25C2D1FD263406370008CAB1 /* Realm Imp */ = {
+			isa = PBXGroup;
+			children = (
+				25C2D201263406870008CAB1 /* Model */,
+				25C2D1F3263365F50008CAB1 /* RealmPropertyListingsStore.swift */,
+			);
+			path = "Realm Imp";
+			sourceTree = "<group>";
+		};
+		25C2D201263406870008CAB1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				25C2D1EE263365820008CAB1 /* RealmPropertyListings.swift */,
+				25C2D1F8263376730008CAB1 /* RealmPropertyListingsCache.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		25C2D205263406E00008CAB1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				25C2D1B52632CCCE0008CAB1 /* LocalPropertyListing.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -173,7 +272,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25C2C91126305CAE0008CAB1 /* SeLoger.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +292,10 @@
 			dependencies = (
 			);
 			name = SeLoger;
+			packageProductDependencies = (
+				25C2D1E72633653A0008CAB1 /* Realm */,
+				25C2D1E92633653A0008CAB1 /* RealmSwift */,
+			);
 			productName = SeLoger;
 			productReference = 25C2C90026305CAD0008CAB1 /* SeLoger.framework */;
 			productType = "com.apple.product-type.framework";
@@ -264,6 +366,9 @@
 				Base,
 			);
 			mainGroup = 25C2C8F626305CAD0008CAB1;
+			packageReferences = (
+				25C2D1E62633653A0008CAB1 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+			);
 			productRefGroup = 25C2C90126305CAD0008CAB1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -304,12 +409,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25C2D1F9263376730008CAB1 /* RealmPropertyListingsCache.swift in Sources */,
 				25C2CBB626316D0C0008CAB1 /* PropertyListingsLoader.swift in Sources */,
+				25C2D0EC2632BC0F0008CAB1 /* LocalPropertyListingsLoader.swift in Sources */,
 				25C2CD432631C3070008CAB1 /* HTTPClient.swift in Sources */,
+				25C2D1F4263365F50008CAB1 /* RealmPropertyListingsStore.swift in Sources */,
 				25C2CD3D2631C14C0008CAB1 /* PropertyListingsMapper.swift in Sources */,
 				25C2CBC0263170670008CAB1 /* RemotePropertyListingsLoader.swift in Sources */,
+				25C2D1B62632CCCE0008CAB1 /* LocalPropertyListing.swift in Sources */,
+				25C2D0F12632BC2B0008CAB1 /* PropertyListingsStore.swift in Sources */,
 				25C2CBB026316B9C0008CAB1 /* PropertyListing.swift in Sources */,
 				25C2CD5E2631D8DB0008CAB1 /* URLSessionHTTPClient.swift in Sources */,
+				25C2D1EF263365820008CAB1 /* RealmPropertyListings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,9 +428,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25C2C90F26305CAE0008CAB1 /* RemotePropertyListingsLoaderTests.swift in Sources */,
+				25C2CE44263219AE0008CAB1 /* SavePropertyListingsFromCacheUseCaseTests.swift in Sources */,
+				25C2C90F26305CAE0008CAB1 /* LoadPropertyListingsFromRemoteUseCaseTests.swift in Sources */,
+				25C2D1C92632EC790008CAB1 /* SharedTestHelpers.swift in Sources */,
+				25C2D1C12632D3090008CAB1 /* PropertyListingsStoreSpy.swift in Sources */,
+				25C2D1CE2632FF620008CAB1 /* LocalSharedTestHelpers.swift in Sources */,
 				25C2CD472631C6A40008CAB1 /* URLSessionHTTPClientTests.swift in Sources */,
+				25C2D20D263414820008CAB1 /* RealmPropertyListingsStoreIntegrationTests.swift in Sources */,
+				25C2D1BB2632D2530008CAB1 /* LoadPropertyListingsFromCacheUseCaseTests.swift in Sources */,
+				25C2D1D3263327970008CAB1 /* ValidatePropertyListingsFromCacheUseCaseTests.swift in Sources */,
 				25C2CD4E2631CAE70008CAB1 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
+				25C2D1D826332A840008CAB1 /* RealmPropertyListingsStoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,6 +747,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		25C2D1E62633653A0008CAB1 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.7.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		25C2D1E72633653A0008CAB1 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 25C2D1E62633653A0008CAB1 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		25C2D1E92633653A0008CAB1 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 25C2D1E62633653A0008CAB1 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 25C2C8F726305CAD0008CAB1 /* Project object */;
 }
