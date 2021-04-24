@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "25C2C8FF26305CAD0008CAB1"
-               BuildableName = "SeLoger.framework"
-               BlueprintName = "SeLoger"
+               BlueprintIdentifier = "25C2D21B263421C70008CAB1"
+               BuildableName = "SeLogeriOS.framework"
+               BlueprintName = "SeLogeriOS"
                ReferencedContainer = "container:SeLoger.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
       <CodeCoverageTargets>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "25C2C8FF26305CAD0008CAB1"
-            BuildableName = "SeLoger.framework"
-            BlueprintName = "SeLoger"
+            BlueprintIdentifier = "25C2D21B263421C70008CAB1"
+            BuildableName = "SeLogeriOS.framework"
+            BlueprintName = "SeLogeriOS"
             ReferencedContainer = "container:SeLoger.xcodeproj">
          </BuildableReference>
       </CodeCoverageTargets>
@@ -44,9 +44,9 @@
             testExecutionOrdering = "random">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "25C2C90826305CAD0008CAB1"
-               BuildableName = "SeLogerTests.xctest"
-               BlueprintName = "SeLogerTests"
+               BlueprintIdentifier = "25C2D223263421C70008CAB1"
+               BuildableName = "SeLogeriOSTests.xctest"
+               BlueprintName = "SeLogeriOSTests"
                ReferencedContainer = "container:SeLoger.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -72,9 +72,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "25C2C8FF26305CAD0008CAB1"
-            BuildableName = "SeLoger.framework"
-            BlueprintName = "SeLoger"
+            BlueprintIdentifier = "25C2D21B263421C70008CAB1"
+            BuildableName = "SeLogeriOS.framework"
+            BlueprintName = "SeLogeriOS"
             ReferencedContainer = "container:SeLoger.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

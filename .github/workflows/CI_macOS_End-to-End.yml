@@ -2,7 +2,7 @@ name: "CI-macOS-End-to-End"
 
 on:
   push:
-    branches: [master, develop, feature/add-API-module]
+    branches: [master, develop]
 
 jobs:
   build-and-test:

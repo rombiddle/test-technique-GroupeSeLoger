@@ -31,7 +31,7 @@ extension XCTestCase {
                         city: "any city",
                         id: anyInt(),
                         area: 2.0,
-                        url: nil,
+                        url: anyURL(),
                         price: 12,
                         professional: "any professional",
                         propertyType: "any propertyType",
