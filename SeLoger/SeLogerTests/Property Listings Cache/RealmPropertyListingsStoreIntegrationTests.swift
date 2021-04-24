@@ -52,6 +52,18 @@ class RealmPropertyListingsStoreIntegrationTests: XCTestCase {
         expect(storeToLoad, toRetrieve: .success(latestPropertyListings))
     }
     
+    func test_delete_deletesPropertyListingsInsertedOnAnotherInstance() throws {
+        let storeToInsert = try makeSUT()
+        let storeToDelete = try makeSUT()
+        let storeToLoad = try makeSUT()
+
+        insert(uniqueItems().locals, to: storeToInsert)
+
+        deleteCache(from: storeToDelete)
+
+        expect(storeToLoad, toRetrieve: .success([]))
+    }
+    
     // - MARK: Helpers
     
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) throws -> PropertyListingsStore {

@@ -92,16 +92,5 @@ class RealmPropertyListingsStoreTests: XCTestCase {
     private func testRealmInMemoryConfiguration() -> Realm.Configuration {
         Realm.Configuration(inMemoryIdentifier: "\(type(of: self))Realm")
     }
-    
-    private func deleteCache(from sut: PropertyListingsStore) {
-        let exp = expectation(description: "Wait for cache deletion")
-        sut.deleteCachedPropertyListings { result in
-            if case let Result.failure(error) = result {
-                XCTAssertNil(error, "Expected cache deletion to succeed")
-            }
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 1.0)
-    }
 
 }
