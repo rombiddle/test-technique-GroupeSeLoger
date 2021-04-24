@@ -6,34 +6,19 @@
 //
 
 import XCTest
-
-final class PDLViewController: UIViewController {
-    private var loader: PDLViewControlleriOSTests.LoaderSpy?
-
-    convenience init(loader: PDLViewControlleriOSTests.LoaderSpy) {
-        self.init()
-        self.loader = loader
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        loader?.load()
-    }
-}
+import SeLogeriOS
+import SeLoger
 
 class PDLViewControlleriOSTests: XCTestCase {
 
     func test_init_doesNotLoadPropertyListing() {
-        let loader = LoaderSpy()
-        _ = PDLViewController(loader: loader)
-
+        let (_, loader) = makeSUT()
+        
         XCTAssertEqual(loader.loadCallCount, 0)
     }
     
     func test_viewDidLoad_loadsPropertyListing() {
-        let loader = LoaderSpy()
-        let sut = PDLViewController(loader: loader)
+        let (sut, loader) = makeSUT()
 
         sut.loadViewIfNeeded()
 
@@ -41,11 +26,19 @@ class PDLViewControlleriOSTests: XCTestCase {
     }
     
     // MARK: - Helpers
+    
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: PDLViewController, loader: LoaderSpy) {
+        let loader = LoaderSpy()
+        let sut = PDLViewController(loader: loader)
+        trackForMemoryLeaks(loader, file: file, line: line)
+        trackForMemoryLeaks(sut, file: file, line: line)
+        return (sut, loader)
+    }
          
-    class LoaderSpy {
+    class LoaderSpy: PropertyListingsLoader {
         private(set) var loadCallCount: Int = 0
         
-        func load() {
+        func load(completion: @escaping (PropertyListingsLoader.Result) -> Void) {
             loadCallCount += 1
         }
     }
