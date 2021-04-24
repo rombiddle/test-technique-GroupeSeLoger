@@ -16,19 +16,22 @@ public class LocalPropertyListingsLoader {
 }
 
 extension LocalPropertyListingsLoader {
-    public func save(_ items: [PropertyListing], completion: @escaping (Error?) -> Void) {
-        store.deleteCachedPropertyListings { [weak self] error in
+    public typealias SaveResult = Result<Void, Error>
+
+    public func save(_ items: [PropertyListing], completion: @escaping (SaveResult) -> Void) {
+        store.deleteCachedPropertyListings { [weak self] result in
             guard let self = self else { return }
 
-            if let cacheDeletionError = error {
-                completion(cacheDeletionError)
-            } else {
+            switch result {
+            case let .failure(cacheDeletionError):
+                completion(.failure(cacheDeletionError))
+            case .success:
                 self.cache(items, with: completion)
             }
         }
     }
     
-    private func cache(_ items: [PropertyListing], with completion: @escaping (Error?) -> Void) {
+    private func cache(_ items: [PropertyListing], with completion: @escaping (SaveResult) -> Void) {
         store.insert(items.toLocals()) { [weak self] error in
             guard self != nil else { return }
             

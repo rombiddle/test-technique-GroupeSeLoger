@@ -47,9 +47,9 @@ public class RealmPropertyListingsStore: PropertyListingsStore {
                 let cache = RealmPropertyListingsCache(listings: propertyListings)
                 realm.add(cache, update: .modified)
             }
-            completion(nil)
+            completion(.success(()))
         } catch {
-            completion(error)
+            completion(.failure(error))
         }
     }
     
@@ -62,9 +62,9 @@ public class RealmPropertyListingsStore: PropertyListingsStore {
                     realm.delete(cache)
                 }
             }
-            completion(nil)
+            completion(.success(()))
         } catch {
-            completion(error)
+            completion(.failure(error))
         }
     }
 

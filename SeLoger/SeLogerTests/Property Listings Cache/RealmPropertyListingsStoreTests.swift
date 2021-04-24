@@ -98,8 +98,8 @@ class RealmPropertyListingsStoreTests: XCTestCase {
         let exp = expectation(description: "Wait for cache insertion")
         
         var insertionError: Error?
-        sut.insert(listings) { receivedInsertionError in
-            insertionError = receivedInsertionError
+        sut.insert(listings) { result in
+            if case let Result.failure(error) = result { insertionError = error }
             exp.fulfill()
         }
         wait(for: [exp], timeout: 1.0)
@@ -109,8 +109,10 @@ class RealmPropertyListingsStoreTests: XCTestCase {
     
     private func deleteCache(from sut: PropertyListingsStore) {
         let exp = expectation(description: "Wait for cache deletion")
-        sut.deleteCachedPropertyListings { deletionError in
-            XCTAssertNil(deletionError, "Expected cache deletion to succeed")
+        sut.deleteCachedPropertyListings { result in
+            if case let Result.failure(error) = result {
+                XCTAssertNil(error, "Expected cache deletion to succeed")
+            }
             exp.fulfill()
         }
         wait(for: [exp], timeout: 1.0)
