@@ -7,9 +7,18 @@
 
 import XCTest
 
-final class PDLViewController {
-    init(loader: PDLViewControlleriOSTests.LoaderSpy) {
+final class PDLViewController: UIViewController {
+    private var loader: PDLViewControlleriOSTests.LoaderSpy?
 
+    convenience init(loader: PDLViewControlleriOSTests.LoaderSpy) {
+        self.init()
+        self.loader = loader
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        loader?.load()
     }
 }
 
@@ -22,10 +31,23 @@ class PDLViewControlleriOSTests: XCTestCase {
         XCTAssertEqual(loader.loadCallCount, 0)
     }
     
+    func test_viewDidLoad_loadsPropertyListing() {
+        let loader = LoaderSpy()
+        let sut = PDLViewController(loader: loader)
+
+        sut.loadViewIfNeeded()
+
+        XCTAssertEqual(loader.loadCallCount, 1)
+    }
+    
     // MARK: - Helpers
          
     class LoaderSpy {
         private(set) var loadCallCount: Int = 0
+        
+        func load() {
+            loadCallCount += 1
+        }
     }
 
 }
