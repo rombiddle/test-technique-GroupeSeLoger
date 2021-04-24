@@ -10,6 +10,10 @@
 		250244272634292A0042D874 /* SeLoger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25C2C90026305CAD0008CAB1 /* SeLoger.framework */; };
 		25024431263429630042D874 /* PDLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25024430263429630042D874 /* PDLViewController.swift */; };
 		2502445126342E380042D874 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2502445026342E380042D874 /* XCTestCase+MemoryLeakTracking.swift */; };
+		250244622634507B0042D874 /* PropertyListingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250244612634507B0042D874 /* PropertyListingCell.swift */; };
+		250244692634522E0042D874 /* PropertyListingCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250244682634522E0042D874 /* PropertyListingCellController.swift */; };
+		25024475263453770042D874 /* LocalSharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25024474263453770042D874 /* LocalSharedTestHelpers.swift */; };
+		2502448826345D4D0042D874 /* PDL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2502448726345D4D0042D874 /* PDL.storyboard */; };
 		25C2C90A26305CAD0008CAB1 /* SeLoger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25C2C90026305CAD0008CAB1 /* SeLoger.framework */; };
 		25C2C90F26305CAE0008CAB1 /* LoadPropertyListingsFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2C90E26305CAE0008CAB1 /* LoadPropertyListingsFromRemoteUseCaseTests.swift */; };
 		25C2CBB026316B9C0008CAB1 /* PropertyListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2CBAF26316B9C0008CAB1 /* PropertyListing.swift */; };
@@ -77,6 +81,10 @@
 /* Begin PBXFileReference section */
 		25024430263429630042D874 /* PDLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDLViewController.swift; sourceTree = "<group>"; };
 		2502445026342E380042D874 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
+		250244612634507B0042D874 /* PropertyListingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListingCell.swift; sourceTree = "<group>"; };
+		250244682634522E0042D874 /* PropertyListingCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListingCellController.swift; sourceTree = "<group>"; };
+		25024474263453770042D874 /* LocalSharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSharedTestHelpers.swift; sourceTree = "<group>"; };
+		2502448726345D4D0042D874 /* PDL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PDL.storyboard; sourceTree = "<group>"; };
 		25C2C90026305CAD0008CAB1 /* SeLoger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SeLoger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		25C2C90426305CAD0008CAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25C2C90926305CAD0008CAB1 /* SeLogerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeLogerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,12 +174,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		2502444F26342E270042D874 /* Shared */ = {
+		2502444F26342E270042D874 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				2502445026342E380042D874 /* XCTestCase+MemoryLeakTracking.swift */,
+				25024474263453770042D874 /* LocalSharedTestHelpers.swift */,
 			);
-			path = Shared;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		25C2C8F626305CAD0008CAB1 = {
@@ -332,6 +341,9 @@
 			children = (
 				25C2D21F263421C70008CAB1 /* Info.plist */,
 				25024430263429630042D874 /* PDLViewController.swift */,
+				250244682634522E0042D874 /* PropertyListingCellController.swift */,
+				250244612634507B0042D874 /* PropertyListingCell.swift */,
+				2502448726345D4D0042D874 /* PDL.storyboard */,
 			);
 			path = SeLogeriOS;
 			sourceTree = "<group>";
@@ -339,7 +351,7 @@
 		25C2D228263421C70008CAB1 /* SeLogeriOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				2502444F26342E270042D874 /* Shared */,
+				2502444F26342E270042D874 /* Helpers */,
 				25C2D229263421C70008CAB1 /* PDLViewControlleriOSTests.swift */,
 				25C2D22B263421C70008CAB1 /* Info.plist */,
 			);
@@ -540,6 +552,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2502448826345D4D0042D874 /* PDL.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,6 +617,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				25024431263429630042D874 /* PDLViewController.swift in Sources */,
+				250244622634507B0042D874 /* PropertyListingCell.swift in Sources */,
+				250244692634522E0042D874 /* PropertyListingCellController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,6 +627,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				25C2D22A263421C70008CAB1 /* PDLViewControlleriOSTests.swift in Sources */,
+				25024475263453770042D874 /* LocalSharedTestHelpers.swift in Sources */,
 				2502445126342E380042D874 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,15 +9,15 @@ import UIKit
 import SeLoger
 
 public final class PDLViewController: UITableViewController {
-    private var loader: PropertyListingsLoader?
-
-    public convenience init(loader: PropertyListingsLoader) {
-        self.init()
-        self.loader = loader
-    }
+    public var loader: PropertyListingsLoader?
+    var tableModel = [PropertyListingCellController]()
     
     @objc private func load() {
-        loader?.load { [weak self] _ in
+        loader?.load { [weak self] result in
+            self?.tableModel = ((try? result.get()) ?? []).map { propertyListing in
+                PropertyListingCellController(model: propertyListing)
+            }
+            self?.tableView.reloadData()
             self?.refreshControl?.endRefreshing()
         }
     }
@@ -29,5 +29,13 @@ public final class PDLViewController: UITableViewController {
         refreshControl?.addTarget(self, action: #selector(load), for: .valueChanged)
         refreshControl?.beginRefreshing()
         load()
+    }
+    
+    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        tableModel.count
+    }
+    
+    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        tableModel[indexPath.row].view(in: tableView)
     }
 }
