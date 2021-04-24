@@ -76,6 +76,14 @@ class PDLViewControlleriOSTests: XCTestCase {
             completions[0](.success([]))
         }
     }
+    
+    func test_pullToRefresh_showsLoadingIndicator() {
+        let (sut, _) = makeSUT()
+
+        sut.refreshControl?.simulatePullToRefresh()
+
+        XCTAssertEqual(sut.refreshControl?.isRefreshing, true)
+    }
 
 }
 
