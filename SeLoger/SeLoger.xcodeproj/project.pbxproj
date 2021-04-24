@@ -17,6 +17,12 @@
 		2502448F263470BB0042D874 /* PropertyListingsImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2502448E263470BB0042D874 /* PropertyListingsImageLoader.swift */; };
 		250244A3263488070042D874 /* PropertyListingsUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250244A2263488070042D874 /* PropertyListingsUIComposer.swift */; };
 		250244B4263489800042D874 /* PDLRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250244B3263489800042D874 /* PDLRefreshViewController.swift */; };
+		250244C02634B42B0042D874 /* UIImage+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250244BF2634B42B0042D874 /* UIImage+TestHelpers.swift */; };
+		250244C72634B4650042D874 /* PDLViewController+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250244C62634B4650042D874 /* PDLViewController+TestHelpers.swift */; };
+		250244CE2634B4B50042D874 /* UIRefreshControl+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250244CD2634B4B50042D874 /* UIRefreshControl+TestHelpers.swift */; };
+		250244D52634B4E00042D874 /* PropertyListingCell+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250244D42634B4E00042D874 /* PropertyListingCell+TestHelpers.swift */; };
+		250244DC2634B5490042D874 /* PDLViewControlleriOSTests+LoaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250244DB2634B5490042D874 /* PDLViewControlleriOSTests+LoaderSpy.swift */; };
+		250244E32634B5C30042D874 /* PDLViewControlleriOSTests+Assertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250244E22634B5C30042D874 /* PDLViewControlleriOSTests+Assertions.swift */; };
 		25C2C90A26305CAD0008CAB1 /* SeLoger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25C2C90026305CAD0008CAB1 /* SeLoger.framework */; };
 		25C2C90F26305CAE0008CAB1 /* LoadPropertyListingsFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2C90E26305CAE0008CAB1 /* LoadPropertyListingsFromRemoteUseCaseTests.swift */; };
 		25C2CBB026316B9C0008CAB1 /* PropertyListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2CBAF26316B9C0008CAB1 /* PropertyListing.swift */; };
@@ -91,6 +97,12 @@
 		2502448E263470BB0042D874 /* PropertyListingsImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListingsImageLoader.swift; sourceTree = "<group>"; };
 		250244A2263488070042D874 /* PropertyListingsUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListingsUIComposer.swift; sourceTree = "<group>"; };
 		250244B3263489800042D874 /* PDLRefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDLRefreshViewController.swift; sourceTree = "<group>"; };
+		250244BF2634B42B0042D874 /* UIImage+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+TestHelpers.swift"; sourceTree = "<group>"; };
+		250244C62634B4650042D874 /* PDLViewController+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PDLViewController+TestHelpers.swift"; sourceTree = "<group>"; };
+		250244CD2634B4B50042D874 /* UIRefreshControl+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+TestHelpers.swift"; sourceTree = "<group>"; };
+		250244D42634B4E00042D874 /* PropertyListingCell+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PropertyListingCell+TestHelpers.swift"; sourceTree = "<group>"; };
+		250244DB2634B5490042D874 /* PDLViewControlleriOSTests+LoaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PDLViewControlleriOSTests+LoaderSpy.swift"; sourceTree = "<group>"; };
+		250244E22634B5C30042D874 /* PDLViewControlleriOSTests+Assertions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PDLViewControlleriOSTests+Assertions.swift"; sourceTree = "<group>"; };
 		25C2C90026305CAD0008CAB1 /* SeLoger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SeLoger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		25C2C90426305CAD0008CAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25C2C90926305CAD0008CAB1 /* SeLogerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeLogerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,6 +197,12 @@
 			children = (
 				2502445026342E380042D874 /* XCTestCase+MemoryLeakTracking.swift */,
 				25024474263453770042D874 /* LocalSharedTestHelpers.swift */,
+				250244BF2634B42B0042D874 /* UIImage+TestHelpers.swift */,
+				250244C62634B4650042D874 /* PDLViewController+TestHelpers.swift */,
+				250244CD2634B4B50042D874 /* UIRefreshControl+TestHelpers.swift */,
+				250244D42634B4E00042D874 /* PropertyListingCell+TestHelpers.swift */,
+				250244DB2634B5490042D874 /* PDLViewControlleriOSTests+LoaderSpy.swift */,
+				250244E22634B5C30042D874 /* PDLViewControlleriOSTests+Assertions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -663,8 +681,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				25C2D22A263421C70008CAB1 /* PDLViewControlleriOSTests.swift in Sources */,
+				250244CE2634B4B50042D874 /* UIRefreshControl+TestHelpers.swift in Sources */,
 				25024475263453770042D874 /* LocalSharedTestHelpers.swift in Sources */,
+				250244C72634B4650042D874 /* PDLViewController+TestHelpers.swift in Sources */,
 				2502445126342E380042D874 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
+				250244D52634B4E00042D874 /* PropertyListingCell+TestHelpers.swift in Sources */,
+				250244C02634B42B0042D874 /* UIImage+TestHelpers.swift in Sources */,
+				250244E32634B5C30042D874 /* PDLViewControlleriOSTests+Assertions.swift in Sources */,
+				250244DC2634B5490042D874 /* PDLViewControlleriOSTests+LoaderSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
