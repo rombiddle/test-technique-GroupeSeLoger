@@ -29,7 +29,7 @@ class PDLViewControlleriOSTests: XCTestCase {
         let (sut, loader) = makeSUT()
         sut.loadViewIfNeeded()
 
-        sut.refreshControl?.simulatePullToRefresh()
+        sut.simulateUserInitiatedPropertyListingsReload()
 
         XCTAssertEqual(loader.loadCallCount, 2)
     }
@@ -39,7 +39,7 @@ class PDLViewControlleriOSTests: XCTestCase {
 
         sut.loadViewIfNeeded()
 
-        XCTAssertEqual(sut.refreshControl?.isRefreshing, true)
+        XCTAssertEqual(sut.isShowingLoadingIndicator, true)
     }
     
     func test_viewDidLoad_hidesLoadingIndicatorOnLoaderCompletion() {
@@ -48,7 +48,24 @@ class PDLViewControlleriOSTests: XCTestCase {
         sut.loadViewIfNeeded()
         loader.completePropertyListingsLoading()
 
-        XCTAssertEqual(sut.refreshControl?.isRefreshing, false)
+        XCTAssertEqual(sut.isShowingLoadingIndicator, false)
+    }
+    
+    func test_pullToRefresh_showsLoadingIndicator() {
+        let (sut, _) = makeSUT()
+
+        sut.simulateUserInitiatedPropertyListingsReload()
+
+        XCTAssertEqual(sut.isShowingLoadingIndicator, true)
+    }
+    
+    func test_pullToRefresh_hidesLoadingIndicatorOnLoaderCompletion() {
+        let (sut, loader) = makeSUT()
+
+        sut.simulateUserInitiatedPropertyListingsReload()
+        loader.completePropertyListingsLoading()
+
+        XCTAssertEqual(sut.isShowingLoadingIndicator, false)
     }
     
     // MARK: - Helpers
@@ -77,14 +94,6 @@ class PDLViewControlleriOSTests: XCTestCase {
         }
     }
     
-    func test_pullToRefresh_showsLoadingIndicator() {
-        let (sut, _) = makeSUT()
-
-        sut.refreshControl?.simulatePullToRefresh()
-
-        XCTAssertEqual(sut.refreshControl?.isRefreshing, true)
-    }
-
 }
 
 private extension UIRefreshControl {
@@ -96,3 +105,14 @@ private extension UIRefreshControl {
          }
      }
  }
+
+private extension PDLViewController {
+    func simulateUserInitiatedPropertyListingsReload() {
+        refreshControl?.simulatePullToRefresh()
+    }
+    
+    var isShowingLoadingIndicator: Bool {
+        return refreshControl?.isRefreshing == true
+    }
+}
+
