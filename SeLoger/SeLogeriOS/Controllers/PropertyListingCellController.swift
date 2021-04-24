@@ -25,12 +25,20 @@ final class PropertyListingCellController {
         cell?.priceLabel.text = String(model.price)
         cell?.cityLabel.text = model.city
         cell?.propertyImage?.image = nil
+        loadImage()
+        return cell!
+    }
+    
+    func preload() {
+        loadImage()
+    }
+    
+    private func loadImage() {
         if let url = model.url {
             imageLoader.loadImageData(from: url, completion: { [weak cell] result in
                 let data = try? result.get()
                 cell?.propertyImage.image = data.map(UIImage.init) ?? nil
             })
         }
-        return cell!
     }
 }

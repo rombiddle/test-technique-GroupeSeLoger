@@ -143,6 +143,22 @@ class PDLViewControlleriOSTests: XCTestCase {
         XCTAssertEqual(view1?.renderedImage, imageData1, "Expected image for second view once second image loading completes successfully")
     }
     
+    func test_propertyImageView_preloadsImageURLWhenNearVisible() {
+        let property0 = uniqueItem(url: URL(string: "http://url-0.com")!)
+        let property1 = uniqueItem(url: URL(string: "http://url-1.com")!)
+        let (sut, loader) = makeSUT()
+
+        sut.loadViewIfNeeded()
+        loader.completePropertyListingsLoading(with: [property0, property1])
+        XCTAssertEqual(loader.loadedImageURLs, [], "Expected no image URL requests until image is near visible")
+
+        sut.simulatePropertyListingImageViewNearVisible(at: 0)
+        XCTAssertEqual(loader.loadedImageURLs, [property0.url], "Expected first image URL request once first image is near visible")
+
+        sut.simulatePropertyListingImageViewNearVisible(at: 1)
+        XCTAssertEqual(loader.loadedImageURLs, [property0.url, property1.url], "Expected second image URL request once second image is near visible")
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: PDLViewController, loader: LoaderSpy) {
@@ -174,6 +190,7 @@ class PDLViewControlleriOSTests: XCTestCase {
         }
         
         // MARK: - PropertyListingsImageLoader
+        
         private var imageRequests = [(url: URL, completion: (PropertyListingsImageLoader.Result) -> Void)]()
         
         var loadedImageURLs: [URL] {
@@ -277,6 +294,12 @@ private extension PDLViewController {
     @discardableResult
     func simulatePropertyListingImageViewVisible(at index: Int) -> PropertyListingCell? {
         return propertyListingView(at: index) as? PropertyListingCell
+    }
+    
+    func simulatePropertyListingImageViewNearVisible(at row: Int) {
+        let ds = tableView.prefetchDataSource
+        let index = IndexPath(row: row, section: 0)
+        ds?.tableView(tableView, prefetchRowsAt: [index])
     }
 }
 

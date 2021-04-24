@@ -8,7 +8,7 @@
 import UIKit
 import SeLoger
 
-public final class PDLViewController: UITableViewController {
+public final class PDLViewController: UITableViewController, UITableViewDataSourcePrefetching {
     @IBOutlet var refreshController: PDLRefreshViewController?
 
     var tableModel = [PropertyListingCellController]() {
@@ -17,7 +17,8 @@ public final class PDLViewController: UITableViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        tableView.prefetchDataSource = self
         refreshController?.refresh()
     }
     
@@ -27,5 +28,11 @@ public final class PDLViewController: UITableViewController {
     
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableModel[indexPath.row].view(in: tableView)
+    }
+    
+    public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        indexPaths.forEach { indexPath in
+            tableModel[indexPath.row].preload()
+        }
     }
 }
