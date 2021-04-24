@@ -29,6 +29,16 @@ class RealmPropertyListingsStoreIntegrationTests: XCTestCase {
         expect(sut, toRetrieve: .success([]))
     }
     
+    func test_retrieve_deliversPropertyListingsInsertedOnAnotherInstance() throws {
+        let storeToInsert = try makeSUT()
+        let storeToLoad = try makeSUT()
+        let listings = uniqueItems().locals
+
+        insert(listings, to: storeToInsert)
+
+        expect(storeToLoad, toRetrieve: .success(listings))
+    }
+    
     // - MARK: Helpers
     
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) throws -> PropertyListingsStore {

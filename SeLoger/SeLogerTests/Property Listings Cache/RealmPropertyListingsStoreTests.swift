@@ -93,20 +93,6 @@ class RealmPropertyListingsStoreTests: XCTestCase {
         Realm.Configuration(inMemoryIdentifier: "\(type(of: self))Realm")
     }
     
-    @discardableResult
-    private func insert(_ listings: [LocalPropertyListing], to sut: PropertyListingsStore) -> Error? {
-        let exp = expectation(description: "Wait for cache insertion")
-        
-        var insertionError: Error?
-        sut.insert(listings) { result in
-            if case let Result.failure(error) = result { insertionError = error }
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 1.0)
-        
-        return insertionError
-    }
-    
     private func deleteCache(from sut: PropertyListingsStore) {
         let exp = expectation(description: "Wait for cache deletion")
         sut.deleteCachedPropertyListings { result in

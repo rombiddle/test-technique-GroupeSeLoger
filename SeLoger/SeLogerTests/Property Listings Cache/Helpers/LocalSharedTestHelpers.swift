@@ -63,4 +63,18 @@ extension XCTestCase {
     func cachesDirectory() -> URL {
         return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
     }
+    
+    @discardableResult
+    func insert(_ listings: [LocalPropertyListing], to sut: PropertyListingsStore) -> Error? {
+        let exp = expectation(description: "Wait for cache insertion")
+        
+        var insertionError: Error?
+        sut.insert(listings) { result in
+            if case let Result.failure(error) = result { insertionError = error }
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1.0)
+        
+        return insertionError
+    }
 }
