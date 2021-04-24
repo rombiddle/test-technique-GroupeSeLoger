@@ -14,11 +14,18 @@ public final class PDLViewController: UITableViewController {
     
     @objc private func load() {
         loader?.load { [weak self] result in
-            self?.tableModel = ((try? result.get()) ?? []).map { propertyListing in
-                PropertyListingCellController(model: propertyListing)
+            switch result {
+            case let .success(propertyListings):
+                self?.tableModel = propertyListings.map { propertyListing in
+                    PropertyListingCellController(model: propertyListing)
+                }
+                self?.tableView.reloadData()
+                self?.refreshControl?.endRefreshing()
+                
+            case .failure:
+                break
             }
-            self?.tableView.reloadData()
-            self?.refreshControl?.endRefreshing()
+            
         }
     }
     

@@ -86,6 +86,19 @@ class PDLViewControlleriOSTests: XCTestCase {
         assertThat(sut, isRendering: [property0, property1, property2, property3])
     }
     
+    func test_loadPropertyListingsCompletion_doesNotAlterCurrentRenderingStateOnError() {
+        let property0 = uniqueItem()
+        let (sut, loader) = makeSUT()
+
+        sut.loadViewIfNeeded()
+        loader.completePropertyListingsLoading(with: [property0], at: 0)
+        assertThat(sut, isRendering: [property0])
+
+        sut.simulateUserInitiatedPropertyListingsReload()
+        loader.completePropertyListingsLoadingWithError(at: 1)
+        assertThat(sut, isRendering: [property0])
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: PDLViewController, loader: LoaderSpy) {
@@ -109,6 +122,11 @@ class PDLViewControlleriOSTests: XCTestCase {
         
         func completePropertyListingsLoading(with propertyListings: [PropertyListing] = [], at index: Int = 0) {
             completions[index](.success(propertyListings))
+        }
+        
+        func completePropertyListingsLoadingWithError(at index: Int = 0) {
+            let error = NSError(domain: "an error", code: 0)
+            completions[index](.failure(error))
         }
     }
     
