@@ -39,6 +39,19 @@ class RealmPropertyListingsStoreIntegrationTests: XCTestCase {
         expect(storeToLoad, toRetrieve: .success(listings))
     }
     
+    func test_insert_overridesPropertyListingsInsertedOnAnotherInstance() throws {
+        let storeToInsert = try makeSUT()
+        let storeToOverride = try makeSUT()
+        let storeToLoad = try makeSUT()
+
+        insert(uniqueItems().locals, to: storeToInsert)
+
+        let latestPropertyListings = uniqueItems().locals
+        insert(latestPropertyListings, to: storeToOverride)
+
+        expect(storeToLoad, toRetrieve: .success(latestPropertyListings))
+    }
+    
     // - MARK: Helpers
     
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) throws -> PropertyListingsStore {
