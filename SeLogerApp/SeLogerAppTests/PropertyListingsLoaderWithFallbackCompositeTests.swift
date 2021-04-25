@@ -36,14 +36,14 @@ class PropertyListingsLoaderWithFallbackCompositeTests: XCTestCase {
     // MARL: - Helpers
     
     private func makeSUT(primaryResult: PropertyListingsLoader.Result, fallbackResult: PropertyListingsLoader.Result, file: StaticString = #file, line: UInt = #line) -> PropertyListingsLoader {
-             let primaryLoader = LoaderStub(result: primaryResult)
-             let fallbackLoader = LoaderStub(result: fallbackResult)
-             let sut = PropertyListingsLoaderWithFallbackComposite(primary: primaryLoader, fallback: fallbackLoader)
-             trackForMemoryLeaks(primaryLoader, file: file, line: line)
-             trackForMemoryLeaks(fallbackLoader, file: file, line: line)
-             trackForMemoryLeaks(sut, file: file, line: line)
-             return sut
-         }
+        let primaryLoader = LoaderStub(result: primaryResult)
+        let fallbackLoader = LoaderStub(result: fallbackResult)
+        let sut = PropertyListingsLoaderWithFallbackComposite(primary: primaryLoader, fallback: fallbackLoader)
+        trackForMemoryLeaks(primaryLoader, file: file, line: line)
+        trackForMemoryLeaks(fallbackLoader, file: file, line: line)
+        trackForMemoryLeaks(sut, file: file, line: line)
+        return sut
+    }
 
     private class LoaderStub: PropertyListingsLoader {
         private let result: PropertyListingsLoader.Result

@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		2502454B263547300042D874 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2502454A263547300042D874 /* AppDelegate.swift */; };
 		2502454D263547300042D874 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2502454C263547300042D874 /* SceneDelegate.swift */; };
-		2502454F263547300042D874 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2502454E263547300042D874 /* ViewController.swift */; };
-		25024552263547300042D874 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25024550263547300042D874 /* Main.storyboard */; };
 		25024554263547310042D874 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25024553263547310042D874 /* Assets.xcassets */; };
 		25024557263547310042D874 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25024555263547310042D874 /* LaunchScreen.storyboard */; };
 		25024562263547310042D874 /* PropertyListingsLoaderWithFallbackCompositeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25024561263547310042D874 /* PropertyListingsLoaderWithFallbackCompositeTests.swift */; };
@@ -21,6 +19,7 @@
 		2521812F26354AE300438814 /* SeLogeriOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2521812B26354AE300438814 /* SeLogeriOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2521813726354C9900438814 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2521813626354C9900438814 /* SharedTestHelpers.swift */; };
 		2521813D263550A100438814 /* PropertyListingsLoaderWithFallbackComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2521813C263550A100438814 /* PropertyListingsLoaderWithFallbackComposite.swift */; };
+		2521814826355C0300438814 /* MainQueueDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2521814726355C0300438814 /* MainQueueDispatchDecorator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,8 +58,6 @@
 		25024547263547300042D874 /* SeLogerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeLogerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2502454A263547300042D874 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2502454C263547300042D874 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2502454E263547300042D874 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		25024551263547300042D874 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		25024553263547310042D874 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		25024556263547310042D874 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25024558263547310042D874 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -74,6 +71,7 @@
 		2521812B26354AE300438814 /* SeLogeriOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SeLogeriOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2521813626354C9900438814 /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 		2521813C263550A100438814 /* PropertyListingsLoaderWithFallbackComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListingsLoaderWithFallbackComposite.swift; sourceTree = "<group>"; };
+		2521814726355C0300438814 /* MainQueueDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueDispatchDecorator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,12 +127,11 @@
 			children = (
 				2502454A263547300042D874 /* AppDelegate.swift */,
 				2502454C263547300042D874 /* SceneDelegate.swift */,
-				2502454E263547300042D874 /* ViewController.swift */,
-				25024550263547300042D874 /* Main.storyboard */,
+				2521813C263550A100438814 /* PropertyListingsLoaderWithFallbackComposite.swift */,
 				25024553263547310042D874 /* Assets.xcassets */,
 				25024555263547310042D874 /* LaunchScreen.storyboard */,
 				25024558263547310042D874 /* Info.plist */,
-				2521813C263550A100438814 /* PropertyListingsLoaderWithFallbackComposite.swift */,
+				2521814726355C0300438814 /* MainQueueDispatchDecorator.swift */,
 			);
 			path = SeLogerApp;
 			sourceTree = "<group>";
@@ -281,7 +278,6 @@
 			files = (
 				25024557263547310042D874 /* LaunchScreen.storyboard in Resources */,
 				25024554263547310042D874 /* Assets.xcassets in Resources */,
-				25024552263547300042D874 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,8 +302,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2521814826355C0300438814 /* MainQueueDispatchDecorator.swift in Sources */,
 				2521813D263550A100438814 /* PropertyListingsLoaderWithFallbackComposite.swift in Sources */,
-				2502454F263547300042D874 /* ViewController.swift in Sources */,
 				2502454B263547300042D874 /* AppDelegate.swift in Sources */,
 				2502454D263547300042D874 /* SceneDelegate.swift in Sources */,
 			);
@@ -346,14 +342,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		25024550263547300042D874 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				25024551263547300042D874 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		25024555263547310042D874 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
