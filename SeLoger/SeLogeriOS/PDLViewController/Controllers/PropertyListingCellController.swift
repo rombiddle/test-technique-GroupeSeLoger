@@ -24,7 +24,7 @@ public final class PropertyListingCellController {
     func view(in tableView: UITableView) -> UITableViewCell {
         cell = tableView.dequeueReusableCell(withIdentifier: "PropertyListingCell") as? PropertyListingCell
         cell?.propertyTypeLabel.text = model.propertyType
-        cell?.priceLabel.text = String(model.price)
+        cell?.priceLabel.text = "\(model.price) €"
         cell?.cityLabel.text = model.city
         cell?.propertyImage?.image = nil
         loadImage()

@@ -33,12 +33,16 @@ public final class PDDViewController: UIViewController {
         
         propertyTypeLabel.text = model.propertyType
         propertyRoomsLabel.isHidden = model.rooms == nil
-        propertyRoomsLabel.text = model.rooms != nil ? "\(String(describing: model.rooms))" : ""
+        if let rooms = model.rooms {
+            propertyRoomsLabel.text = "\(rooms) rooms"
+        }
         propertyCityLabel.text = model.city
+        if let bedrooms = model.bedrooms {
+            propertyBedroomsLabel.text = "\(bedrooms) bedrooms"
+        }
         propertyBedroomsLabel.isHidden = model.bedrooms == nil
-        propertyBedroomsLabel.text = model.bedrooms != nil ? "\(String(describing: model.bedrooms))" : ""
-        propertyPriceLabel.text = "\(model.price)"
-        propertyAreaLabel.text = "\(model.area)"
+        propertyPriceLabel.text = "\(model.price) €"
+        propertyAreaLabel.text = "\(model.area) m2"
         
         if let url = model.url {
             imageLoader?.loadImageData(from: url, completion: { [weak self] result in
