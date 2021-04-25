@@ -33,7 +33,9 @@ final class AppDependencyContainer {
         
         let pdlViewController = PDLViewController.make()
         pdlViewController.refreshController?.propertyListingsLoader = PropertyListingsLoaderWithFallbackComposite(
-            primary: MainQueueDispatchDecorator(decoratee: remotePropertyListingsLoader),
+            primary: PropertyListingsLoaderCacheDecorator(
+                decoratee: MainQueueDispatchDecorator(decoratee: remotePropertyListingsLoader),
+                cache: localPropertyListingsLoader),
             fallback: MainQueueDispatchDecorator(decoratee: localPropertyListingsLoader)
         )
         pdlViewController.refreshController?.onRefresh = { [weak pdlViewController] propertyListings in

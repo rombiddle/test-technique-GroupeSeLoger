@@ -12,3 +12,10 @@ public protocol PropertyListingsLoader {
     
     func load(completion: @escaping (Result) -> Void)
 }
+
+public protocol PropertyListingsCache {
+    typealias Result = Swift.Result<Void, Error>
+    
+    func save(_ items: [PropertyListing], completion: @escaping (Result) -> Void)
+    func validateCache()
+}

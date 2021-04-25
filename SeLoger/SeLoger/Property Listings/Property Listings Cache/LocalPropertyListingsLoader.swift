@@ -15,8 +15,8 @@ public class LocalPropertyListingsLoader {
     }
 }
 
-extension LocalPropertyListingsLoader {
-    public typealias SaveResult = Result<Void, Error>
+extension LocalPropertyListingsLoader: PropertyListingsCache {
+    public typealias SaveResult = PropertyListingsCache.Result
 
     public func save(_ items: [PropertyListing], completion: @escaping (SaveResult) -> Void) {
         store.deleteCachedPropertyListings { [weak self] result in
@@ -38,6 +38,19 @@ extension LocalPropertyListingsLoader {
             completion(error)
         }
     }
+    
+    public func validateCache() {
+        store.retrieve { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .failure:
+                self.store.deleteCachedPropertyListings { _ in }
+            default:
+                break
+            }
+        }
+    }
 }
 
 extension LocalPropertyListingsLoader: PropertyListingsLoader {
@@ -53,21 +66,6 @@ extension LocalPropertyListingsLoader: PropertyListingsLoader {
 
             case let .success(propertyListings):
                 completion(.success(propertyListings.toModels()))
-            }
-        }
-    }
-}
-
-extension LocalPropertyListingsLoader {
-    public func validateCache() {
-        store.retrieve { [weak self] result in
-            guard let self = self else { return }
-            
-            switch result {
-            case .failure:
-                self.store.deleteCachedPropertyListings { _ in }
-            default:
-                break
             }
         }
     }
