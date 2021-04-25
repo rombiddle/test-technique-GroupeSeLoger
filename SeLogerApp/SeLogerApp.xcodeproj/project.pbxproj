@@ -13,12 +13,13 @@
 		25024552263547300042D874 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25024550263547300042D874 /* Main.storyboard */; };
 		25024554263547310042D874 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25024553263547310042D874 /* Assets.xcassets */; };
 		25024557263547310042D874 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25024555263547310042D874 /* LaunchScreen.storyboard */; };
-		25024562263547310042D874 /* SeLogerAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25024561263547310042D874 /* SeLogerAppTests.swift */; };
+		25024562263547310042D874 /* PropertyListingsLoaderWithFallbackCompositeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25024561263547310042D874 /* PropertyListingsLoaderWithFallbackCompositeTests.swift */; };
 		2502456D263547310042D874 /* SeLogerAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2502456C263547310042D874 /* SeLogerAppUITests.swift */; };
 		2521812C26354AE300438814 /* SeLoger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2521812A26354AE300438814 /* SeLoger.framework */; };
 		2521812D26354AE300438814 /* SeLoger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2521812A26354AE300438814 /* SeLoger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2521812E26354AE300438814 /* SeLogeriOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2521812B26354AE300438814 /* SeLogeriOS.framework */; };
 		2521812F26354AE300438814 /* SeLogeriOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2521812B26354AE300438814 /* SeLogeriOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2521813726354C9900438814 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2521813626354C9900438814 /* SharedTestHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,13 +64,14 @@
 		25024556263547310042D874 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25024558263547310042D874 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2502455D263547310042D874 /* SeLogerAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeLogerAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		25024561263547310042D874 /* SeLogerAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeLogerAppTests.swift; sourceTree = "<group>"; };
+		25024561263547310042D874 /* PropertyListingsLoaderWithFallbackCompositeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListingsLoaderWithFallbackCompositeTests.swift; sourceTree = "<group>"; };
 		25024563263547310042D874 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25024568263547310042D874 /* SeLogerAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeLogerAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2502456C263547310042D874 /* SeLogerAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeLogerAppUITests.swift; sourceTree = "<group>"; };
 		2502456E263547310042D874 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2521812A26354AE300438814 /* SeLoger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SeLoger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2521812B26354AE300438814 /* SeLogeriOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SeLogeriOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2521813626354C9900438814 /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,7 +139,8 @@
 		25024560263547310042D874 /* SeLogerAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				25024561263547310042D874 /* SeLogerAppTests.swift */,
+				2521813526354C8800438814 /* Helpers */,
+				25024561263547310042D874 /* PropertyListingsLoaderWithFallbackCompositeTests.swift */,
 				25024563263547310042D874 /* Info.plist */,
 			);
 			path = SeLogerAppTests;
@@ -159,6 +162,14 @@
 				2521812B26354AE300438814 /* SeLogeriOS.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2521813526354C8800438814 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2521813626354C9900438814 /* SharedTestHelpers.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,7 +313,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25024562263547310042D874 /* SeLogerAppTests.swift in Sources */,
+				2521813726354C9900438814 /* SharedTestHelpers.swift in Sources */,
+				25024562263547310042D874 /* PropertyListingsLoaderWithFallbackCompositeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
