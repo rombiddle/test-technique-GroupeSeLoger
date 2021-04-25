@@ -1,0 +1,592 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2502454B263547300042D874 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2502454A263547300042D874 /* AppDelegate.swift */; };
+		2502454D263547300042D874 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2502454C263547300042D874 /* SceneDelegate.swift */; };
+		2502454F263547300042D874 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2502454E263547300042D874 /* ViewController.swift */; };
+		25024552263547300042D874 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25024550263547300042D874 /* Main.storyboard */; };
+		25024554263547310042D874 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25024553263547310042D874 /* Assets.xcassets */; };
+		25024557263547310042D874 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25024555263547310042D874 /* LaunchScreen.storyboard */; };
+		25024562263547310042D874 /* SeLogerAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25024561263547310042D874 /* SeLogerAppTests.swift */; };
+		2502456D263547310042D874 /* SeLogerAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2502456C263547310042D874 /* SeLogerAppUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2502455E263547310042D874 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2502453F263547300042D874 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 25024546263547300042D874;
+			remoteInfo = SeLogerApp;
+		};
+		25024569263547310042D874 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2502453F263547300042D874 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 25024546263547300042D874;
+			remoteInfo = SeLogerApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		25024547263547300042D874 /* SeLogerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeLogerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2502454A263547300042D874 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2502454C263547300042D874 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		2502454E263547300042D874 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		25024551263547300042D874 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		25024553263547310042D874 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		25024556263547310042D874 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		25024558263547310042D874 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2502455D263547310042D874 /* SeLogerAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeLogerAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		25024561263547310042D874 /* SeLogerAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeLogerAppTests.swift; sourceTree = "<group>"; };
+		25024563263547310042D874 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		25024568263547310042D874 /* SeLogerAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeLogerAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2502456C263547310042D874 /* SeLogerAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeLogerAppUITests.swift; sourceTree = "<group>"; };
+		2502456E263547310042D874 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		25024544263547300042D874 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2502455A263547310042D874 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25024565263547310042D874 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2502453E263547300042D874 = {
+			isa = PBXGroup;
+			children = (
+				25024549263547300042D874 /* SeLogerApp */,
+				25024560263547310042D874 /* SeLogerAppTests */,
+				2502456B263547310042D874 /* SeLogerAppUITests */,
+				25024548263547300042D874 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		25024548263547300042D874 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				25024547263547300042D874 /* SeLogerApp.app */,
+				2502455D263547310042D874 /* SeLogerAppTests.xctest */,
+				25024568263547310042D874 /* SeLogerAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		25024549263547300042D874 /* SeLogerApp */ = {
+			isa = PBXGroup;
+			children = (
+				2502454A263547300042D874 /* AppDelegate.swift */,
+				2502454C263547300042D874 /* SceneDelegate.swift */,
+				2502454E263547300042D874 /* ViewController.swift */,
+				25024550263547300042D874 /* Main.storyboard */,
+				25024553263547310042D874 /* Assets.xcassets */,
+				25024555263547310042D874 /* LaunchScreen.storyboard */,
+				25024558263547310042D874 /* Info.plist */,
+			);
+			path = SeLogerApp;
+			sourceTree = "<group>";
+		};
+		25024560263547310042D874 /* SeLogerAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				25024561263547310042D874 /* SeLogerAppTests.swift */,
+				25024563263547310042D874 /* Info.plist */,
+			);
+			path = SeLogerAppTests;
+			sourceTree = "<group>";
+		};
+		2502456B263547310042D874 /* SeLogerAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2502456C263547310042D874 /* SeLogerAppUITests.swift */,
+				2502456E263547310042D874 /* Info.plist */,
+			);
+			path = SeLogerAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		25024546263547300042D874 /* SeLogerApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25024571263547310042D874 /* Build configuration list for PBXNativeTarget "SeLogerApp" */;
+			buildPhases = (
+				25024543263547300042D874 /* Sources */,
+				25024544263547300042D874 /* Frameworks */,
+				25024545263547300042D874 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SeLogerApp;
+			productName = SeLogerApp;
+			productReference = 25024547263547300042D874 /* SeLogerApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2502455C263547310042D874 /* SeLogerAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25024574263547310042D874 /* Build configuration list for PBXNativeTarget "SeLogerAppTests" */;
+			buildPhases = (
+				25024559263547310042D874 /* Sources */,
+				2502455A263547310042D874 /* Frameworks */,
+				2502455B263547310042D874 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2502455F263547310042D874 /* PBXTargetDependency */,
+			);
+			name = SeLogerAppTests;
+			productName = SeLogerAppTests;
+			productReference = 2502455D263547310042D874 /* SeLogerAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		25024567263547310042D874 /* SeLogerAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25024577263547310042D874 /* Build configuration list for PBXNativeTarget "SeLogerAppUITests" */;
+			buildPhases = (
+				25024564263547310042D874 /* Sources */,
+				25024565263547310042D874 /* Frameworks */,
+				25024566263547310042D874 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2502456A263547310042D874 /* PBXTargetDependency */,
+			);
+			name = SeLogerAppUITests;
+			productName = SeLogerAppUITests;
+			productReference = 25024568263547310042D874 /* SeLogerAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2502453F263547300042D874 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					25024546263547300042D874 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					2502455C263547310042D874 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 25024546263547300042D874;
+					};
+					25024567263547310042D874 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 25024546263547300042D874;
+					};
+				};
+			};
+			buildConfigurationList = 25024542263547300042D874 /* Build configuration list for PBXProject "SeLogerApp" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2502453E263547300042D874;
+			productRefGroup = 25024548263547300042D874 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				25024546263547300042D874 /* SeLogerApp */,
+				2502455C263547310042D874 /* SeLogerAppTests */,
+				25024567263547310042D874 /* SeLogerAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		25024545263547300042D874 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25024557263547310042D874 /* LaunchScreen.storyboard in Resources */,
+				25024554263547310042D874 /* Assets.xcassets in Resources */,
+				25024552263547300042D874 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2502455B263547310042D874 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25024566263547310042D874 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		25024543263547300042D874 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2502454F263547300042D874 /* ViewController.swift in Sources */,
+				2502454B263547300042D874 /* AppDelegate.swift in Sources */,
+				2502454D263547300042D874 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25024559263547310042D874 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25024562263547310042D874 /* SeLogerAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25024564263547310042D874 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2502456D263547310042D874 /* SeLogerAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2502455F263547310042D874 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 25024546263547300042D874 /* SeLogerApp */;
+			targetProxy = 2502455E263547310042D874 /* PBXContainerItemProxy */;
+		};
+		2502456A263547310042D874 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 25024546263547300042D874 /* SeLogerApp */;
+			targetProxy = 25024569263547310042D874 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		25024550263547300042D874 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				25024551263547300042D874 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		25024555263547310042D874 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				25024556263547310042D874 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2502456F263547310042D874 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		25024570263547310042D874 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		25024572263547310042D874 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SeLogerApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = rb.seloger.app.SeLogerApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		25024573263547310042D874 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SeLogerApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = rb.seloger.app.SeLogerApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		25024575263547310042D874 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SeLogerAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = rb.seloger.app.SeLogerAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SeLogerApp.app/SeLogerApp";
+			};
+			name = Debug;
+		};
+		25024576263547310042D874 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SeLogerAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = rb.seloger.app.SeLogerAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SeLogerApp.app/SeLogerApp";
+			};
+			name = Release;
+		};
+		25024578263547310042D874 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SeLogerAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = rb.seloger.app.SeLogerAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SeLogerApp;
+			};
+			name = Debug;
+		};
+		25024579263547310042D874 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SeLogerAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = rb.seloger.app.SeLogerAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SeLogerApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		25024542263547300042D874 /* Build configuration list for PBXProject "SeLogerApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2502456F263547310042D874 /* Debug */,
+				25024570263547310042D874 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		25024571263547310042D874 /* Build configuration list for PBXNativeTarget "SeLogerApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25024572263547310042D874 /* Debug */,
+				25024573263547310042D874 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		25024574263547310042D874 /* Build configuration list for PBXNativeTarget "SeLogerAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25024575263547310042D874 /* Debug */,
+				25024576263547310042D874 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		25024577263547310042D874 /* Build configuration list for PBXNativeTarget "SeLogerAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25024578263547310042D874 /* Debug */,
+				25024579263547310042D874 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2502453F263547300042D874 /* Project object */;
+}
