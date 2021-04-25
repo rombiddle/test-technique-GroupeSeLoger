@@ -8,11 +8,11 @@
 import UIKit
 import SeLoger
 
-final class PDLRefreshViewController: NSObject {
+public final class PDLRefreshViewController: NSObject {
     @IBOutlet var view: UIRefreshControl?
     
-    var propertyListingsLoader: PropertyListingsLoader?
-    var onRefresh: (([PropertyListing]) -> Void)?
+    public var propertyListingsLoader: PropertyListingsLoader?
+    public var onRefresh: (([PropertyListing]) -> Void)?
     
     @IBAction func refresh() {
         view?.beginRefreshing()

@@ -20,6 +20,7 @@
 		2521813726354C9900438814 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2521813626354C9900438814 /* SharedTestHelpers.swift */; };
 		2521813D263550A100438814 /* PropertyListingsLoaderWithFallbackComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2521813C263550A100438814 /* PropertyListingsLoaderWithFallbackComposite.swift */; };
 		2521814826355C0300438814 /* MainQueueDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2521814726355C0300438814 /* MainQueueDispatchDecorator.swift */; };
+		252181D726359E2D00438814 /* AppDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252181D626359E2D00438814 /* AppDependencyContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		2521813626354C9900438814 /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 		2521813C263550A100438814 /* PropertyListingsLoaderWithFallbackComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListingsLoaderWithFallbackComposite.swift; sourceTree = "<group>"; };
 		2521814726355C0300438814 /* MainQueueDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueDispatchDecorator.swift; sourceTree = "<group>"; };
+		252181D626359E2D00438814 /* AppDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencyContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 		25024549263547300042D874 /* SeLogerApp */ = {
 			isa = PBXGroup;
 			children = (
+				252181D626359E2D00438814 /* AppDependencyContainer.swift */,
 				2502454A263547300042D874 /* AppDelegate.swift */,
 				2502454C263547300042D874 /* SceneDelegate.swift */,
 				2521813C263550A100438814 /* PropertyListingsLoaderWithFallbackComposite.swift */,
@@ -306,6 +309,7 @@
 				2521813D263550A100438814 /* PropertyListingsLoaderWithFallbackComposite.swift in Sources */,
 				2502454B263547300042D874 /* AppDelegate.swift in Sources */,
 				2502454D263547300042D874 /* SceneDelegate.swift in Sources */,
+				252181D726359E2D00438814 /* AppDependencyContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

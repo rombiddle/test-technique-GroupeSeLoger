@@ -13,29 +13,27 @@ import RealmSwift
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var injectionContainer: AppDependencyContainer?
+    
+    private lazy var httpClient: HTTPClient = {
+        URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
+    }()
+    
+    private lazy var store: RealmPropertyListingsStore = {
+        let localURL = Bundle.main.url(forResource: "SeLoger", withExtension: "realm")
+        let configuration = Realm.Configuration(fileURL: localURL)
+        return RealmPropertyListingsStore(configuration: configuration)
+    }()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
 
         window = UIWindow(windowScene: scene)
+        injectionContainer = AppDependencyContainer(httpClient: httpClient, store: store)
         
-        let remoteURL = URL(string: "https://gsl-apps-technical-test.dignp.com/listings.json")!
-        let remoteClient = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
-        let remotePropertyListingsLoader = RemotePropertyListingsLoader(url: remoteURL, client: remoteClient)
-        let remoteImageLoader = RemotePropertyListingsImageLoader(client: remoteClient)
-        
-        let localURL = Bundle.main.url(forResource: "SeLoger", withExtension: "realm")
-        let realmConf = Realm.Configuration(fileURL: localURL)
-        let localStore = RealmPropertyListingsStore(configuration: realmConf)
-        let localPropertyListingsLoader = LocalPropertyListingsLoader(store: localStore)
-        
-        window?.rootViewController = PropertyListingsUIComposer.propertyListingsComposedWith(
-            propertyListingsLoader: PropertyListingsLoaderWithFallbackComposite(
-                primary: MainQueueDispatchDecorator(decoratee: remotePropertyListingsLoader),
-                fallback: MainQueueDispatchDecorator(decoratee: localPropertyListingsLoader)),
-            imageLoader: MainQueueDispatchDecorator(decoratee: remoteImageLoader))
+        window?.rootViewController = injectionContainer?.makePDLViewController() ?? UIViewController()
+
         window?.makeKeyAndVisible()
     }
 
 }
-

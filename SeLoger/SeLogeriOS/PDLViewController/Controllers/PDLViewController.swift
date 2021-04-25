@@ -9,9 +9,9 @@ import UIKit
 import SeLoger
 
 public final class PDLViewController: UITableViewController, UITableViewDataSourcePrefetching {
-    @IBOutlet var refreshController: PDLRefreshViewController?
+    @IBOutlet public var refreshController: PDLRefreshViewController?
 
-    var tableModel = [PropertyListingCellController]() {
+    public var tableModel = [PropertyListingCellController]() {
         didSet { tableView.reloadData() }
     }
     
@@ -34,5 +34,9 @@ public final class PDLViewController: UITableViewController, UITableViewDataSour
         indexPaths.forEach { indexPath in
             tableModel[indexPath.row].preload()
         }
+    }
+    
+    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableModel[indexPath.row].select()
     }
 }

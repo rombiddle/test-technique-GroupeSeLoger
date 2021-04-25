@@ -34,8 +34,8 @@ extension MainQueueDispatchDecorator: PropertyListingsLoader where T == Property
     }
 }
 
-extension MainQueueDispatchDecorator: PropertyListingsImageLoader where T == PropertyListingsImageLoader {
-    public func loadImageData(from url: URL, completion: @escaping (PropertyListingsImageLoader.Result) -> Void) {
+extension MainQueueDispatchDecorator: PropertyListingImageLoader where T == PropertyListingImageLoader {
+    public func loadImageData(from url: URL, completion: @escaping (PropertyListingImageLoader.Result) -> Void) {
         decoratee.loadImageData(from: url) { [weak self] result in
             self?.dispatch {
                 completion(result)
