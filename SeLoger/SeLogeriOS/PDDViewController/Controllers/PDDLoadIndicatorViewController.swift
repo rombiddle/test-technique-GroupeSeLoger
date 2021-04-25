@@ -15,7 +15,7 @@ public final class PDDLoadIndicatorViewController: NSObject {
     public var onLoadedPropertyListing: ((PropertyListing) -> Void)?
     
     func load() {
-        view.startAnimating()
+        startLoader()
         propertyListingDetailLoader?.load() { [weak self] result in
             self?.handle(result)
         }
@@ -25,9 +25,20 @@ public final class PDDLoadIndicatorViewController: NSObject {
         switch result {
         case let .success(propertyListing):
             onLoadedPropertyListing?(propertyListing)
+            stopLoader()
+            
         case .failure:
             break
         }
+    }
+    
+    private func startLoader() {
         view?.stopAnimating()
+        view?.isHidden = false
+    }
+    
+    private func stopLoader() {
+        view?.stopAnimating()
+        view?.isHidden = true
     }
 }

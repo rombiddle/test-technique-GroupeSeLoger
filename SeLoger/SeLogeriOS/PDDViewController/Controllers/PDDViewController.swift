@@ -10,6 +10,7 @@ import SeLoger
 
 public final class PDDViewController: UIViewController {
     @IBOutlet weak var propertyImage: UIImageView!
+    @IBOutlet weak var propertyTypeLabel: UILabel!
     @IBOutlet weak var propertyRoomsLabel: UILabel!
     @IBOutlet weak var propertyBedroomsLabel: UILabel!
     @IBOutlet weak var propertyCityLabel: UILabel!
@@ -18,6 +19,8 @@ public final class PDDViewController: UIViewController {
     @IBOutlet public weak var loadIndicatorController: PDDLoadIndicatorViewController?
     
     private(set) var propertyListing: PropertyListing?
+    
+    public var imageLoader: PropertyListingImageLoader?
 
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,20 +29,22 @@ public final class PDDViewController: UIViewController {
     }
     
     public func loadedPropertyListing(model: PropertyListing) {
-        self.propertyListing = model
+        propertyListing = model
         
-        if let nbOfRoom = model.rooms {
-            propertyRoomsLabel.text = "\(nbOfRoom)"
-        }
+        propertyTypeLabel.text = model.propertyType
+        propertyRoomsLabel.isHidden = model.rooms == nil
+        propertyRoomsLabel.text = model.rooms != nil ? "\(String(describing: model.rooms))" : ""
         propertyCityLabel.text = model.city
-        if let nbOfBedrooms = model.bedrooms {
-            propertyBedroomsLabel.text = "\(nbOfBedrooms)"
-        }
+        propertyBedroomsLabel.isHidden = model.bedrooms == nil
+        propertyBedroomsLabel.text = model.bedrooms != nil ? "\(String(describing: model.bedrooms))" : ""
         propertyPriceLabel.text = "\(model.price)"
         propertyAreaLabel.text = "\(model.area)"
         
         if let url = model.url {
-            
+            imageLoader?.loadImageData(from: url, completion: { [weak self] result in
+                let data = try? result.get()
+                self?.propertyImage.image = data.map(UIImage.init) ?? nil
+            })
         }
     }
 }

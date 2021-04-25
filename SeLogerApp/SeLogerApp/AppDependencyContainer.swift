@@ -53,10 +53,13 @@ final class AppDependencyContainer {
     private func showPropertyDetail(for propertyId: Int) {
         let pddViewController = PDDViewController.make()
         let remoteURL = URL(string: "https://gsl-apps-technical-test.dignp.com/listings/\(propertyId).json")!
-        pddViewController.loadIndicatorController?.propertyListingDetailLoader = RemotePropertyListingDetailLoader(url: remoteURL, client: httpClient)
+        let remotePropertyListingDetailLoader = RemotePropertyListingDetailLoader(url: remoteURL, client: httpClient)
+        pddViewController.loadIndicatorController?.propertyListingDetailLoader = MainQueueDispatchDecorator(decoratee: remotePropertyListingDetailLoader)
         pddViewController.loadIndicatorController?.onLoadedPropertyListing = { [weak pddViewController] propertyListing in
             pddViewController?.loadedPropertyListing(model: propertyListing)
         }
+        let remotePropertyListingsImageLoader = RemotePropertyListingsImageLoader(client: httpClient)
+        pddViewController.imageLoader = MainQueueDispatchDecorator(decoratee: remotePropertyListingsImageLoader)
         nav.pushViewController(pddViewController, animated: true)
     }
 }

@@ -318,6 +318,7 @@
 				25C2CD5D2631D8DB0008CAB1 /* URLSessionHTTPClient.swift */,
 				25C2CD422631C3070008CAB1 /* HTTPClient.swift */,
 				25C2CBAF26316B9C0008CAB1 /* PropertyListing.swift */,
+				250244F02634C0D60042D874 /* RemotePropertyListingsImageLoader.swift */,
 			);
 			path = "Property Listing Shared";
 			sourceTree = "<group>";
@@ -383,7 +384,6 @@
 			children = (
 				25C2CBBF263170670008CAB1 /* RemotePropertyListingsLoader.swift */,
 				25C2CD3C2631C14C0008CAB1 /* PropertyListingsMapper.swift */,
-				250244F02634C0D60042D874 /* RemotePropertyListingsImageLoader.swift */,
 			);
 			path = "Property Listings API";
 			sourceTree = "<group>";

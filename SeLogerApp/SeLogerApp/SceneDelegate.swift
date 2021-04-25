@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }()
     
     private lazy var store: RealmPropertyListingsStore = {
-        let localURL = Bundle.main.url(forResource: "SeLoger", withExtension: "realm")
+        let localURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("SeLoger.realm")
         let configuration = Realm.Configuration(fileURL: localURL)
         return RealmPropertyListingsStore(configuration: configuration)
     }()
