@@ -7,42 +7,43 @@
 
 import XCTest
 import SeLoger
-
-class PropertyListingsLoaderWithFallbackComposite: PropertyListingsLoader {
-     private let primary: PropertyListingsLoader
-
-     init(primary: PropertyListingsLoader, fallback: PropertyListingsLoader) {
-         self.primary = primary
-     }
-
-     func load(completion: @escaping (PropertyListingsLoader.Result) -> Void) {
-         primary.load(completion: completion)
-     }
- }
+import SeLogerApp
 
 class PropertyListingsLoaderWithFallbackCompositeTests: XCTestCase {
 
-    func test_load_deliversPrimaryFeedOnPrimaryLoaderSuccess() {
+    func test_load_deliversPrimaryPropertyListingsOnPrimaryLoaderSuccess() {
         let primaryPropertyListing = uniqueItems().models
         let fallbackPropertyListing = uniqueItems().models
-        let primaryLoader = LoaderStub(result: .success(primaryPropertyListing))
-        let fallbackLoader = LoaderStub(result: .success(fallbackPropertyListing))
-        let sut = PropertyListingsLoaderWithFallbackComposite(primary: primaryLoader, fallback: fallbackLoader)
+        let sut = makeSUT(primaryResult: .success(primaryPropertyListing), fallbackResult: .success(fallbackPropertyListing))
 
-        let exp = expectation(description: "Wait for load completion")
-        sut.load { result in
-            switch result {
-            case let .success(receivedFeed):
-                XCTAssertEqual(receivedFeed, primaryPropertyListing)
+        expect(sut, toCompleteWith: .success(primaryPropertyListing))
 
-            case .failure:
-                XCTFail("Expected successful load feed result, got \(result) instead")
-            }
-
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 1)
     }
+    
+    func test_load_deliversFallbackPropertyListingsOnPrimaryLoaderFailure() {
+        let fallbackPropertyListing = uniqueItems().models
+        let sut = makeSUT(primaryResult: .failure(anyNSError()), fallbackResult: .success(fallbackPropertyListing))
+
+        expect(sut, toCompleteWith: .success(fallbackPropertyListing))
+    }
+    
+    func test_load_deliversErrorOnBothPrimaryAndFallbackLoaderFailure() {
+        let sut = makeSUT(primaryResult: .failure(anyNSError()), fallbackResult: .failure(anyNSError()))
+
+        expect(sut, toCompleteWith: .failure(anyNSError()))
+    }
+    
+    // MARL: - Helpers
+    
+    private func makeSUT(primaryResult: PropertyListingsLoader.Result, fallbackResult: PropertyListingsLoader.Result, file: StaticString = #file, line: UInt = #line) -> PropertyListingsLoader {
+             let primaryLoader = LoaderStub(result: primaryResult)
+             let fallbackLoader = LoaderStub(result: fallbackResult)
+             let sut = PropertyListingsLoaderWithFallbackComposite(primary: primaryLoader, fallback: fallbackLoader)
+             trackForMemoryLeaks(primaryLoader, file: file, line: line)
+             trackForMemoryLeaks(fallbackLoader, file: file, line: line)
+             trackForMemoryLeaks(sut, file: file, line: line)
+             return sut
+         }
 
     private class LoaderStub: PropertyListingsLoader {
         private let result: PropertyListingsLoader.Result
@@ -54,6 +55,27 @@ class PropertyListingsLoaderWithFallbackCompositeTests: XCTestCase {
         func load(completion: @escaping (PropertyListingsLoader.Result) -> Void) {
             completion(result)
         }
+    }
+    
+    private func expect(_ sut: PropertyListingsLoader, toCompleteWith expectedResult: PropertyListingsLoader.Result, file: StaticString = #file, line: UInt = #line) {
+        let exp = expectation(description: "Wait for load completion")
+
+        sut.load { receivedResult in
+            switch (receivedResult, expectedResult) {
+            case let (.success(receivedPropertyListings), .success(expectedPropertyListings)):
+                XCTAssertEqual(receivedPropertyListings, expectedPropertyListings, file: file, line: line)
+
+            case (.failure, .failure):
+                break
+
+            default:
+                XCTFail("Expected \(expectedResult), got \(receivedResult) instead", file: file, line: line)
+            }
+
+            exp.fulfill()
+        }
+
+        wait(for: [exp], timeout: 1.0)
     }
 
 }
