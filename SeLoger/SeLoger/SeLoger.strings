@@ -1,0 +1,14 @@
+/* 
+  SeLoger.strings
+  SeLoger
+
+  Created by Romain Brunie on 26/04/2021.
+  
+*/
+
+"NO_DATA" = "No data";
+"NO_INTERNET_CONNEXION" = "No internet connexion";
+"X_€" = "%@ €";
+"X_M2" = "%@ m²";
+"X_BEDROOMS" = "%@ bedrooms";
+"X_ROOMS" = "%@ rooms";

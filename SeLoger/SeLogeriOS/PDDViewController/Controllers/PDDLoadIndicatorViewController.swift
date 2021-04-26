@@ -29,7 +29,7 @@ public final class PDDLoadIndicatorViewController: NSObject {
             onLoadedPropertyListing?(propertyListing)
             
         case .failure:
-            errorLabel.text = "No Data"
+            errorLabel.text = "NO_DATA".local()
         }
         stopLoader()
     }

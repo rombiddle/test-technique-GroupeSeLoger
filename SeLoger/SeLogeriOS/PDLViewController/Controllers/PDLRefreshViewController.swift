@@ -27,13 +27,13 @@ public final class PDLRefreshViewController: NSObject {
         switch result {
         case let .success(propertyListings):
             if propertyListings.isEmpty {
-                errorView?.show(message: "No data")
+                errorView?.show(message: "NO_DATA".local())
             } else {
                 onRefresh?(propertyListings)
             }
             
         case .failure:
-            errorView?.show(message: "No internet connexion")
+            errorView?.show(message: "NO_INTERNET_CONNEXION".local())
         }
         view?.endRefreshing()
     }
