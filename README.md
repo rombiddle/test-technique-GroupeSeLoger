@@ -27,7 +27,7 @@
 
 ## Property Listings Feature Specs
 
-Story### : User requests to see the property listings
+### : User requests to see the property listings
 
 ### Narrative #1
 ```
