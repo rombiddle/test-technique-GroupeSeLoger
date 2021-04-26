@@ -29,7 +29,7 @@ extension PDLViewControlleriOSTests {
             completions[index](.failure(error))
         }
         
-        // MARK: - PropertyListingsImageLoader
+        // MARK: - PropertyListingImageLoader
         
         private var imageRequests = [(url: URL, completion: (PropertyListingImageLoader.Result) -> Void)]()
         

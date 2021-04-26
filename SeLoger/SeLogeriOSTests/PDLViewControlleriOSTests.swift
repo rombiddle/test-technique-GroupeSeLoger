@@ -173,7 +173,6 @@ class PDLViewControlleriOSTests: XCTestCase {
                                                      selection: { _ in })
             }
         }
-//        let sut = AppDepe.propertyListingsComposedWith(propertyListingsLoader: loader, imageLoader: loader)
         trackForMemoryLeaks(loader, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, loader)

@@ -1,5 +1,5 @@
 //
-//  PropertyListingsImageLoader.swift
+//  PropertyListingImageLoader.swift
 //  SeLoger
 //
 //  Created by Romain Brunie on 24/04/2021.
