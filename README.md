@@ -11,7 +11,7 @@
 - L'UI n'est pas la partie que j'ai travaillé le plus sur l'app
 
 ### Arhitecture
-- J'ai utilisé MVC pour la partie achitecture de l'UI (MVVM ou MVP peuvent être utilisé pour ajouter une `Prensentation Layer`)
+- J'ai utilisé MVC pour la partie achitecture de l'UI (MVVM ou MVP peuvent être utilisé pour ajouter une `Prensentation Layer`). Le `Single Responsibility Principle`s est mis en avant.
 - Pour l'architecture globale de l'app, c'est une architecture modulaire (je sépare les features en module)
 	-	À l'intérieur de chaque module, je construis le code afin qu'il respoecte les principes SOLID
 
