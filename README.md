@@ -1,11 +1,38 @@
 # Test technique - Groupe SeLoger
 
+### CI - GitHub Actions
 ![](https://github.com/rombiddle/test-technique-GroupeSeLoger/workflows/CI-macOS/badge.svg)
 ![](https://github.com/rombiddle/test-technique-GroupeSeLoger/workflows/CI-macOS-End-to-End/badge.svg)
+![](https://github.com/rombiddle/test-technique-GroupeSeLoger/workflows/CI-iOS/badge.svg)
 
-## Property Listings Feature Specs
+### Librairie utilisé
+- Realm avec SPM
 
-### Story: User requests to see the property listings
+### UI
+- L'UI n'est pas la partie que j'ai travaillé le plus sur l'app
+
+### Arhitecture
+- J'ai utilisé MVC pour la partie achitecture de l'UI (MVVM ou MVP peuvent être utilisé pour ajouter une `Prensentation Layer`). Le `Single Responsibility Principle` est mis en avant.
+- Pour l'architecture globale de l'app, c'est une architecture modulaire (je sépare les features en module)
+	-	À l'intérieur de chaque module, je construis le code afin qu'il respecte les principes SOLID
+
+### Tests
+- J'ai réalisé des tests unitaires pour la feature de la page des annonces immobilières en `TDD`
+- Il me manque des test unitaires pour:
+	- la feature avec la page de détail de l'annonce immobilière
+	- les localizables pour vérifier que chaque clé a une traduction en fonction de la langue
+- Il me manque des tests:
+	- d'intégration (Composition root)
+	- d'acceptance (UI test)
+	- Snapshot test (Dark/Light mode)
+
+### Injection de dépendance
+- j'utilise le pattern `Composition Root` où j'instancie les différents modules depuis le `SceneDelegate` via un container.
+- Les frameworks utilisés (URLSession et Realm), la navigation et le threading sont injectés depuis le container car ce sont des détails d'implémentation.
+
+## Property Listings Feature Specs (BDD)
+
+### Story : User requests to see the property listings
 
 ### Narrative #1
 ```
@@ -241,7 +268,7 @@ GET /listings.json
 
 ---
 
-## Property Detail Feature Specs
+## Property Detail Feature  (BDD)
 
 ### Story: User requests to see Property Details
 
@@ -259,9 +286,7 @@ So I can see more information about the property
 Given the user has connectivity
  When the user requests to see more information on a property
  Then the app should display all informations for that property
-```
 
-```
 Given the user doesn't have connectivity
  When the user requests to see more information on a property
  Then the app should display an error message

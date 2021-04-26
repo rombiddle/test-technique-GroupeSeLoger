@@ -7,7 +7,7 @@
 
 import Foundation
 
-public final class RemotePropertyListingsImageLoader: PropertyListingsImageLoader {
+public final class RemotePropertyListingsImageLoader: PropertyListingImageLoader {
     private let client: HTTPClient
 
     public init(client: HTTPClient) {
@@ -19,7 +19,7 @@ public final class RemotePropertyListingsImageLoader: PropertyListingsImageLoade
         case invalidData
     }
     
-    public func loadImageData(from url: URL, completion: @escaping (PropertyListingsImageLoader.Result) -> Void) {
+    public func loadImageData(from url: URL, completion: @escaping (PropertyListingImageLoader.Result) -> Void) {
         client.get(from: url) { [weak self] result in
             guard self != nil else { return }
             

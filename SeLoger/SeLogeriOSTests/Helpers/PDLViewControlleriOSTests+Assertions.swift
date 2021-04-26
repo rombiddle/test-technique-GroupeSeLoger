@@ -30,7 +30,7 @@ extension PDLViewControlleriOSTests {
 
         XCTAssertEqual(cell.propertyTypeText, property.propertyType, "Expected type text to be \(String(describing: property.propertyType)) for property listing  view at index (\(index))", file: file, line: line)
 
-        XCTAssertEqual(cell.priceText, String(property.price), "Expected price text to be \(String(describing: property.price)) for property listing  view at index (\(index))", file: file, line: line)
+        XCTAssertEqual(cell.priceText, String(format: "X_€".local(), String(property.price)), "Expected price text to be \(String(describing: property.price)) for property listing  view at index (\(index))", file: file, line: line)
 
         XCTAssertEqual(cell.cityText, property.city, "Expected city text to be \(String(describing: property.city)) for property listing view at index (\(index)", file: file, line: line)
     }

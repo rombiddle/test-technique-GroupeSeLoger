@@ -16,4 +16,4 @@ jobs:
     - name: Xcode version
       run: /usr/bin/xcodebuild -version
     - name: Build and Test
-      run: xcodebuild test -project SeLoger/SeLoger.xcodeproj -scheme "CI_macOSEndToEndTests" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -sdk macosx -destination "platform=macOS" ONLY_ACTIVE_ARCH=YES
+      run: xcodebuild test -project SeLoger/SeLoger.xcodeproj -scheme "CI_macOSEndToEndTests" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -sdk macosx -destination "platform=macOS" ONLY_ACTIVE_ARCH=YES SWIFT_TREAT_WARNINGS_AS_ERRORS=YES

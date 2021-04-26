@@ -9,20 +9,22 @@ import Foundation
 import UIKit
 import SeLoger
 
-final class PropertyListingCellController {
+public final class PropertyListingCellController {
     private let model: PropertyListing
     private var cell: PropertyListingCell?
-    private let imageLoader: PropertyListingsImageLoader
+    private let imageLoader: PropertyListingImageLoader
+    public var selection: (Int) -> Void
     
-    init(model: PropertyListing, imageLoader: PropertyListingsImageLoader) {
+    public init(model: PropertyListing, imageLoader: PropertyListingImageLoader, selection: @escaping (Int) -> Void) {
         self.model = model
         self.imageLoader = imageLoader
+        self.selection = selection
     }
     
     func view(in tableView: UITableView) -> UITableViewCell {
         cell = tableView.dequeueReusableCell(withIdentifier: "PropertyListingCell") as? PropertyListingCell
         cell?.propertyTypeLabel.text = model.propertyType
-        cell?.priceLabel.text = String(model.price)
+        cell?.priceLabel.text = String(format: "X_€".local(), String(model.price))
         cell?.cityLabel.text = model.city
         cell?.propertyImage?.image = nil
         loadImage()
@@ -40,5 +42,9 @@ final class PropertyListingCellController {
                 cell?.propertyImage.image = data.map(UIImage.init) ?? nil
             })
         }
+    }
+    
+    func select() {
+        selection(model.id)
     }
 }

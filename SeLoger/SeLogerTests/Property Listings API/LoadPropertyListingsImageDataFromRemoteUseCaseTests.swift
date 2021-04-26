@@ -68,7 +68,7 @@ class LoadPropertyListingsImageDataFromRemoteUseCaseTests: XCTestCase {
         let client = HTTPClientSpy()
         var sut: RemotePropertyListingsImageLoader? = RemotePropertyListingsImageLoader(client: client)
 
-        var capturedResults = [PropertyListingsImageLoader.Result]()
+        var capturedResults = [PropertyListingImageLoader.Result]()
         _ = sut?.loadImageData(from: anyURL()) { capturedResults.append($0) }
 
         sut = nil
@@ -87,7 +87,7 @@ class LoadPropertyListingsImageDataFromRemoteUseCaseTests: XCTestCase {
         return (sut, client)
     }
     
-    private func expect(_ sut: RemotePropertyListingsImageLoader, toCompleteWith expectedResult: PropertyListingsImageLoader.Result, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+    private func expect(_ sut: RemotePropertyListingsImageLoader, toCompleteWith expectedResult: PropertyListingImageLoader.Result, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
         let url = URL(string: "https://a-given-url.com")!
         let exp = expectation(description: "Wait for load completion")
 

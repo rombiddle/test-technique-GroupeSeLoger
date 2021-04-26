@@ -9,7 +9,7 @@ import Foundation
 import SeLoger
 
 extension PDLViewControlleriOSTests {
-    class LoaderSpy: PropertyListingsLoader, PropertyListingsImageLoader {
+    class LoaderSpy: PropertyListingsLoader, PropertyListingImageLoader {
         private var completions = [(PropertyListingsLoader.Result) -> Void]()
         
         var loadCallCount: Int {
@@ -29,15 +29,15 @@ extension PDLViewControlleriOSTests {
             completions[index](.failure(error))
         }
         
-        // MARK: - PropertyListingsImageLoader
+        // MARK: - PropertyListingImageLoader
         
-        private var imageRequests = [(url: URL, completion: (PropertyListingsImageLoader.Result) -> Void)]()
+        private var imageRequests = [(url: URL, completion: (PropertyListingImageLoader.Result) -> Void)]()
         
         var loadedImageURLs: [URL] {
             return imageRequests.map { $0.url }
         }
 
-        func loadImageData(from url: URL, completion: @escaping (PropertyListingsImageLoader.Result) -> Void) {
+        func loadImageData(from url: URL, completion: @escaping (PropertyListingImageLoader.Result) -> Void) {
             imageRequests.append((url, completion))
         }
         
