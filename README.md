@@ -354,4 +354,5 @@ GET /listings/{listingId}.json
 
 ## App Architecture
 
+![](UMLDiagram2.png)
 ![](UMLDiagram.png)
