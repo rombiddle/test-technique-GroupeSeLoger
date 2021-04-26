@@ -17,7 +17,7 @@
 	-	À l'intérieur de chaque module, je construis le code afin qu'il respecte les principes SOLID
 
 ### Tests
-- J'ai réalisé des tests unitaires pour la feature de la page des annonces immobilières
+- J'ai réalisé des tests unitaires pour la feature de la page des annonces immobilières en `TDD`
 - Il me manque des test unitaires pour:
 	- la feature avec la page de détail de l'annonce immobilière
 	- les localizables pour vérifier que chaque clé a une traduction en fonction de la langue
@@ -26,7 +26,11 @@
 	- d'acceptance (UI test)
 	- Snapshot test (Dark/Light mode)
 
-## Property Listings Feature Specs
+### Injection de dépendance
+- j'utilise le pattern `Composition Root` où j'instancie les différents modules depuis le `SceneDelegate` via un container.
+- Les frameworks utilisés (URLSession et Realm), la navigation et le threading sont injectés depuis le container car ce sont des détails d'implémentation.
+
+## Property Listings Feature Specs (BDD)
 
 ### Story : User requests to see the property listings
 
@@ -264,7 +268,7 @@ GET /listings.json
 
 ---
 
-## Property Detail Feature Specs
+## Property Detail Feature  (BDD)
 
 ### Story: User requests to see Property Details
 
@@ -282,9 +286,7 @@ So I can see more information about the property
 Given the user has connectivity
  When the user requests to see more information on a property
  Then the app should display all informations for that property
-```
 
-```
 Given the user doesn't have connectivity
  When the user requests to see more information on a property
  Then the app should display an error message
