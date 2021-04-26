@@ -16,14 +16,14 @@
 	-	À l'intérieur de chaque module, je construis le code afin qu'il respoecte les principes SOLID
 
 ### Tests
-- J'ai fait une grande partie des tests unitaires:
-	- Il me manque des test unitaires pour:
-		- la feature avec la page de détail de l'annonce immobilière
-		- les localizables pour vérifier que chaque clé a une traduction en fonction de la langue
-	- Il me manque des tests:
-		- d'intégration (Composition root)
-		- d'acceptance (UI test)
-		- Snapshot test (Dark/Light mode)
+- J'ai réalisé des tests unitaires pour la feature de la page des annonces immobilières:
+- Il me manque des test unitaires pour:
+	- la feature avec la page de détail de l'annonce immobilière
+	- les localizables pour vérifier que chaque clé a une traduction en fonction de la langue
+- Il me manque des tests:
+	- d'intégration (Composition root)
+	- d'acceptance (UI test)
+	- Snapshot test (Dark/Light mode)
 
 ## Property Listings Feature Specs
 
