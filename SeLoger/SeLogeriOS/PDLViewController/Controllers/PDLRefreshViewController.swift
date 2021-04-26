@@ -10,12 +10,14 @@ import SeLoger
 
 public final class PDLRefreshViewController: NSObject {
     @IBOutlet var view: UIRefreshControl?
+    @IBOutlet var errorView: ErrorView?
     
     public var propertyListingsLoader: PropertyListingsLoader?
     public var onRefresh: (([PropertyListing]) -> Void)?
     
     @IBAction func refresh() {
         view?.beginRefreshing()
+        errorView?.hideMessage()
         propertyListingsLoader?.load { [weak self] result in
             self?.handle(result)
         }
@@ -24,9 +26,14 @@ public final class PDLRefreshViewController: NSObject {
     private func handle(_ result: PropertyListingsLoader.Result) {
         switch result {
         case let .success(propertyListings):
-            onRefresh?(propertyListings)
+            if propertyListings.isEmpty {
+                errorView?.show(message: "No data")
+            } else {
+                onRefresh?(propertyListings)
+            }
+            
         case .failure:
-            break
+            errorView?.show(message: "No internet connexion")
         }
         view?.endRefreshing()
     }

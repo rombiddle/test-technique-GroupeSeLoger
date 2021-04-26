@@ -88,6 +88,12 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="4Vb-eH-MDR">
                                 <rect key="frame" x="197" y="438" width="20" height="20"/>
                             </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cw5-AY-7Ky">
+                                <rect key="frame" x="167" y="427.5" width="80" height="41"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="W4f-FZ-UXO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -95,9 +101,11 @@
                             <constraint firstItem="4Vb-eH-MDR" firstAttribute="centerX" secondItem="HVr-Jl-wd6" secondAttribute="centerX" id="3Mt-xD-u0V"/>
                             <constraint firstItem="W4f-FZ-UXO" firstAttribute="bottom" secondItem="NMz-Ym-M8a" secondAttribute="bottom" id="4m3-ah-F1I"/>
                             <constraint firstItem="NMz-Ym-M8a" firstAttribute="top" secondItem="W4f-FZ-UXO" secondAttribute="top" id="HHi-Nz-Zr4"/>
+                            <constraint firstItem="Cw5-AY-7Ky" firstAttribute="centerX" secondItem="HVr-Jl-wd6" secondAttribute="centerX" id="Hpc-ET-Lfs"/>
                             <constraint firstItem="W4f-FZ-UXO" firstAttribute="trailing" secondItem="NMz-Ym-M8a" secondAttribute="trailing" id="I6K-Kj-7FZ"/>
                             <constraint firstItem="4Vb-eH-MDR" firstAttribute="centerY" secondItem="HVr-Jl-wd6" secondAttribute="centerY" id="hLV-YU-LJH"/>
                             <constraint firstItem="NMz-Ym-M8a" firstAttribute="leading" secondItem="W4f-FZ-UXO" secondAttribute="leading" id="wLa-hj-qNM"/>
+                            <constraint firstItem="Cw5-AY-7Ky" firstAttribute="centerY" secondItem="HVr-Jl-wd6" secondAttribute="centerY" id="wic-pP-3s3"/>
                         </constraints>
                     </view>
                     <connections>
@@ -114,6 +122,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3mi-R2-VAD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <customObject id="bS0-Rx-1n6" customClass="PDDLoadIndicatorViewController" customModule="SeLogeriOS" customModuleProvider="target">
                     <connections>
+                        <outlet property="errorLabel" destination="Cw5-AY-7Ky" id="Bqf-TJ-lbA"/>
                         <outlet property="view" destination="4Vb-eH-MDR" id="XaH-Os-wkl"/>
                     </connections>
                 </customObject>

@@ -10,12 +10,14 @@ import SeLoger
 
 public final class PDDLoadIndicatorViewController: NSObject {
     @IBOutlet weak var view: UIActivityIndicatorView!
+    @IBOutlet weak var errorLabel: UILabel!
     
     public var propertyListingDetailLoader: PropertyListingDetailLoader?
     public var onLoadedPropertyListing: ((PropertyListing) -> Void)?
     
     func load() {
         startLoader()
+        errorLabel.text = nil
         propertyListingDetailLoader?.load() { [weak self] result in
             self?.handle(result)
         }
@@ -25,11 +27,11 @@ public final class PDDLoadIndicatorViewController: NSObject {
         switch result {
         case let .success(propertyListing):
             onLoadedPropertyListing?(propertyListing)
-            stopLoader()
             
         case .failure:
-            break
+            errorLabel.text = "No Data"
         }
+        stopLoader()
     }
     
     private func startLoader() {

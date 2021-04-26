@@ -30,6 +30,7 @@
 		2521818526358FBD00438814 /* RemotePropertyListingDetailLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2521818426358FBD00438814 /* RemotePropertyListingDetailLoader.swift */; };
 		2521818C2635901600438814 /* PropertyListingDetailMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2521818B2635901600438814 /* PropertyListingDetailMapper.swift */; };
 		252181F92635A03300438814 /* PDDLoadIndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252181F82635A03300438814 /* PDDLoadIndicatorViewController.swift */; };
+		2521827726368C7800438814 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2521827626368C7800438814 /* ErrorView.swift */; };
 		25C2C90A26305CAD0008CAB1 /* SeLoger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25C2C90026305CAD0008CAB1 /* SeLoger.framework */; };
 		25C2C90F26305CAE0008CAB1 /* LoadPropertyListingsFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2C90E26305CAE0008CAB1 /* LoadPropertyListingsFromRemoteUseCaseTests.swift */; };
 		25C2CBB026316B9C0008CAB1 /* PropertyListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C2CBAF26316B9C0008CAB1 /* PropertyListing.swift */; };
@@ -117,6 +118,7 @@
 		2521818426358FBD00438814 /* RemotePropertyListingDetailLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotePropertyListingDetailLoader.swift; sourceTree = "<group>"; };
 		2521818B2635901600438814 /* PropertyListingDetailMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListingDetailMapper.swift; sourceTree = "<group>"; };
 		252181F82635A03300438814 /* PDDLoadIndicatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDDLoadIndicatorViewController.swift; sourceTree = "<group>"; };
+		2521827626368C7800438814 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		25C2C90026305CAD0008CAB1 /* SeLoger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SeLoger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		25C2C90426305CAD0008CAB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25C2C90926305CAD0008CAB1 /* SeLogerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeLogerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -236,6 +238,7 @@
 			children = (
 				250244612634507B0042D874 /* PropertyListingCell.swift */,
 				2502448726345D4D0042D874 /* PDL.storyboard */,
+				2521827626368C7800438814 /* ErrorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -763,6 +766,7 @@
 				252181F92635A03300438814 /* PDDLoadIndicatorViewController.swift in Sources */,
 				250244622634507B0042D874 /* PropertyListingCell.swift in Sources */,
 				250244692634522E0042D874 /* PropertyListingCellController.swift in Sources */,
+				2521827726368C7800438814 /* ErrorView.swift in Sources */,
 				250244B4263489800042D874 /* PDLRefreshViewController.swift in Sources */,
 				2521816C26358D3700438814 /* PDDViewController.swift in Sources */,
 			);
