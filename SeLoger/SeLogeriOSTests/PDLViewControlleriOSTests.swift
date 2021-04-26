@@ -163,10 +163,29 @@ class PDLViewControlleriOSTests: XCTestCase {
     
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: PDLViewController, loader: LoaderSpy) {
         let loader = LoaderSpy()
-        let sut = PropertyListingsUIComposer.propertyListingsComposedWith(propertyListingsLoader: loader, imageLoader: loader)
+        let sut = PDLViewController.make()
+        sut.refreshController?.propertyListingsLoader = loader
+        sut.refreshController?.onRefresh = { [weak sut] propertyListings in
+            sut?.tableModel = propertyListings.compactMap { [weak self] propertyListing in
+                guard self != nil else { return nil }
+                return PropertyListingCellController(model: propertyListing,
+                                                     imageLoader: loader,
+                                                     selection: { _ in })
+            }
+        }
+//        let sut = AppDepe.propertyListingsComposedWith(propertyListingsLoader: loader, imageLoader: loader)
         trackForMemoryLeaks(loader, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, loader)
     }
     
+}
+
+private extension PDLViewController {
+    static func make() -> PDLViewController {
+        let bundle = Bundle(for: PDLViewController.self)
+        let storyboard = UIStoryboard(name: "PDL", bundle: bundle)
+        let PDLController = storyboard.instantiateInitialViewController() as! PDLViewController
+        return PDLController
+    }
 }
