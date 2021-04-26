@@ -1,6 +1,7 @@
 # Test technique - Groupe SeLoger
 
 ### CI - GitHub Actions
+All Jobs are failing because I reached 100% of the Github Actions free usage... (In the Actions tab in github, we can see the jobs succeeding)
 ![](https://github.com/rombiddle/test-technique-GroupeSeLoger/workflows/CI-macOS/badge.svg)
 ![](https://github.com/rombiddle/test-technique-GroupeSeLoger/workflows/CI-macOS-End-to-End/badge.svg)
 ![](https://github.com/rombiddle/test-technique-GroupeSeLoger/workflows/CI-iOS/badge.svg)
