@@ -3,6 +3,7 @@
 ### CI - GitHub Actions
 ![](https://github.com/rombiddle/test-technique-GroupeSeLoger/workflows/CI-macOS/badge.svg)
 ![](https://github.com/rombiddle/test-technique-GroupeSeLoger/workflows/CI-macOS-End-to-End/badge.svg)
+![](https://github.com/rombiddle/test-technique-GroupeSeLoger/workflows/CI-iOS/badge.svg)
 
 ### Librairie
 - Realm avec SPM
@@ -11,12 +12,12 @@
 - L'UI n'est pas la partie que j'ai travaillé le plus sur l'app
 
 ### Arhitecture
-- J'ai utilisé MVC pour la partie achitecture de l'UI (MVVM ou MVP peuvent être utilisé pour ajouter une `Prensentation Layer`). Le `Single Responsibility Principle`s est mis en avant.
+- J'ai utilisé MVC pour la partie achitecture de l'UI (MVVM ou MVP peuvent être utilisé pour ajouter une `Prensentation Layer`). Le `Single Responsibility Principle` est mis en avant.
 - Pour l'architecture globale de l'app, c'est une architecture modulaire (je sépare les features en module)
-	-	À l'intérieur de chaque module, je construis le code afin qu'il respoecte les principes SOLID
+	-	À l'intérieur de chaque module, je construis le code afin qu'il respecte les principes SOLID
 
 ### Tests
-- J'ai réalisé des tests unitaires pour la feature de la page des annonces immobilières:
+- J'ai réalisé des tests unitaires pour la feature de la page des annonces immobilières
 - Il me manque des test unitaires pour:
 	- la feature avec la page de détail de l'annonce immobilière
 	- les localizables pour vérifier que chaque clé a une traduction en fonction de la langue
