@@ -22,6 +22,8 @@
 		2521814826355C0300438814 /* MainQueueDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2521814726355C0300438814 /* MainQueueDispatchDecorator.swift */; };
 		252181D726359E2D00438814 /* AppDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252181D626359E2D00438814 /* AppDependencyContainer.swift */; };
 		252182732635DA3700438814 /* PropertyListingsLoaderCacheDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252182722635DA3700438814 /* PropertyListingsLoaderCacheDecorator.swift */; };
+		2594560D27C5323F0065CA33 /* SeLogerSwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2594560C27C5323E0065CA33 /* SeLogerSwiftUI.framework */; };
+		2594560E27C5323F0065CA33 /* SeLogerSwiftUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2594560C27C5323E0065CA33 /* SeLogerSwiftUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,7 @@
 			files = (
 				2521812F26354AE300438814 /* SeLogeriOS.framework in Embed Frameworks */,
 				2521812D26354AE300438814 /* SeLoger.framework in Embed Frameworks */,
+				2594560E27C5323F0065CA33 /* SeLogerSwiftUI.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,6 +79,7 @@
 		2521814726355C0300438814 /* MainQueueDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueDispatchDecorator.swift; sourceTree = "<group>"; };
 		252181D626359E2D00438814 /* AppDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencyContainer.swift; sourceTree = "<group>"; };
 		252182722635DA3700438814 /* PropertyListingsLoaderCacheDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListingsLoaderCacheDecorator.swift; sourceTree = "<group>"; };
+		2594560C27C5323E0065CA33 /* SeLogerSwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SeLogerSwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 			files = (
 				2521812E26354AE300438814 /* SeLogeriOS.framework in Frameworks */,
 				2521812C26354AE300438814 /* SeLoger.framework in Frameworks */,
+				2594560D27C5323F0065CA33 /* SeLogerSwiftUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +169,7 @@
 		2521812926354AE300438814 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2594560C27C5323E0065CA33 /* SeLogerSwiftUI.framework */,
 				2521812A26354AE300438814 /* SeLoger.framework */,
 				2521812B26354AE300438814 /* SeLogeriOS.framework */,
 			);
@@ -484,6 +490,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SeLogerApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -502,6 +509,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SeLogerApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

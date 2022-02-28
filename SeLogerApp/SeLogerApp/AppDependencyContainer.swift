@@ -8,7 +8,9 @@
 import UIKit
 import SeLoger
 import SeLogeriOS
+import SeLogerSwiftUI
 import RealmSwift
+import SwiftUI
 
 final class AppDependencyContainer {
     
@@ -16,7 +18,7 @@ final class AppDependencyContainer {
     let httpClient: HTTPClient
     let store: PropertyListingsStore
     let nav: UINavigationController
-
+    
     init(httpClient: HTTPClient, store: PropertyListingsStore) {
         self.httpClient = httpClient
         self.store = store
@@ -31,41 +33,52 @@ final class AppDependencyContainer {
         
         let localPropertyListingsLoader = LocalPropertyListingsLoader(store: store)
         
-        let pdlViewController = PDLViewController.make()
-        pdlViewController.refreshController?.propertyListingsLoader = PropertyListingsLoaderWithFallbackComposite(
-            primary: PropertyListingsLoaderCacheDecorator(
-                decoratee: MainQueueDispatchDecorator(decoratee: remotePropertyListingsLoader),
-                cache: localPropertyListingsLoader),
-            fallback: MainQueueDispatchDecorator(decoratee: localPropertyListingsLoader)
-        )
-        pdlViewController.refreshController?.onRefresh = { [weak pdlViewController] propertyListings in
-            pdlViewController?.tableModel = propertyListings.compactMap { [weak self] propertyListing in
-                guard let self = self else { return nil }
-                return PropertyListingCellController(model: propertyListing,
-                                                     imageLoader: MainQueueDispatchDecorator(decoratee: remoteImageLoader),
-                                                     selection: self.showPropertyDetail
-                )
-            }
-        }
-        pdlViewController.title = "Annonces"
+        //        let pdlViewController = PDLViewController.make()
+        //        pdlViewController.refreshController?.propertyListingsLoader = PropertyListingsLoaderWithFallbackComposite(
+        //            primary: PropertyListingsLoaderCacheDecorator(
+        //                decoratee: MainQueueDispatchDecorator(decoratee: remotePropertyListingsLoader),
+        //                cache: localPropertyListingsLoader),
+        //            fallback: MainQueueDispatchDecorator(decoratee: localPropertyListingsLoader)
+        //        )
+        //        pdlViewController.refreshController?.onRefresh = { [weak pdlViewController] propertyListings in
+        //            pdlViewController?.tableModel = propertyListings.compactMap { [weak self] propertyListing in
+        //                guard let self = self else { return nil }
+        //                return PropertyListingCellController(model: propertyListing,
+        //                                                     imageLoader: MainQueueDispatchDecorator(decoratee: remoteImageLoader),
+        //                                                     selection: self.showPropertyDetail
+        //                )
+        //            }
+        //        }
+        //        pdlViewController.title = "Annonces"
+        let pdlViewModel = PDLViewModel(propertyListingsLoader: MainQueueDispatchDecorator(decoratee: remotePropertyListingsLoader))
+        let pdlViewController = UIHostingController(rootView: PDLView(viewModel: pdlViewModel, selection: { [weak self] id in
+            self!.showPropertyDetail(for: id)
+        }))
         nav.setViewControllers([pdlViewController], animated: true)
         return nav
     }
     
-    private func showPropertyDetail(for propertyId: Int) {
-        let pddViewController = PDDViewController.make()
+    //    private func showPropertyDetail(for propertyId: Int) {
+    //        let pddViewController = PDDViewController.make()
+    //        let remoteURL = URL(string: "https://gsl-apps-technical-test.dignp.com/listings/\(propertyId).json")!
+    //        let remotePropertyListingDetailLoader = RemotePropertyListingDetailLoader(url: remoteURL, client: httpClient)
+    //        pddViewController.loadIndicatorController?.propertyListingDetailLoader = MainQueueDispatchDecorator(decoratee: remotePropertyListingDetailLoader)
+    //        pddViewController.loadIndicatorController?.onLoadedPropertyListing = { [weak pddViewController] propertyListing in
+    //            pddViewController?.loadedPropertyListing(model: propertyListing)
+    //        }
+    //        let remotePropertyListingsImageLoader = RemotePropertyListingsImageLoader(client: httpClient)
+    //        pddViewController.imageLoader = MainQueueDispatchDecorator(decoratee: remotePropertyListingsImageLoader)
+    //        nav.pushViewController(pddViewController, animated: true)
+    //    }
+    
+    private func showPropertyDetail(for propertyId: Int) -> PDDView {
         let remoteURL = URL(string: "https://gsl-apps-technical-test.dignp.com/listings/\(propertyId).json")!
         let remotePropertyListingDetailLoader = RemotePropertyListingDetailLoader(url: remoteURL, client: httpClient)
-        pddViewController.loadIndicatorController?.propertyListingDetailLoader = MainQueueDispatchDecorator(decoratee: remotePropertyListingDetailLoader)
-        pddViewController.loadIndicatorController?.onLoadedPropertyListing = { [weak pddViewController] propertyListing in
-            pddViewController?.loadedPropertyListing(model: propertyListing)
-        }
-        let remotePropertyListingsImageLoader = RemotePropertyListingsImageLoader(client: httpClient)
-        pddViewController.imageLoader = MainQueueDispatchDecorator(decoratee: remotePropertyListingsImageLoader)
-        nav.pushViewController(pddViewController, animated: true)
+        let viewModel = PDDViewModel(provider: remotePropertyListingDetailLoader)
+        return PDDView(viewModel: viewModel)
     }
 }
-    
+
 private extension PDLViewController {
     static func make() -> PDLViewController {
         let bundle = Bundle(for: PDLViewController.self)
